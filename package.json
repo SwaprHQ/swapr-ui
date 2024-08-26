@@ -1,7 +1,7 @@
 {
   "name": "swapr-ui-monorepo",
   "repository": "https://github.com/SwaprHQ/swapr-ui-lib",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "license": "MIT",
   "packageManager": "bun@1.0.6",
   "engines": {
