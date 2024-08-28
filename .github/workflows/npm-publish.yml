@@ -7,11 +7,11 @@ on:
   push:
     paths:
       - "packages/ui/**"
-    branches: [master]
+    branches: [ "main" ]
   pull_request:
     paths:
       - "packages/ui/**"
-    branches: [master]
+    branches: [ "main" ]
   release:
     types: [created]
 
