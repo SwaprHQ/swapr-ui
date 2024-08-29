@@ -1,25 +1,44 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+# This workflow will run on `master` branch updates (via direct push or PRs), or on a new release.
+# Now it only runs when changes are made to the `packages/ui` directory.
 
-name: Auto publish to NPM
+name: UI package auto publish to NPM
 
-# on: push # triggers on every push (for testing purposes)
 on:
+  push:
+    paths:
+      - "packages/ui/**"
+    branches: [ "main" ]
+  pull_request:
+    paths:
+      - "packages/ui/**"
+    branches: [ "main" ]
   release:
     types: [created]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v1
-      - run: bun install
-      - run: bun run build
-      - uses: actions/setup-node@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v1
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build package
+        run: bun run build
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: 21
           registry-url: https://registry.npmjs.org/
-      - run: npm publish
+
+      - name: Publish UI package
+        run: cd packages/ui && npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
