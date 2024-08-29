@@ -4,14 +4,6 @@
 name: UI package auto publish to NPM
 
 on:
-  push:
-    paths:
-      - "packages/ui/**"
-    branches: [ "main" ]
-  pull_request:
-    paths:
-      - "packages/ui/**"
-    branches: [ "main" ]
   release:
     types: [created]
 
