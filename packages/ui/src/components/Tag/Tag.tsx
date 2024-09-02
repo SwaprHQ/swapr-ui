@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { cva } from "class-variance-authority";
-import { twMerge } from "tailwind-merge";
+import { twMerge } from "../../extended-tw-merge";
 
 export const tagStyles = cva(
   ["flex items-center justify-center", "rounded-6 font-semibold border"],
