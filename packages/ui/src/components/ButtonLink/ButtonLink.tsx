@@ -1,5 +1,5 @@
 import { cva } from "class-variance-authority";
-import { twMerge } from "tailwind-merge";
+import { twMerge } from "@/utils";
 
 import { ButtonProps, buttonStyles } from "../Button";
 

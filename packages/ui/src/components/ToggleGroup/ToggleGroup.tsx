@@ -5,7 +5,7 @@ import {
   RadioOptionProps,
 } from "@headlessui/react";
 import { cva } from "class-variance-authority";
-import { twMerge } from "tailwind-merge";
+import { twMerge } from "@/utils";
 
 export const toggleOptionStyles = cva(
   [
