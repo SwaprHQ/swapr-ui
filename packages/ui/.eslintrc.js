@@ -15,7 +15,7 @@ module.exports = {
           {
             importNames: ["twMerge"],
             name: "tailwind-merge",
-            message: "Please import { twMerge } from 'src/extended-tw-merge'.",
+            message: "Please import { twMerge } from '@/utils'.",
           },
         ],
       },

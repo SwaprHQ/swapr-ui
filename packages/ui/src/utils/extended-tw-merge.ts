@@ -1,6 +1,6 @@
 import { extendTailwindMerge } from "tailwind-merge";
 
-const newRoundedClasess = [
+const roundedClasess = [
   "0",
   "4",
   "6",
@@ -17,7 +17,7 @@ const newRoundedClasess = [
 export const twMerge = extendTailwindMerge({
   extend: {
     classGroups: {
-      rounded: [{ rounded: newRoundedClasess }],
+      rounded: [{ rounded: roundedClasess }],
     },
   },
 });
