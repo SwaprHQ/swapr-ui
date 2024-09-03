@@ -1,13 +1,23 @@
 import { extendTailwindMerge } from "tailwind-merge";
 
-const preset = require("../tailwind-preset.ts");
-
-console.log("preset: ", preset);
+const newRoundedClasess = [
+  "0",
+  "4",
+  "6",
+  "8",
+  "12",
+  "16",
+  "20",
+  "32",
+  "48",
+  "64",
+  "100",
+];
 
 export const twMerge = extendTailwindMerge({
   extend: {
     classGroups: {
-      rounded: [{ rounded: ["100"] }],
+      rounded: [{ rounded: newRoundedClasess }],
     },
   },
 });
