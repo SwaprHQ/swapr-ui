@@ -1,1 +1,1 @@
-export * from "./extended-tw-merge";
+export * from "./tw-merge";
