@@ -1,5 +1,5 @@
 import { cva } from "class-variance-authority";
-import { twMerge } from "tailwind-merge";
+import { twMerge } from "@/utils";
 
 export const logoStyles = cva(
   ["flex items-center justify-center", "rounded-100 bg-surface-white"],

@@ -7,7 +7,7 @@ import {
   Root,
   Trigger,
 } from "@radix-ui/react-tooltip";
-import { twMerge } from "tailwind-merge";
+import { twMerge } from "@/utils";
 
 export type TooltipProviderProps = {
   children: React.ReactNode;

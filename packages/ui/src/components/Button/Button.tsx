@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, Ref, forwardRef } from "react";
 
-import { twMerge } from "tailwind-merge";
+import { twMerge } from "@/utils";
 
 import { buttonStyles } from "./styles";
 

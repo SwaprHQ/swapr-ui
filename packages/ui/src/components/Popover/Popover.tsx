@@ -7,7 +7,7 @@ import {
   Root,
   Trigger,
 } from "@radix-ui/react-popover";
-import { twMerge } from "tailwind-merge";
+import { twMerge } from "@/utils";
 import { IconButton } from "../IconButton";
 
 const Popover = Root;
