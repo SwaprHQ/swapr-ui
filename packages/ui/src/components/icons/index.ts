@@ -37,6 +37,7 @@ export { default as ChevronRight } from "./ChevronRight";
 export { default as ChevronUpSmall } from "./ChevronUpSmall";
 export { default as ChevronUp } from "./ChevronUp";
 export { default as CloseFill } from "./CloseFill";
+export { default as Code } from "./Code";
 export { default as CoinSwapFill } from "./CoinSwapFill";
 export { default as CoinSwap } from "./CoinSwap";
 export { default as Configuration } from "./Configuration";

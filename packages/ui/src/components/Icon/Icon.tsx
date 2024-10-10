@@ -40,6 +40,7 @@ export type IconName =
   | "chevron-up-small"
   | "chevron-up"
   | "close-fill"
+  | "code"
   | "coin-swap-fill"
   | "coin-swap"
   | "configuration"
@@ -143,6 +144,7 @@ export const iconMap: Record<IconName, any> = {
   "chevron-right": IconList.ChevronRight,
   "chevron-up-small": IconList.ChevronUpSmall,
   "close-fill": IconList.CloseFill,
+  code: IconList.Code,
   "coin-swap-fill": IconList.CoinSwapFill,
   "coin-swap": IconList.CoinSwap,
   "chevron-up": IconList.ChevronUp,
