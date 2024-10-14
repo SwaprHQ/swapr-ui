@@ -47,6 +47,7 @@ import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
+  DialogTitle,
 } from "@swapr/ui";
 
 import { PopoverSection, Section, ThemeSwitch } from "@/components";
@@ -65,7 +66,7 @@ function extractStringValuesFromObject(object: any): string[] {
         keys.push(key);
       } else if (typeof value === "object" && value) {
         const nestedKeys = extractStringValuesFromObject(value);
-        keys.push(...nestedKeys.map((nestedKey) => `${key}-${nestedKey}`));
+        keys.push(...nestedKeys.map(nestedKey => `${key}-${nestedKey}`));
       }
     }
   }
@@ -77,7 +78,7 @@ const tailwindColors: { [key: string]: Array<string> } = Object.keys(
   fullConfig.theme.colors
 ).reduce(
   (acc, key) =>
-    colorsKeysBanList.some((colorName) => colorName === key)
+    colorsKeysBanList.some(colorName => colorName === key)
       ? acc
       : {
           ...acc,
@@ -119,7 +120,7 @@ const extendBtnCombos = (
   btnPropsList: Array<ButtonListProps>,
   newProp: ExtendedButtonProps | ExtendedButtonLinkProps
 ): Array<ButtonListProps> =>
-  btnPropsList.map((buttonProps) => ({
+  btnPropsList.map(buttonProps => ({
     ...buttonProps,
     ...newProp,
   }));
@@ -451,8 +452,10 @@ export default function UI() {
                 <Button>Open</Button>
               </DialogTrigger>
               <DialogContent append="bottom">
-                <DialogHeader>Select a token</DialogHeader>
-                <DialogBody className="px-4 pb-6">
+                <DialogHeader>
+                  <DialogTitle>Select a token</DialogTitle>
+                </DialogHeader>
+                <DialogBody>
                   <ul>
                     {Array(15)
                       .fill("")
@@ -473,15 +476,13 @@ export default function UI() {
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader size="xl" className="text-center">
-                  <DialogClose position="left" size="xl">
-                    <Button variant="ghost">
-                      <Icon name="arrow-left" />
-                    </Button>
+                  <DialogClose>
+                    <Icon name="arrow-left" />
                   </DialogClose>
-                  Confirm Swap
+                  <DialogTitle>Confirm Swap</DialogTitle>
                 </DialogHeader>
-                <DialogBody className="mx-10 mb-6">
-                  This action cannot be undone. This will permanently delete
+                <DialogBody>
+                  This action cannot be undone. This will permanently delete as
                   your account and remove your data from our servers.
                 </DialogBody>
                 <DialogFooter>
@@ -618,7 +619,7 @@ export default function UI() {
             .
           </p>
           <div className="divide-x divide-surface-surface-2 flex items-center space-x-5">
-            {toggleGroupOptionSizes.map((size) => (
+            {toggleGroupOptionSizes.map(size => (
               <div key={size} className="pl-4">
                 <p>Size: {size}</p>
                 <ToggleGroup value={slipage} onChange={setSlipage}>
@@ -645,8 +646,10 @@ export default function UI() {
                 <Button>Open</Button>
               </DialogTrigger>
               <DialogContent append="bottom">
-                <DialogHeader>Select a token</DialogHeader>
-                <DialogBody className="px-4 pb-6">
+                <DialogHeader>
+                  <DialogTitle>Hi I'm a Modal title</DialogTitle>
+                </DialogHeader>
+                <DialogBody>
                   <ul>
                     {Array(15)
                       .fill("")
@@ -666,13 +669,13 @@ export default function UI() {
                 <Button>Open</Button>
               </DialogTrigger>
               <DialogContent>
-                <DialogHeader size="xl" className="text-center">
-                  <DialogClose position="left" size="xl">
-                    <IconButton variant="ghost" name="arrow-left" />
+                <DialogHeader className="flex items-center">
+                  <DialogClose>
+                    <Icon size={18} name="arrow-left" />
                   </DialogClose>
-                  Confirm Swap
+                  <DialogTitle>Confirm Tx</DialogTitle>
                 </DialogHeader>
-                <DialogBody className="mx-10 mb-6">
+                <DialogBody>
                   This action cannot be undone. This will permanently delete
                   your account and remove your data from our servers.
                 </DialogBody>
@@ -701,7 +704,7 @@ export default function UI() {
         <Section>
           <h2 className="text-2xl font-semibold">Tag</h2>
           <div className="flex space-x-6">
-            {TagColorSchemes.map((color) => (
+            {TagColorSchemes.map(color => (
               <Fragment key={color}>
                 <Tag colorScheme={color as TagColorSchemeProp} size="sm">
                   Tag
@@ -790,7 +793,7 @@ export default function UI() {
         <Section>
           <h2 className="text-2xl font-semibold">Icons</h2>
           <div className="flex flex-wrap space-x-4 space-y-2 md:space-y-0">
-            {Object.keys(iconMap).map((iconName) => (
+            {Object.keys(iconMap).map(iconName => (
               <div
                 className="flex flex-col items-center space-y-2"
                 key={iconName}
@@ -896,11 +899,11 @@ export default function UI() {
         <Section>
           <h2 className="text-2xl font-semibold">Colors</h2>
           <div className="space-y-3 divide-y divide-outline-primary-base-em">
-            {Object.keys(tailwindColors).map((key) => (
+            {Object.keys(tailwindColors).map(key => (
               <div key={key} className="space-y-2.5 py-2">
                 <p className="text-xl capitalize">{key}</p>
                 <div className="space-y-2 lg:grid lg:grid-cols-3">
-                  {tailwindColors[key].map((color) => (
+                  {tailwindColors[key].map(color => (
                     <div key={color} className="flex space-x-4">
                       <div
                         className={`bg-${key}-${color} w-20 h-10 rounded-6`}
