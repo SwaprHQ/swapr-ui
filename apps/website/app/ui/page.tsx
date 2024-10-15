@@ -643,7 +643,7 @@ export default function UI() {
           <div className="flex space-x-4">
             <Dialog>
               <DialogTrigger asChild>
-                <Button>Open</Button>
+                <Button>Open basic</Button>
               </DialogTrigger>
               <DialogContent append="bottom">
                 <DialogHeader>
@@ -666,7 +666,7 @@ export default function UI() {
             </Dialog>
             <Dialog open={openModal} onOpenChange={setOpenModal}>
               <DialogTrigger asChild>
-                <Button>Open</Button>
+                <Button>Open modal with actions</Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader className="flex items-center">
@@ -696,6 +696,50 @@ export default function UI() {
                   >
                     Confirm
                   </Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button>Open success modal</Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader />
+                <DialogBody className="mx-auto mb-8 w-full max-w-fit space-y-2 md:mx-0 md:max-w-[496px]">
+                  <div className="flex w-full flex-col items-center space-y-12">
+                    <>
+                      <IconBadge name="tick" colorScheme="success" />
+                      <div className="flex flex-col items-center space-y-2">
+                        <p className="text-2xl font-semibold">
+                          Transaction successful!
+                        </p>
+                        <p className="text-center text-md font-semibold text-text-low-em">
+                          The transaction has been completed.
+                          <br />
+                          You can close this window now.
+                        </p>
+                      </div>
+                    </>
+                  </div>
+                </DialogBody>
+                <DialogFooter>
+                  <a
+                    href="#"
+                    target="_blank"
+                    className="w-full"
+                    rel="noopener noreferrer"
+                  >
+                    <Button
+                      width="full"
+                      colorScheme="primary"
+                      variant="pastel"
+                      size="lg"
+                    >
+                      <>
+                        View in explorer <Icon name="arrow-top-right" />
+                      </>
+                    </Button>
+                  </a>
                 </DialogFooter>
               </DialogContent>
             </Dialog>
