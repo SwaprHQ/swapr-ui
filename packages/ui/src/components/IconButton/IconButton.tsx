@@ -19,7 +19,7 @@ export const iconButtonStyles = cva([], {
 });
 
 type Size = NonNullable<ButtonProps["size"]>;
-const iconSize: Record<Size, number> = {
+export const iconSize: Record<Size, number> = {
   xs: 14,
   sm: 14,
   md: 18,

@@ -1,11 +1,10 @@
-import { forwardRef } from "react";
+import { forwardRef, PropsWithChildren } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { cva, cx } from "class-variance-authority";
-import { IconButton } from "../IconButton";
-
-interface SizeProp {
-  size?: "lg" | "xl" | null | undefined;
-}
+import { twMerge } from "@/utils";
+import { ButtonProps, buttonStyles } from "@/components/Button";
+import { Icon } from "@/components/Icon";
+import { iconButtonStyles, iconSize } from "@/components/IconButton";
 
 interface AppendProp {
   append?: "center" | "bottom" | null | undefined;
@@ -14,6 +13,12 @@ interface AppendProp {
 interface PositionProp {
   position?: "right" | "left" | null | undefined;
 }
+
+interface SizeProp {
+  size?: ButtonProps["size"];
+}
+
+interface DialogProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const Dialog = DialogPrimitive.Root;
 
@@ -86,34 +91,19 @@ const DialogContent = forwardRef<
 ));
 DialogContent.displayName = DialogPrimitive.Content.displayName;
 
-const closeStyle = cva(
-  [
-    "absolute data-[state=open]:bg-accent data-[state=open]:text-muted-foreground",
-  ],
-  {
-    variants: {
-      position: { right: "", left: "" },
-      size: { lg: "", xl: "" },
-    },
-    compoundVariants: [
-      { position: "right", size: "lg", class: ["top-4 right-4"] },
-      { position: "left", size: "lg", class: ["top-4 left-4"] },
-      { position: "right", size: "xl", class: ["top-5 right-5"] },
-      { position: "left", size: "xl", class: ["top-5 left-5"] },
-    ],
-    defaultVariants: { position: "right", size: "lg" },
-  }
-);
-
 const DialogClose = forwardRef<
   React.ElementRef<typeof DialogPrimitive.Close>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Close> &
     PositionProp &
     SizeProp
->(({ className, position, size, children, ...props }, ref) => (
+>(({ className, children, size, ...props }, ref) => (
   <DialogPrimitive.Close
     ref={ref}
-    className={closeStyle({ position, size, className })}
+    className={twMerge(
+      "data-[state=open]:bg-accent data-[state=open]:text-muted-foreground",
+      buttonStyles({ variant: "ghost" }),
+      iconButtonStyles({ className, size })
+    )}
     {...props}
   >
     {children}
@@ -124,33 +114,35 @@ DialogClose.displayName = DialogPrimitive.Close.displayName;
 
 const DialogHeader = ({
   className,
-  size,
+  size = "md",
+  children,
   ...props
-}: React.HTMLAttributes<HTMLDivElement> & SizeProp) => (
-  <>
-    <DialogClose position="right" size={size}>
-      <IconButton name="cross" variant="ghost" />
+}: DialogProps & SizeProp & PropsWithChildren) => (
+  <div
+    className={twMerge(
+      "flex items-center justify-between p-3 md:p-4",
+      className,
+      size
+    )}
+    {...props}
+  >
+    {children}
+    <DialogClose size={size}>
+      <Icon name="cross" size={iconSize[size]} />
     </DialogClose>
-    <DialogTitle className={cx("p-6", className)} {...props} />
-  </>
+  </div>
 );
 DialogHeader.displayName = "DialogHeader";
 
-const DialogBody = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cx("overflow-auto", className)} {...props} />
+const DialogBody = ({ className, ...props }: DialogProps) => (
+  <div className={twMerge("overflow-auto p-3 md:p-4", className)} {...props} />
 );
 DialogBody.displayName = "DialogBody";
 
-const DialogFooter = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
+const DialogFooter = ({ className, ...props }: DialogProps) => (
   <div
     className={cx(
-      "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end p-2",
+      "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end p-3 md:p-4",
       className
     )}
     {...props}
@@ -158,18 +150,13 @@ const DialogFooter = ({
 );
 DialogFooter.displayName = "DialogFooter";
 
-const titleStyle = cva(["font-bold"], {
-  variants: { size: { lg: "text-lg", xl: "text-xl" } },
-  defaultVariants: { size: "lg" },
-});
-
 const DialogTitle = forwardRef<
   React.ElementRef<typeof DialogPrimitive.Title>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title> & SizeProp
->(({ className, size, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
+>(({ className, ...props }, ref) => (
   <DialogPrimitive.Title
     ref={ref}
-    className={titleStyle({ size, className })}
+    className={twMerge("text-md md:text-lg font-bold", className)}
     {...props}
   />
 ));
