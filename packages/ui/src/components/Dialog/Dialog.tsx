@@ -120,7 +120,8 @@ const DialogHeader = ({
 }: DialogProps & SizeProp & PropsWithChildren) => (
   <div
     className={twMerge(
-      "flex items-center justify-between p-3 md:p-4",
+      "flex items-center p-3 md:p-4",
+      children ? "justify-between" : "justify-end",
       className,
       size
     )}
