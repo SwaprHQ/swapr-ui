@@ -21,10 +21,9 @@ interface SizeProp {
 interface DialogProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const Dialog = DialogPrimitive.Root;
-
-const DialogTrigger = DialogPrimitive.Trigger;
-
+const DialogDescription = DialogPrimitive.Description;
 const DialogPortal = DialogPrimitive.Portal;
+const DialogTrigger = DialogPrimitive.Trigger;
 
 const DialogOverlay = forwardRef<
   React.ElementRef<typeof DialogPrimitive.Overlay>,
@@ -165,6 +164,7 @@ DialogTitle.displayName = DialogPrimitive.Title.displayName;
 
 export {
   Dialog,
+  DialogDescription,
   DialogPortal,
   DialogOverlay,
   DialogClose,
