@@ -1,5 +1,6 @@
 import { forwardRef, PropsWithChildren } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { cva, cx } from "class-variance-authority";
 import { twMerge } from "@/utils";
 import { ButtonProps, buttonStyles } from "@/components/Button";
@@ -174,4 +175,5 @@ export {
   DialogBody,
   DialogFooter,
   DialogTitle,
+  VisuallyHidden,
 };

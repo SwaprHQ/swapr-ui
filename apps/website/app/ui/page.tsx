@@ -3,7 +3,6 @@
 import { Fragment, PropsWithChildren, useState } from "react";
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "@/tailwind.config";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 import {
   Button,
@@ -50,6 +49,7 @@ import {
   TooltipContent,
   DialogTitle,
   DialogDescription,
+  VisuallyHidden,
 } from "@swapr/ui";
 
 import { PopoverSection, Section, ThemeSwitch } from "@/components";
