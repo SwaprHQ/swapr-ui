@@ -1,5 +1,6 @@
 import { forwardRef, PropsWithChildren } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { cva, cx } from "class-variance-authority";
 import { twMerge } from "@/utils";
 import { ButtonProps, buttonStyles } from "@/components/Button";
@@ -21,10 +22,9 @@ interface SizeProp {
 interface DialogProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const Dialog = DialogPrimitive.Root;
-
-const DialogTrigger = DialogPrimitive.Trigger;
-
+const DialogDescription = DialogPrimitive.Description;
 const DialogPortal = DialogPrimitive.Portal;
+const DialogTrigger = DialogPrimitive.Trigger;
 
 const DialogOverlay = forwardRef<
   React.ElementRef<typeof DialogPrimitive.Overlay>,
@@ -165,6 +165,7 @@ DialogTitle.displayName = DialogPrimitive.Title.displayName;
 
 export {
   Dialog,
+  DialogDescription,
   DialogPortal,
   DialogOverlay,
   DialogClose,
@@ -174,4 +175,5 @@ export {
   DialogBody,
   DialogFooter,
   DialogTitle,
+  VisuallyHidden,
 };

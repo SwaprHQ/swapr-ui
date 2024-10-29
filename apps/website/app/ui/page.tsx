@@ -48,6 +48,8 @@ import {
   TooltipTrigger,
   TooltipContent,
   DialogTitle,
+  DialogDescription,
+  VisuallyHidden,
 } from "@swapr/ui";
 
 import { PopoverSection, Section, ThemeSwitch } from "@/components";
@@ -66,7 +68,7 @@ function extractStringValuesFromObject(object: any): string[] {
         keys.push(key);
       } else if (typeof value === "object" && value) {
         const nestedKeys = extractStringValuesFromObject(value);
-        keys.push(...nestedKeys.map(nestedKey => `${key}-${nestedKey}`));
+        keys.push(...nestedKeys.map((nestedKey) => `${key}-${nestedKey}`));
       }
     }
   }
@@ -78,7 +80,7 @@ const tailwindColors: { [key: string]: Array<string> } = Object.keys(
   fullConfig.theme.colors
 ).reduce(
   (acc, key) =>
-    colorsKeysBanList.some(colorName => colorName === key)
+    colorsKeysBanList.some((colorName) => colorName === key)
       ? acc
       : {
           ...acc,
@@ -120,7 +122,7 @@ const extendBtnCombos = (
   btnPropsList: Array<ButtonListProps>,
   newProp: ExtendedButtonProps | ExtendedButtonLinkProps
 ): Array<ButtonListProps> =>
-  btnPropsList.map(buttonProps => ({
+  btnPropsList.map((buttonProps) => ({
     ...buttonProps,
     ...newProp,
   }));
@@ -619,7 +621,7 @@ export default function UI() {
             .
           </p>
           <div className="divide-x divide-surface-surface-2 flex items-center space-x-5">
-            {toggleGroupOptionSizes.map(size => (
+            {toggleGroupOptionSizes.map((size) => (
               <div key={size} className="pl-4">
                 <p>Size: {size}</p>
                 <ToggleGroup value={slipage} onChange={setSlipage}>
@@ -649,6 +651,11 @@ export default function UI() {
                 <DialogHeader>
                   <DialogTitle>Hi I'm a Modal title</DialogTitle>
                 </DialogHeader>
+                <VisuallyHidden asChild>
+                  <DialogDescription className="px-4">
+                    Here a really long text will be displayed.
+                  </DialogDescription>
+                </VisuallyHidden>
                 <DialogBody>
                   <ul>
                     {Array(15)
@@ -675,6 +682,11 @@ export default function UI() {
                   </DialogClose>
                   <DialogTitle>Confirm Tx</DialogTitle>
                 </DialogHeader>
+                <VisuallyHidden asChild>
+                  <DialogDescription className="px-4">
+                    Here we display a Modal with actions
+                  </DialogDescription>
+                </VisuallyHidden>
                 <DialogBody>
                   This action cannot be undone. This will permanently delete
                   your account and remove your data from our servers.
@@ -704,7 +716,18 @@ export default function UI() {
                 <Button>Open success modal</Button>
               </DialogTrigger>
               <DialogContent>
-                <DialogHeader />
+                <DialogHeader>
+                  <VisuallyHidden asChild>
+                    <DialogTitle className="px-4">
+                      Transaction Modal
+                    </DialogTitle>
+                  </VisuallyHidden>
+                </DialogHeader>
+                <VisuallyHidden asChild>
+                  <DialogDescription className="px-4">
+                    Here we display a Transaction information
+                  </DialogDescription>
+                </VisuallyHidden>
                 <DialogBody className="mx-auto mb-8 w-full max-w-fit space-y-2 md:mx-0 md:max-w-[496px]">
                   <div className="flex w-full flex-col items-center space-y-12">
                     <>
@@ -748,7 +771,7 @@ export default function UI() {
         <Section>
           <h2 className="text-2xl font-semibold">Tag</h2>
           <div className="flex space-x-6">
-            {TagColorSchemes.map(color => (
+            {TagColorSchemes.map((color) => (
               <Fragment key={color}>
                 <Tag colorScheme={color as TagColorSchemeProp} size="sm">
                   Tag
@@ -837,7 +860,7 @@ export default function UI() {
         <Section>
           <h2 className="text-2xl font-semibold">Icons</h2>
           <div className="flex flex-wrap space-x-4 space-y-2 md:space-y-0">
-            {Object.keys(iconMap).map(iconName => (
+            {Object.keys(iconMap).map((iconName) => (
               <div
                 className="flex flex-col items-center space-y-2"
                 key={iconName}
@@ -943,11 +966,11 @@ export default function UI() {
         <Section>
           <h2 className="text-2xl font-semibold">Colors</h2>
           <div className="space-y-3 divide-y divide-outline-primary-base-em">
-            {Object.keys(tailwindColors).map(key => (
+            {Object.keys(tailwindColors).map((key) => (
               <div key={key} className="space-y-2.5 py-2">
                 <p className="text-xl capitalize">{key}</p>
                 <div className="space-y-2 lg:grid lg:grid-cols-3">
-                  {tailwindColors[key].map(color => (
+                  {tailwindColors[key].map((color) => (
                     <div key={color} className="flex space-x-4">
                       <div
                         className={`bg-${key}-${color} w-20 h-10 rounded-6`}
