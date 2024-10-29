@@ -10,7 +10,6 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@radix-ui/react-visually-hidden": "^1.1.0",
     "next": "latest",
     "next-themes": "^0.2.1",
     "react": "latest",
