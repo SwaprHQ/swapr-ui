@@ -16,13 +16,12 @@ const popoverList: PopoverList = {
 };
 
 export const PopoverSection = () => (
-  <Section>
-    <h2 className="text-2xl font-semibold">Popovers</h2>
+  <Section title="Popovers">
     <div className="grid items-center space-y-2.5 lg:space-y-0 lg:grid-cols-3 lg:gap-4">
       {popoverList.headers.map((header, index) => (
         <div
           key={index}
-          className="hidden uppercase text-xs lg:block font-semibold bg-gray-200 text-center"
+          className="hidden text-xs font-semibold text-center uppercase bg-gray-200 lg:block"
         >
           {header}
         </div>

@@ -1,8 +1,6 @@
 "use client";
 
-import { Fragment, PropsWithChildren, useState } from "react";
-import resolveConfig from "tailwindcss/resolveConfig";
-import tailwindConfig from "@/tailwind.config";
+import { Fragment, useState } from "react";
 
 import {
   Button,
@@ -42,7 +40,6 @@ import {
   Dialog,
   DialogClose,
   DialogFooter,
-  ButtonLink,
   TooltipProvider,
   Tooltip,
   TooltipTrigger,
@@ -50,123 +47,11 @@ import {
   DialogTitle,
   DialogDescription,
   VisuallyHidden,
-  ButtonLinkProps,
 } from "@swapr/ui";
 
 import { PopoverSection, Section, ThemeSwitch } from "@/components";
-
-const colorsKeysBanList = ["transparent", "inherit"];
-const fullConfig = resolveConfig(tailwindConfig);
-
-function extractStringValuesFromObject(object: any): string[] {
-  const keys = [];
-
-  for (const key in object) {
-    if (Object.prototype.hasOwnProperty.call(object, key)) {
-      const value = object[key];
-
-      if (typeof value === "string") {
-        keys.push(key);
-      } else if (typeof value === "object" && value) {
-        const nestedKeys = extractStringValuesFromObject(value);
-        keys.push(...nestedKeys.map(nestedKey => `${key}-${nestedKey}`));
-      }
-    }
-  }
-
-  return keys;
-}
-
-const tailwindColors: { [key: string]: Array<string> } = Object.keys(
-  fullConfig.theme.colors
-).reduce(
-  (acc, key) =>
-    colorsKeysBanList.some(colorName => colorName === key)
-      ? acc
-      : {
-          ...acc,
-          [key]: extractStringValuesFromObject(fullConfig.theme.colors[key]),
-        },
-  {}
-);
-
-interface ButtonListProps {
-  children: string;
-  disabled?: boolean;
-  active?: boolean;
-  variant?: ButtonProps["variant"];
-  colorScheme?: ButtonProps["colorScheme"];
-}
-
-interface ButtonLinkListProps {
-  active?: boolean;
-  as?: any;
-  children: string;
-  colorScheme?: ButtonProps["colorScheme"];
-  disabled?: boolean;
-  variant?: ButtonProps["variant"];
-}
-
-const getMainBtnCombos = (
-  children: string = "Button"
-): Array<ButtonListProps> => [
-  ...getBaseBtnCombos(children),
-  { children, variant: "neutral" },
-];
-
-const getBaseBtnCombos = (
-  children: string = "Button"
-): Array<ButtonListProps> => [
-  { children },
-  { children, variant: "secondary" },
-  { children, variant: "light" },
-  { children, variant: "tertiary" },
-  { children, variant: "ghost" },
-  { children, active: true },
-  { children, disabled: true },
-  { children, variant: "ghost", disabled: true },
-];
-
-type ExtendedButtonProps = Omit<ButtonListProps, "children">;
-type ExtendedButtonLinkProps = Omit<ButtonLinkListProps, "children">;
-const extendBtnCombos = (
-  btnPropsList: Array<ButtonListProps>,
-  newProp: ExtendedButtonProps | ExtendedButtonLinkProps
-): Array<ButtonListProps> =>
-  btnPropsList.map(buttonProps => ({
-    ...buttonProps,
-    ...newProp,
-  }));
-
-const regularBtnCombos: Array<ButtonLinkListProps> = getMainBtnCombos();
-const successBtnCombos: Array<ButtonLinkListProps> = extendBtnCombos(
-  getBaseBtnCombos(),
-  { colorScheme: "success" }
-);
-const dangerBtnCombos: Array<ButtonLinkListProps> = extendBtnCombos(
-  getBaseBtnCombos(),
-  { colorScheme: "danger" }
-);
-
-const buttonsList: {
-  headers: Array<string>;
-  comboNames: Array<string>;
-  combos: Array<Array<ButtonLinkListProps>>;
-} = {
-  headers: [
-    "primary",
-    "secondary",
-    "light",
-    "tertiary",
-    "Ghost",
-    "Active",
-    "Disabled",
-    "Disabled 👻",
-    "neutral",
-  ],
-  comboNames: ["Main", "Success", "Danger"],
-  combos: [regularBtnCombos, successBtnCombos, dangerBtnCombos],
-};
+import { ButtonsSections } from "@/app/ui/sections/buttons";
+import { ColorsSection } from "@/app/ui/sections/colors";
 
 interface IconBadgeListProps {
   colorScheme?: IconBadgeColorSchemeProp;
@@ -336,21 +221,15 @@ export default function UI() {
   };
 
   return (
-    <main className="px-5 mx-auto my-10 max-w-screen-xl overflow-auto">
+    <main className="max-w-screen-xl px-5 mx-auto my-10 overflow-auto">
       <ThemeSwitch />
-      <div className="pb-12 my-12 space-y-5 divide-y divide-outline-primary-low-em">
+      <div className="pb-12 my-12 space-y-12 divide-y divide-surface-surface-smoke-gray-em">
         <div className="space-y-4">
           <h1 className="text-3xl font-bold">Swapr UI</h1>
           <p>A set of components to build apps faster.</p>
         </div>
-        <ButtonsSection component={Button} btnList={buttonsList}>
-          Buttons
-        </ButtonsSection>
-        <ButtonsSection component={ButtonLink} btnList={buttonsList}>
-          ButtonLinks
-        </ButtonsSection>
-        <Section>
-          <h2 className="text-2xl font-semibold">Chip Buttons</h2>
+        <ButtonsSections />
+        <Section title="Chip Buttons">
           {chipButtonList.map((row, i) => (
             <div key={i} className="flex space-x-2">
               {row.map((button, j) => (
@@ -359,8 +238,7 @@ export default function UI() {
             </div>
           ))}
         </Section>
-        <Section>
-          <h2 className="text-2xl font-semibold">Icon Buttons</h2>
+        <Section title="Icon Buttons">
           {iconButtonList.map((row, i) => (
             <div key={i} className="flex space-x-2">
               {row.map((button, j) => (
@@ -369,8 +247,7 @@ export default function UI() {
             </div>
           ))}
         </Section>
-        <Section>
-          <h2 className="text-2xl font-semibold">Toast</h2>
+        <Section title="Toast">
           <div className="flex space-x-4">
             <Button onClick={() => toast({ children: "Default Toast" })}>
               Open Default Toast
@@ -407,8 +284,7 @@ export default function UI() {
             </Button>
           </div>
         </Section>
-        <Section>
-          <h2 className="text-2xl font-semibold">Modal</h2>
+        <Section title="Modal">
           <div className="flex space-x-4">
             <Dialog>
               <DialogTrigger asChild>
@@ -471,13 +347,12 @@ export default function UI() {
           </div>
         </Section>
         <PopoverSection />
-        <Section>
-          <h2 className="text-2xl font-semibold">Tooltips</h2>
+        <Section title="Tooltips">
           <div className="grid items-center space-y-2.5 lg:space-y-0 lg:grid-cols-2 lg:gap-4">
-            <div className="hidden uppercase text-xs lg:block font-semibold bg-gray-200 text-center">
+            <div className="hidden text-xs font-semibold text-center uppercase bg-gray-200 lg:block">
               Basic
             </div>
-            <div className="hidden uppercase text-xs lg:block font-semibold bg-gray-200 text-center">
+            <div className="hidden text-xs font-semibold text-center uppercase bg-gray-200 lg:block">
               Complex
             </div>
             <div className="flex items-center justify-center">
@@ -502,7 +377,7 @@ export default function UI() {
                       Currently, gas prices are high. It is preferable to
                       perform the transaction after some time.
                     </p>
-                    <div className="flex mt-4 justify-between">
+                    <div className="flex justify-between mt-4">
                       <Button variant="secondary">Learn more</Button>
                       <Button>Got it</Button>
                     </div>
@@ -512,9 +387,7 @@ export default function UI() {
             </div>
           </div>
         </Section>
-
-        <Section>
-          <h2 className="text-2xl font-semibold">Tabs</h2>
+        <Section title="Tabs">
           <div className="space-y-5">
             <p>
               Tabs is based on{" "}
@@ -545,22 +418,22 @@ export default function UI() {
                 </TabHeader>
                 <TabBody className="mt-2">
                   <TabPanel>
-                    <div className="bg-surface-primary-accent-1 p-5 rounded-4">
+                    <div className="p-5 bg-surface-primary-accent-1 rounded-4">
                       All bets
                     </div>
                   </TabPanel>
                   <TabPanel>
-                    <div className="bg-surface-primary-accent-1 p-5 rounded-4">
+                    <div className="p-5 bg-surface-primary-accent-1 rounded-4">
                       Active
                     </div>
                   </TabPanel>
                   <TabPanel>
-                    <div className="bg-surface-danger-accent-1 p-5 rounded-4">
+                    <div className="p-5 bg-surface-danger-accent-1 rounded-4">
                       Unredeemed
                     </div>
                   </TabPanel>
                   <TabPanel>
-                    <div className="bg-surface-warning-accent-1 p-5 rounded-4">
+                    <div className="p-5 bg-surface-warning-accent-1 rounded-4">
                       Complete
                     </div>
                   </TabPanel>
@@ -569,8 +442,7 @@ export default function UI() {
             </div>
           </div>
         </Section>
-        <Section>
-          <div className="text-2xl font-semibold">ToggleGroup</div>
+        <Section title="ToggleGroup">
           <p>
             Based on Radio Group component from Headless ui,{" "}
             <a
@@ -581,7 +453,7 @@ export default function UI() {
             </a>
             .
           </p>
-          <div className="divide-x divide-surface-surface-2 flex items-center space-x-5">
+          <div className="flex items-center space-x-5 divide-x divide-surface-surface-2">
             {toggleGroupOptionSizes.map(size => (
               <div key={size} className="pl-4">
                 <p>Size: {size}</p>
@@ -601,8 +473,7 @@ export default function UI() {
           </div>
           <div>Selected: {slipage}</div>
         </Section>
-        <Section>
-          <h2 className="text-2xl font-semibold">Modal</h2>
+        <Section title="Modal">
           <div className="flex space-x-4">
             <Dialog>
               <DialogTrigger asChild>
@@ -690,14 +561,14 @@ export default function UI() {
                   </DialogDescription>
                 </VisuallyHidden>
                 <DialogBody className="mx-auto mb-8 w-full max-w-fit space-y-2 md:mx-0 md:max-w-[496px]">
-                  <div className="flex w-full flex-col items-center space-y-12">
+                  <div className="flex flex-col items-center w-full space-y-12">
                     <>
                       <IconBadge name="tick" colorScheme="success" />
                       <div className="flex flex-col items-center space-y-2">
                         <p className="text-2xl font-semibold">
                           Transaction successful!
                         </p>
-                        <p className="text-center text-md font-semibold text-text-low-em">
+                        <p className="font-semibold text-center text-md text-text-low-em">
                           The transaction has been completed.
                           <br />
                           You can close this window now.
@@ -729,8 +600,7 @@ export default function UI() {
             </Dialog>
           </div>
         </Section>
-        <Section>
-          <h2 className="text-2xl font-semibold">Tag</h2>
+        <Section title="Tag">
           <div className="flex space-x-6">
             {TagColorSchemes.map(color => (
               <Fragment key={color}>
@@ -742,8 +612,7 @@ export default function UI() {
             ))}
           </div>
         </Section>
-        <Section>
-          <h2 className="text-2xl font-semibold">Input</h2>
+        <Section title="Input">
           <div className="flex flex-col space-y-4 w-[200px]">
             <Input
               label="Email"
@@ -818,8 +687,7 @@ export default function UI() {
             />
           </div>
         </Section>
-        <Section>
-          <h2 className="text-2xl font-semibold">Icons</h2>
+        <Section title="Icons">
           <div className="flex flex-wrap space-x-4 space-y-2 md:space-y-0">
             {Object.keys(iconMap).map(iconName => (
               <div
@@ -838,7 +706,7 @@ export default function UI() {
           <h2 className="text-2xl font-semibold">Icon Badges</h2>
           <div className="space-y-4">
             {iconBadgeList.map((row, i) => (
-              <div key={i} className="flex space-x-4 items-center">
+              <div key={i} className="flex items-center space-x-4">
                 {row.map((iconBadge, j) => (
                   <IconBadge name="bar-graph-fill" {...iconBadge} key={j} />
                 ))}
@@ -846,8 +714,7 @@ export default function UI() {
             ))}
           </div>
         </Section>
-        <Section>
-          <h2 className="text-2xl font-semibold">Logos</h2>
+        <Section title="Logos">
           <div className="space-y-4">
             <div className="flex space-x-2">
               {logoList.map((iconBadge, i) => (
@@ -874,8 +741,7 @@ export default function UI() {
             ))}
           </div>
         </Section>
-        <Section>
-          <h2 className="text-2xl font-semibold">Font sizes</h2>
+        <Section title="Font sizes">
           <div className="space-y-2">
             <p>
               9. <span className="text-3xl">Font size 3xl</span>
@@ -906,8 +772,7 @@ export default function UI() {
             </p>
           </div>
         </Section>
-        <Section>
-          <h2 className="text-2xl font-semibold">Box Shadows</h2>
+        <Section title="Box Shadows">
           <div className="space-y-2">
             <div className="bg-surface-disabled-low-em rounded-16 shadow-1 w-[900px] h-[600px]">
               <div className="bg-surface-disabled-med-em rounded-16 shadow-2 w-[800px] h-[500px]">
@@ -922,83 +787,8 @@ export default function UI() {
             </div>
           </div>
         </Section>
-        <Section>
-          <h2 className="text-2xl font-semibold">Colors</h2>
-          <div className="space-y-3 divide-y divide-outline-primary-base-em">
-            {Object.keys(tailwindColors).map(key => (
-              <div key={key} className="space-y-2.5 py-2">
-                <p className="text-xl capitalize">{key}</p>
-                <div className="space-y-2 lg:grid lg:grid-cols-3">
-                  {tailwindColors[key].map(color => (
-                    <div key={color} className="flex space-x-4">
-                      <div
-                        className={`bg-${key}-${color} w-20 h-10 rounded-6`}
-                      />
-                      <p>{`${key}-${color}`}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </Section>
+        <ColorsSection />
       </div>
     </main>
   );
 }
-interface ButtonSectionProps extends PropsWithChildren {
-  component:
-    | React.ComponentType<ButtonProps>
-    | React.ComponentType<ButtonLinkProps<any>>;
-  btnList: {
-    headers: Array<string>;
-    comboNames: Array<string>;
-    combos: Array<Array<ButtonListProps | ButtonLinkListProps>>;
-  };
-}
-
-const ButtonsSection = ({
-  children,
-  btnList,
-  component,
-}: ButtonSectionProps) => {
-  const Component = component;
-  return (
-    <Section>
-      <h2 className="text-2xl font-semibold">{children}</h2>
-      <div className="">
-        <div className="lg:grid hidden grid-cols-11 gap-2 mb-3">
-          <div className="text-xs hidden lg:flex flex-col divide-y text-text-low-em">
-            <div className="text-right">variant</div>
-            <div>colorScheme</div>
-          </div>
-          {btnList.headers.map((header, colIndex) => (
-            <div
-              key={colIndex}
-              className="col-span-1 text-center text-sm text-text-med-em"
-            >
-              {header}
-            </div>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-10 gap-2">
-          {btnList.comboNames.map((combName, rowIndex) => (
-            <Fragment key={rowIndex}>
-              <div className="hidden lowercase lg:flex items-center text-xs font-semibold bg-gray-200 p-2 text-center col-span-1">
-                {combName}
-              </div>
-              <div className="col-span-9">
-                <div className="grid lg:grid-cols-10 gap-4">
-                  {btnList.combos[rowIndex].map((button, colIndex) => {
-                    return <Component {...button} key={colIndex} />;
-                  })}
-                </div>
-              </div>
-            </Fragment>
-          ))}
-        </div>
-      </div>
-    </Section>
-  );
-};
