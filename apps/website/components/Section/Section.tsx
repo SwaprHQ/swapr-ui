@@ -5,7 +5,7 @@ interface SectionProps extends PropsWithChildren {
 }
 export const Section = ({ children, title }: SectionProps) => (
   <section className="py-12 border-b">
-    <h2 className="mb-6 text-2xl font-bold md:mb-12">{title}</h2>
+    <h2 className="mb-4 text-2xl font-bold md:mb-6">{title}</h2>
     {children}
   </section>
 );

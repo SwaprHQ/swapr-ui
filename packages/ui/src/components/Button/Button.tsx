@@ -4,18 +4,21 @@ import { twMerge } from "@/utils";
 
 import { buttonStyles } from "./styles";
 
+export type ButtonColorScheme = "main" | "danger" | "success";
+export type ButtonVariant =
+  | "primary"
+  | "light"
+  | "secondary"
+  | "tertiary"
+  | "ghost"
+  | "neutral";
+
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   active?: boolean;
-  colorScheme?: "main" | "danger" | "success";
+  colorScheme?: ButtonColorScheme;
   disabled?: boolean;
   size?: "xs" | "sm" | "md" | "lg";
-  variant?:
-    | "primary"
-    | "light"
-    | "secondary"
-    | "tertiary"
-    | "ghost"
-    | "neutral";
+  variant?: ButtonVariant;
   width?: "normal" | "fit" | "full";
 }
 

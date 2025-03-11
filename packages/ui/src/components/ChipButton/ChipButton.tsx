@@ -1,6 +1,7 @@
 import { ButtonHTMLAttributes, Ref, forwardRef } from "react";
 
 import { cva, cx } from "class-variance-authority";
+import { ButtonColorScheme } from "@/components/Button";
 
 export const chipButtonStyles = cva(
   [
@@ -56,7 +57,7 @@ export const chipButtonStyles = cva(
 
 export interface ChipButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
-  colorScheme?: "primary" | "secondary";
+  colorScheme?: ButtonColorScheme;
   size?: "sm" | "md";
   disabled?: boolean;
   active?: boolean;

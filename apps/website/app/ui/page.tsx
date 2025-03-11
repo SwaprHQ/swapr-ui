@@ -152,10 +152,10 @@ const chipButtonList: Array<Array<ChipButtonProps>> = [
     { children: ChipBittonChildren, disabled: true },
   ],
   [
-    { colorScheme: "primary", children: ChipBittonChildren },
-    { colorScheme: "primary", size: "sm", children: ChipBittonChildren },
-    { colorScheme: "primary", children: ChipBittonChildren, active: true },
-    { colorScheme: "primary", children: ChipBittonChildren, disabled: true },
+    { colorScheme: "main", children: ChipBittonChildren },
+    { colorScheme: "main", size: "sm", children: ChipBittonChildren },
+    { colorScheme: "main", children: ChipBittonChildren, active: true },
+    { colorScheme: "main", children: ChipBittonChildren, disabled: true },
   ],
 ];
 
@@ -174,41 +174,22 @@ interface IconListProps {
   disabled?: boolean;
   active?: boolean;
   variant?: ButtonProps["variant"];
+  colorScheme?: ButtonProps["colorScheme"];
   size?: ButtonProps["size"];
 }
 
 const iconButtonList: Array<Array<IconListProps>> = [
   [
-    { name: "add-fill", size: "xs" },
-    { name: "add-fill", disabled: true, size: "xs" },
-    { name: "add-fill", active: true, size: "xs" },
-    { name: "add-fill", variant: "primary", size: "xs" },
-    { name: "add-fill", variant: "tertiary", size: "xs" },
-    { name: "add-fill", variant: "ghost", size: "xs" },
-  ],
-  [
-    { name: "add-fill", size: "sm" },
-    { name: "add-fill", disabled: true, size: "sm" },
-    { name: "add-fill", active: true, size: "sm" },
-    { name: "add-fill", variant: "primary", size: "sm" },
-    { name: "add-fill", variant: "tertiary", size: "sm" },
-    { name: "add-fill", variant: "ghost", size: "sm" },
-  ],
-  [
-    { name: "add-fill" },
-    { name: "add-fill", disabled: true },
-    { name: "add-fill", active: true },
-    { name: "add-fill", variant: "primary" },
-    { name: "add-fill", variant: "tertiary" },
-    { name: "add-fill", variant: "ghost" },
-  ],
-  [
-    { name: "add-fill", size: "lg" },
-    { name: "add-fill", disabled: true, size: "lg" },
-    { name: "add-fill", active: true, size: "lg" },
-    { name: "add-fill", variant: "primary", size: "lg" },
-    { name: "add-fill", variant: "tertiary", size: "lg" },
+    { name: "activity", variant: "primary", size: "xs" },
+    { name: "lock", variant: "light", size: "sm" },
+    { name: "download", variant: "secondary", size: "md" },
+    { name: "bitcoin", variant: "tertiary", size: "lg" },
     { name: "add-fill", variant: "ghost", size: "lg" },
+  ],
+  [
+    { name: "lock", disabled: true },
+    { name: "user-fill", active: true },
+    { name: "farm", colorScheme: "success" },
   ],
 ];
 
@@ -230,22 +211,29 @@ export default function UI() {
         </div>
         <ButtonsSections />
         <Section title="Chip Buttons">
-          {chipButtonList.map((row, i) => (
-            <div key={i} className="flex space-x-2">
-              {row.map((button, j) => (
-                <ChipButton {...button} key={j} />
-              ))}
-            </div>
-          ))}
+          <div className="space-y-4">
+            {chipButtonList.map((row, i) => (
+              <div key={i} className="flex space-x-4">
+                {row.map((button, j) => (
+                  <ChipButton {...button} key={j} />
+                ))}
+              </div>
+            ))}
+          </div>
         </Section>
         <Section title="Icon Buttons">
-          {iconButtonList.map((row, i) => (
-            <div key={i} className="flex space-x-2">
-              {row.map((button, j) => (
-                <IconButton {...button} key={j} />
-              ))}
-            </div>
-          ))}
+          <p className="mb-6">
+            Icons support all the buttons props, like color scheme and variant.
+          </p>
+          <div className="space-y-2">
+            {iconButtonList.map((row, i) => (
+              <div key={i} className="flex space-x-2">
+                {row.map((button, j) => (
+                  <IconButton colorScheme="main" {...button} key={j} />
+                ))}
+              </div>
+            ))}
+          </div>
         </Section>
         <Section title="Toast">
           <div className="flex space-x-4">
