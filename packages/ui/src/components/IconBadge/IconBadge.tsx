@@ -18,7 +18,7 @@ const iconBadgeStyles = cva(
       colorScheme: {
         primary: [],
         secondary: [],
-        error: [],
+        danger: [],
         success: [],
       },
     },
@@ -81,17 +81,17 @@ const iconBadgeStyles = cva(
       },
       {
         variant: "solid",
-        colorScheme: "error",
+        colorScheme: "danger",
         class: ["bg-surface-danger-main text-text-white"],
       },
       {
         variant: "pastel",
-        colorScheme: "error",
+        colorScheme: "danger",
         class: ["bg-surface-danger-accent-1 text-text-danger-em"],
       },
       {
         variant: "outline",
-        colorScheme: "error",
+        colorScheme: "danger",
         class: [
           "bg-surface-surface-0 text-text-danger-main",
           "border-outline-danger-low-em",
@@ -99,7 +99,7 @@ const iconBadgeStyles = cva(
       },
       {
         variant: "ghost",
-        colorScheme: "error",
+        colorScheme: "danger",
         class: ["text-text-danger-main"],
       },
       {
@@ -138,7 +138,7 @@ export type IconBadgeVariantProp = "solid" | "pastel" | "outline" | "ghost";
 export type IconBadgeColorSchemeProp =
   | "primary"
   | "secondary"
-  | "error"
+  | "danger"
   | "success";
 type SizeProp = "md" | "lg";
 

@@ -50,6 +50,7 @@ import {
   DialogTitle,
   DialogDescription,
   VisuallyHidden,
+  ButtonLinkProps,
 } from "@swapr/ui";
 
 import { PopoverSection, Section, ThemeSwitch } from "@/components";
@@ -68,7 +69,7 @@ function extractStringValuesFromObject(object: any): string[] {
         keys.push(key);
       } else if (typeof value === "object" && value) {
         const nestedKeys = extractStringValuesFromObject(value);
-        keys.push(...nestedKeys.map((nestedKey) => `${key}-${nestedKey}`));
+        keys.push(...nestedKeys.map(nestedKey => `${key}-${nestedKey}`));
       }
     }
   }
@@ -80,7 +81,7 @@ const tailwindColors: { [key: string]: Array<string> } = Object.keys(
   fullConfig.theme.colors
 ).reduce(
   (acc, key) =>
-    colorsKeysBanList.some((colorName) => colorName === key)
+    colorsKeysBanList.some(colorName => colorName === key)
       ? acc
       : {
           ...acc,
@@ -106,10 +107,20 @@ interface ButtonLinkListProps {
   variant?: ButtonProps["variant"];
 }
 
-const getBtnCombos = (children: string = "Button"): Array<ButtonListProps> => [
+const getMainBtnCombos = (
+  children: string = "Button"
+): Array<ButtonListProps> => [
+  ...getBaseBtnCombos(children),
+  { children, variant: "neutral" },
+];
+
+const getBaseBtnCombos = (
+  children: string = "Button"
+): Array<ButtonListProps> => [
   { children },
-  { children, variant: "pastel" },
-  { children, variant: "outline" },
+  { children, variant: "secondary" },
+  { children, variant: "light" },
+  { children, variant: "tertiary" },
   { children, variant: "ghost" },
   { children, active: true },
   { children, disabled: true },
@@ -122,19 +133,19 @@ const extendBtnCombos = (
   btnPropsList: Array<ButtonListProps>,
   newProp: ExtendedButtonProps | ExtendedButtonLinkProps
 ): Array<ButtonListProps> =>
-  btnPropsList.map((buttonProps) => ({
+  btnPropsList.map(buttonProps => ({
     ...buttonProps,
     ...newProp,
   }));
 
-const regularBtnCombos: Array<ButtonLinkListProps> = getBtnCombos();
+const regularBtnCombos: Array<ButtonLinkListProps> = getMainBtnCombos();
 const successBtnCombos: Array<ButtonLinkListProps> = extendBtnCombos(
-  regularBtnCombos,
+  getBaseBtnCombos(),
   { colorScheme: "success" }
 );
-const errorBtnCombos: Array<ButtonLinkListProps> = extendBtnCombos(
-  regularBtnCombos,
-  { colorScheme: "error" }
+const dangerBtnCombos: Array<ButtonLinkListProps> = extendBtnCombos(
+  getBaseBtnCombos(),
+  { colorScheme: "danger" }
 );
 
 const buttonsList: {
@@ -143,73 +154,20 @@ const buttonsList: {
   combos: Array<Array<ButtonLinkListProps>>;
 } = {
   headers: [
-    "",
-    "Primary",
-    "Secondary",
-    "Outline",
+    "primary",
+    "secondary",
+    "light",
+    "tertiary",
     "Ghost",
     "Active",
     "Disabled",
-    "Ghost Disabled",
+    "Disabled 👻",
+    "neutral",
   ],
-  comboNames: ["Normal", "Success", "Error"],
-  combos: [regularBtnCombos, successBtnCombos, errorBtnCombos],
+  comboNames: ["Main", "Success", "Danger"],
+  combos: [regularBtnCombos, successBtnCombos, dangerBtnCombos],
 };
 
-const regularBLCombos: Array<ButtonLinkListProps> = getBtnCombos("ButtonLink");
-const regularAsElemBLCombos: Array<ButtonLinkListProps> = extendBtnCombos(
-  regularBLCombos,
-  { as: Button }
-);
-const successBLCombos: Array<ButtonLinkListProps> = extendBtnCombos(
-  regularBLCombos,
-  { colorScheme: "success" }
-);
-const successAsElemBLCombos: Array<ButtonLinkListProps> = extendBtnCombos(
-  successBLCombos,
-  { as: Button }
-);
-const errorBLCombos: Array<ButtonLinkListProps> = extendBtnCombos(
-  regularBLCombos,
-  { colorScheme: "error" }
-);
-const errorAsElemBLCombos: Array<ButtonLinkListProps> = extendBtnCombos(
-  errorBLCombos,
-  { as: Button }
-);
-
-const btnLinkList: {
-  headers: Array<string>;
-  comboNames: Array<string>;
-  combos: Array<Array<ButtonLinkListProps>>;
-} = {
-  headers: [
-    "",
-    "Primary",
-    "Secondary",
-    "Outline",
-    "Ghost",
-    "Active",
-    "Disabled",
-    "Ghost Disabled",
-  ],
-  comboNames: [
-    "Normal",
-    "As Button, Normal",
-    "Success",
-    "As Button, Success",
-    "Error",
-    "As Button, Error",
-  ],
-  combos: [
-    regularBLCombos,
-    regularAsElemBLCombos,
-    successBLCombos,
-    successAsElemBLCombos,
-    errorBLCombos,
-    errorAsElemBLCombos,
-  ],
-};
 interface IconBadgeListProps {
   colorScheme?: IconBadgeColorSchemeProp;
   variant?: IconBadgeVariantProp;
@@ -238,14 +196,14 @@ const iconBadgeList: Array<Array<IconBadgeListProps>> = [
     { variant: "ghost", colorScheme: "secondary" },
   ],
   [
-    { size: "lg", colorScheme: "error" },
-    { colorScheme: "error" },
-    { size: "lg", variant: "pastel", colorScheme: "error" },
-    { variant: "pastel", colorScheme: "error" },
-    { size: "lg", variant: "outline", colorScheme: "error" },
-    { variant: "outline", colorScheme: "error" },
-    { size: "lg", variant: "ghost", colorScheme: "error" },
-    { variant: "ghost", colorScheme: "error" },
+    { size: "lg", colorScheme: "danger" },
+    { colorScheme: "danger" },
+    { size: "lg", variant: "pastel", colorScheme: "danger" },
+    { variant: "pastel", colorScheme: "danger" },
+    { size: "lg", variant: "outline", colorScheme: "danger" },
+    { variant: "outline", colorScheme: "danger" },
+    { size: "lg", variant: "ghost", colorScheme: "danger" },
+    { variant: "ghost", colorScheme: "danger" },
   ],
   [
     { size: "lg", colorScheme: "success" },
@@ -339,44 +297,43 @@ const iconButtonList: Array<Array<IconListProps>> = [
     { name: "add-fill", size: "xs" },
     { name: "add-fill", disabled: true, size: "xs" },
     { name: "add-fill", active: true, size: "xs" },
-    { name: "add-fill", variant: "pastel", size: "xs" },
-    { name: "add-fill", variant: "outline", size: "xs" },
+    { name: "add-fill", variant: "primary", size: "xs" },
+    { name: "add-fill", variant: "tertiary", size: "xs" },
     { name: "add-fill", variant: "ghost", size: "xs" },
   ],
   [
     { name: "add-fill", size: "sm" },
     { name: "add-fill", disabled: true, size: "sm" },
     { name: "add-fill", active: true, size: "sm" },
-    { name: "add-fill", variant: "pastel", size: "sm" },
-    { name: "add-fill", variant: "outline", size: "sm" },
+    { name: "add-fill", variant: "primary", size: "sm" },
+    { name: "add-fill", variant: "tertiary", size: "sm" },
     { name: "add-fill", variant: "ghost", size: "sm" },
   ],
   [
     { name: "add-fill" },
     { name: "add-fill", disabled: true },
     { name: "add-fill", active: true },
-    { name: "add-fill", variant: "pastel" },
-    { name: "add-fill", variant: "outline" },
+    { name: "add-fill", variant: "primary" },
+    { name: "add-fill", variant: "tertiary" },
     { name: "add-fill", variant: "ghost" },
   ],
   [
     { name: "add-fill", size: "lg" },
     { name: "add-fill", disabled: true, size: "lg" },
     { name: "add-fill", active: true, size: "lg" },
-    { name: "add-fill", variant: "pastel", size: "lg" },
-    { name: "add-fill", variant: "outline", size: "lg" },
+    { name: "add-fill", variant: "primary", size: "lg" },
+    { name: "add-fill", variant: "tertiary", size: "lg" },
     { name: "add-fill", variant: "ghost", size: "lg" },
   ],
 ];
 
 export default function UI() {
   const [openModal, setOpenModal] = useState(false);
+  const [slipage, setSlipage] = useState("auto"); // radioGroup eg
 
   const closeModal = () => {
     setOpenModal(false);
   };
-  // radioGroup eg.
-  let [slipage, setSlipage] = useState("auto");
 
   return (
     <main className="px-5 mx-auto my-10 max-w-screen-xl overflow-auto">
@@ -386,8 +343,12 @@ export default function UI() {
           <h1 className="text-3xl font-bold">Swapr UI</h1>
           <p>A set of components to build apps faster.</p>
         </div>
-        <ButtonsSection btnList={buttonsList}>Buttons</ButtonsSection>
-        <ButtonsSection btnList={btnLinkList}>ButtonLinks</ButtonsSection>
+        <ButtonsSection component={Button} btnList={buttonsList}>
+          Buttons
+        </ButtonsSection>
+        <ButtonsSection component={ButtonLink} btnList={buttonsList}>
+          ButtonLinks
+        </ButtonsSection>
         <Section>
           <h2 className="text-2xl font-semibold">Chip Buttons</h2>
           {chipButtonList.map((row, i) => (
@@ -415,7 +376,7 @@ export default function UI() {
               Open Default Toast
             </Button>
             <Button
-              colorScheme="error"
+              colorScheme="danger"
               onClick={() =>
                 errorToast({ children: "Error Toast", colorScheme: "error" })
               }
@@ -434,7 +395,7 @@ export default function UI() {
               Open Success Toast
             </Button>
             <Button
-              variant="pastel"
+              variant="secondary"
               onClick={() =>
                 warningToast({
                   children: "Warning Toast",
@@ -490,8 +451,8 @@ export default function UI() {
                 <DialogFooter>
                   <Button
                     width="full"
-                    colorScheme="primary"
-                    variant="pastel"
+                    colorScheme="main"
+                    variant="primary"
                     onClick={closeModal}
                   >
                     Cancel
@@ -499,7 +460,7 @@ export default function UI() {
                   <Button
                     width="full"
                     colorScheme="success"
-                    variant="pastel"
+                    variant="secondary"
                     onClick={closeModal}
                   >
                     Confirm
@@ -542,7 +503,7 @@ export default function UI() {
                       perform the transaction after some time.
                     </p>
                     <div className="flex mt-4 justify-between">
-                      <Button variant="pastel">Learn more</Button>
+                      <Button variant="secondary">Learn more</Button>
                       <Button>Got it</Button>
                     </div>
                   </TooltipContent>
@@ -621,7 +582,7 @@ export default function UI() {
             .
           </p>
           <div className="divide-x divide-surface-surface-2 flex items-center space-x-5">
-            {toggleGroupOptionSizes.map((size) => (
+            {toggleGroupOptionSizes.map(size => (
               <div key={size} className="pl-4">
                 <p>Size: {size}</p>
                 <ToggleGroup value={slipage} onChange={setSlipage}>
@@ -694,8 +655,8 @@ export default function UI() {
                 <DialogFooter>
                   <Button
                     width="full"
-                    colorScheme="primary"
-                    variant="pastel"
+                    colorScheme="main"
+                    variant="primary"
                     onClick={closeModal}
                   >
                     Cancel
@@ -703,7 +664,7 @@ export default function UI() {
                   <Button
                     width="full"
                     colorScheme="success"
-                    variant="pastel"
+                    variant="primary"
                     onClick={closeModal}
                   >
                     Confirm
@@ -754,8 +715,8 @@ export default function UI() {
                   >
                     <Button
                       width="full"
-                      colorScheme="primary"
-                      variant="pastel"
+                      colorScheme="main"
+                      variant="primary"
                       size="lg"
                     >
                       <>
@@ -771,7 +732,7 @@ export default function UI() {
         <Section>
           <h2 className="text-2xl font-semibold">Tag</h2>
           <div className="flex space-x-6">
-            {TagColorSchemes.map((color) => (
+            {TagColorSchemes.map(color => (
               <Fragment key={color}>
                 <Tag colorScheme={color as TagColorSchemeProp} size="sm">
                   Tag
@@ -860,7 +821,7 @@ export default function UI() {
         <Section>
           <h2 className="text-2xl font-semibold">Icons</h2>
           <div className="flex flex-wrap space-x-4 space-y-2 md:space-y-0">
-            {Object.keys(iconMap).map((iconName) => (
+            {Object.keys(iconMap).map(iconName => (
               <div
                 className="flex flex-col items-center space-y-2"
                 key={iconName}
@@ -948,14 +909,12 @@ export default function UI() {
         <Section>
           <h2 className="text-2xl font-semibold">Box Shadows</h2>
           <div className="space-y-2">
-            <div className="bg-surface-disabled-low-em rounded-16 shadow-0 w-[1000px] h-[700px]">
-              <div className="bg-surface-disabled-low-em rounded-16 shadow-1 w-[900px] h-[600px]">
-                <div className="bg-surface-disabled-med-em rounded-16 shadow-2 w-[800px] h-[500px]">
-                  <div className="bg-surface-disabled-high-em rounded-16 shadow-3 w-[700px] h-[400px]">
-                    <div className="bg-surface-disabled-high-em rounded-16 shadow-4 w-[600px] h-[300px]">
-                      <div className="bg-surface-disabled-high-em rounded-16 shadow-5 w-[500px] h-[200px]">
-                        <div className="bg-surface-disabled-high-em rounded-16 shadow-6 w-[400px] h-[100px]"></div>
-                      </div>
+            <div className="bg-surface-disabled-low-em rounded-16 shadow-1 w-[900px] h-[600px]">
+              <div className="bg-surface-disabled-med-em rounded-16 shadow-2 w-[800px] h-[500px]">
+                <div className="bg-surface-disabled-high-em rounded-16 shadow-3 w-[700px] h-[400px]">
+                  <div className="bg-surface-disabled-high-em rounded-16 shadow-4 w-[600px] h-[300px]">
+                    <div className="bg-surface-disabled-high-em rounded-16 shadow-5 w-[500px] h-[200px]">
+                      <div className="bg-surface-disabled-high-em rounded-16 shadow-6 w-[400px] h-[100px]"></div>
                     </div>
                   </div>
                 </div>
@@ -966,11 +925,11 @@ export default function UI() {
         <Section>
           <h2 className="text-2xl font-semibold">Colors</h2>
           <div className="space-y-3 divide-y divide-outline-primary-base-em">
-            {Object.keys(tailwindColors).map((key) => (
+            {Object.keys(tailwindColors).map(key => (
               <div key={key} className="space-y-2.5 py-2">
                 <p className="text-xl capitalize">{key}</p>
                 <div className="space-y-2 lg:grid lg:grid-cols-3">
-                  {tailwindColors[key].map((color) => (
+                  {tailwindColors[key].map(color => (
                     <div key={color} className="flex space-x-4">
                       <div
                         className={`bg-${key}-${color} w-20 h-10 rounded-6`}
@@ -988,6 +947,9 @@ export default function UI() {
   );
 }
 interface ButtonSectionProps extends PropsWithChildren {
+  component:
+    | React.ComponentType<ButtonProps>
+    | React.ComponentType<ButtonLinkProps<any>>;
   btnList: {
     headers: Array<string>;
     comboNames: Array<string>;
@@ -995,28 +957,48 @@ interface ButtonSectionProps extends PropsWithChildren {
   };
 }
 
-const ButtonsSection = ({ children, btnList }: ButtonSectionProps) => (
-  <Section>
-    <h2 className="text-2xl font-semibold">{children}</h2>
-    <div className="grid items-center space-y-2.5 lg:space-y-0 lg:grid-cols-8 lg:gap-4">
-      {btnList.headers.map((header, index) => (
-        <div
-          key={index}
-          className="hidden uppercase text-xs lg:block font-semibold bg-gray-200 text-center"
-        >
-          {header}
-        </div>
-      ))}
-      {btnList.comboNames.map((combName, rowIndex) => (
-        <Fragment key={rowIndex}>
-          <div className="hidden uppercase text-xs lg:block font-semibold bg-gray-200 p-2 text-center">
-            {combName}
+const ButtonsSection = ({
+  children,
+  btnList,
+  component,
+}: ButtonSectionProps) => {
+  const Component = component;
+  return (
+    <Section>
+      <h2 className="text-2xl font-semibold">{children}</h2>
+      <div className="">
+        <div className="lg:grid hidden grid-cols-11 gap-2 mb-3">
+          <div className="text-xs hidden lg:flex flex-col divide-y text-text-low-em">
+            <div className="text-right">variant</div>
+            <div>colorScheme</div>
           </div>
-          {btnList.combos[rowIndex].map((button, colIndex) => (
-            <ButtonLink {...button} key={colIndex} />
+          {btnList.headers.map((header, colIndex) => (
+            <div
+              key={colIndex}
+              className="col-span-1 text-center text-sm text-text-med-em"
+            >
+              {header}
+            </div>
           ))}
-        </Fragment>
-      ))}
-    </div>
-  </Section>
-);
+        </div>
+
+        <div className="grid grid-cols-10 gap-2">
+          {btnList.comboNames.map((combName, rowIndex) => (
+            <Fragment key={rowIndex}>
+              <div className="hidden lowercase lg:flex items-center text-xs font-semibold bg-gray-200 p-2 text-center col-span-1">
+                {combName}
+              </div>
+              <div className="col-span-9">
+                <div className="grid lg:grid-cols-10 gap-4">
+                  {btnList.combos[rowIndex].map((button, colIndex) => {
+                    return <Component {...button} key={colIndex} />;
+                  })}
+                </div>
+              </div>
+            </Fragment>
+          ))}
+        </div>
+      </div>
+    </Section>
+  );
+};

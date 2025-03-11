@@ -5,7 +5,7 @@ import { Button } from "@swapr/ui";
 
 export default function Home() {
   return (
-    <main className="bg-surface-neutral-alt-white bg-[url('/lines.svg')] h-screen bg-no-repeat bg-cover flex justify-center">
+    <div className="bg-[url('/lines.svg')] h-screen bg-no-repeat bg-cover flex justify-center">
       <div className="pt-48 space-y-6 text-center">
         <h1 className="text-[58px] leading-[64px] font-bold">
           Build dapps fast
@@ -19,6 +19,6 @@ export default function Home() {
           </Button>
         </Link>
       </div>
-    </main>
+    </div>
   );
 }

@@ -6,10 +6,16 @@ import { buttonStyles } from "./styles";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   active?: boolean;
-  colorScheme?: "primary" | "error" | "success";
+  colorScheme?: "main" | "danger" | "success";
   disabled?: boolean;
   size?: "xs" | "sm" | "md" | "lg";
-  variant?: "solid" | "pastel" | "outline" | "ghost";
+  variant?:
+    | "primary"
+    | "light"
+    | "secondary"
+    | "tertiary"
+    | "ghost"
+    | "neutral";
   width?: "normal" | "fit" | "full";
 }
 

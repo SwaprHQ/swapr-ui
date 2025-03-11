@@ -39,7 +39,7 @@ export const toast = ({
   children,
   className,
 }: ToastProps = {}) => {
-  sonnerToast.custom((t) => (
+  sonnerToast.custom(t => (
     <div className={toastStyles({ colorScheme, className })}>
       <div>{children}</div>
       <div className="h-6 border border-outline-low-em" />
@@ -55,7 +55,7 @@ export const errorToast = ({ action, children, className }: ToastProps = {}) =>
   toast({
     children: (
       <div className="flex items-center space-x-4">
-        <Icon name="info-fill" className=" text-text-danger-main" />
+        <Icon name="info-fill" className="text-text-danger-main" />
         <div>{children}</div>
       </div>
     ),

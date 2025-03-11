@@ -52,7 +52,7 @@ const basicTooltipPropList: Array<TooltipContentProps> = [
   { align: "start", side: "top" },
 ];
 export const Basic: Story = {
-  render: (args) => (
+  render: args => (
     <div
       className={cx(
         "w-full h-[95vh] grid grid-cols-3 grid-rows-3",
@@ -85,7 +85,7 @@ export const Basic: Story = {
 };
 
 export const Complex: Story = {
-  render: (args) => (
+  render: args => (
     <div className="w-full h-[95vh] mt-32 ml-32">
       <TooltipProvider delayDuration={500}>
         <Tooltip>
@@ -102,7 +102,7 @@ export const Complex: Story = {
               transaction after some time.
             </p>
             <div className="flex mt-4 justify-between">
-              <Button variant="pastel">Learn more</Button>
+              <Button variant="secondary">Learn more</Button>
               <Button>Got it</Button>
             </div>
           </TooltipContent>
