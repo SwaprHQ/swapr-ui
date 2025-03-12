@@ -27,6 +27,7 @@ module.exports = {
           "0px 0px 0px 3px var(--outline-success_alpha, rgba(53, 194, 32, 0.24))",
         "focus-gray":
           "0px 0px 0px 3px var(--outline-med_em, rgba(255, 255, 255, 0.12))",
+        "focus-primary": "0px 0px 0px 3px var(--outline-primary_alpha)",
       },
     },
     fontSize: {

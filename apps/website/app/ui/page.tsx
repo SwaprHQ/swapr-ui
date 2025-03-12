@@ -6,7 +6,6 @@ import {
   Button,
   ButtonProps,
   ChipButton,
-  ChipButtonProps,
   DialogHeader,
   DialogTrigger,
   DialogContent,
@@ -47,11 +46,14 @@ import {
   DialogTitle,
   DialogDescription,
   VisuallyHidden,
+  ChipButtonsColorScheme,
+  ChipButtonsSizes,
 } from "@swapr/ui";
 
 import { PopoverSection, Section, ThemeSwitch } from "@/components";
 import { ButtonsSections } from "@/app/ui/sections/buttons";
 import { ColorsSection } from "@/app/ui/sections/colors";
+import { SelectProp } from "@/components/SelectProps";
 
 interface IconBadgeListProps {
   colorScheme?: IconBadgeColorSchemeProp;
@@ -132,32 +134,7 @@ const logoPairList: Array<Array<LogoListProps>> = [
   ],
 ];
 
-const ChipBittonChildren = (
-  <>
-    <Icon name="plus" />
-    <span>Chip Button</span>
-    <Icon name="cross" />
-  </>
-);
-
 const toggleGroupOptionSizes: ToggleOptionSizeProp[] = ["xs", "sm", "md", "lg"];
-
-const chipButtonList: Array<Array<ChipButtonProps>> = [
-  [
-    {
-      children: ChipBittonChildren,
-    },
-    { size: "sm", children: ChipBittonChildren },
-    { children: ChipBittonChildren, active: true },
-    { children: ChipBittonChildren, disabled: true },
-  ],
-  [
-    { colorScheme: "main", children: ChipBittonChildren },
-    { colorScheme: "main", size: "sm", children: ChipBittonChildren },
-    { colorScheme: "main", children: ChipBittonChildren, active: true },
-    { colorScheme: "main", children: ChipBittonChildren, disabled: true },
-  ],
-];
 
 const TagColorSchemes = [
   "primary",
@@ -193,9 +170,27 @@ const iconButtonList: Array<Array<IconListProps>> = [
   ],
 ];
 
+const chipButtons = [
+  { key: "sports", label: "Sports & Fitness" },
+  { key: "education", label: "Education & Learning" },
+  { key: "finance", label: "Finance & Investment" },
+  { key: "realState", label: "Real Estate" },
+  { key: "food", label: "Food & Cooking" },
+  { key: "tech", label: "Technology & Innovation" },
+  { key: "legal", label: "Legal services" },
+  { key: "arts", label: "Arts & Culture" },
+  { key: "lifestyle", label: "Lifestyle" },
+  { key: "travel", label: "Travel" },
+  { key: "gaming", label: "Gaming" },
+];
+
 export default function UI() {
   const [openModal, setOpenModal] = useState(false);
   const [slipage, setSlipage] = useState("auto"); // radioGroup eg
+  const [chipActiveKey, setShipActiveKey] = useState("tech");
+  const [chipButtonSize, setChipButtonSize] = useState<ChipButtonsSizes>("md");
+  const [chipButtonColorScheme, setChipButtonColorScheme] =
+    useState<ChipButtonsColorScheme>("main");
 
   const closeModal = () => {
     setOpenModal(false);
@@ -211,14 +206,43 @@ export default function UI() {
         </div>
         <ButtonsSections />
         <Section title="Chip Buttons">
-          <div className="space-y-4">
-            {chipButtonList.map((row, i) => (
-              <div key={i} className="flex space-x-4">
-                {row.map((button, j) => (
-                  <ChipButton {...button} key={j} />
-                ))}
-              </div>
-            ))}
+          <SelectProp
+            title="color scheme"
+            name="chipButtonColorScheme"
+            value={chipButtonColorScheme}
+            set={setChipButtonColorScheme}
+            options={[
+              { value: "main", label: "main" },
+              { value: "neutral", label: "neutral" },
+            ]}
+          />
+          <SelectProp
+            title="size"
+            name="chipButtonSize"
+            value={chipButtonSize}
+            set={setChipButtonSize}
+            options={[
+              { value: "xs", label: "xs" },
+              { value: "sm", label: "sm" },
+              { value: "md", label: "md" },
+            ]}
+          />
+          <div className="w-1/2 p-4 border border-surface-surface-2 rounded-16">
+            <p className="mb-4 font-medium">What topics interest you?</p>
+
+            <div className="flex flex-wrap gap-2">
+              {chipButtons.map(({ key, label }) => (
+                <ChipButton
+                  key={key}
+                  onClick={() => setShipActiveKey(key)}
+                  active={key === chipActiveKey}
+                  size={chipButtonSize}
+                  colorScheme={chipButtonColorScheme}
+                >
+                  {label}
+                </ChipButton>
+              ))}
+            </div>
           </div>
         </Section>
         <Section title="Icon Buttons">
