@@ -4,6 +4,7 @@ import { twMerge } from "@/utils";
 
 import { buttonStyles } from "./styles";
 
+export type ButtonSize = "xs" | "sm" | "md" | "lg" | "xl";
 export type ButtonColorScheme = "main" | "danger" | "success";
 export type ButtonVariant =
   | "primary"
@@ -12,14 +13,14 @@ export type ButtonVariant =
   | "tertiary"
   | "ghost"
   | "neutral";
-
+export type ButtonWidth = "normal" | "fit" | "full";
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   active?: boolean;
   colorScheme?: ButtonColorScheme;
   disabled?: boolean;
-  size?: "xs" | "sm" | "md" | "lg";
+  size?: ButtonSize;
   variant?: ButtonVariant;
-  width?: "normal" | "fit" | "full";
+  width?: ButtonWidth;
 }
 
 export const Button = forwardRef(

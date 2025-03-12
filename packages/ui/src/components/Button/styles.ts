@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority";
 export const buttonStyles = cva(
   [
     "flex items-center justify-center h-fit",
-    "select-none font-medium",
+    "select-none font-semibold",
     "disabled:cursor-not-allowed disabled:ring-0 disabled:text-text-base-em",
     "focus-visible:outline-none focus-visible:ring-[3px]",
     "active:ring-[3px]",
@@ -11,10 +11,11 @@ export const buttonStyles = cva(
   {
     variants: {
       size: {
-        lg: "px-4 py-3 space-x-2 rounded-12 text-md",
-        md: "px-3 py-2 space-x-2 rounded-12 text-base",
-        sm: "px-2 py-2 space-x-[6px] rounded-8 text-sm",
-        xs: "px-2 py-1 space-x-1 rounded-6 text-2xs",
+        xl: "px-4 h-14 space-x-2 rounded-12 text-lg",
+        lg: "px-4 h-12 space-x-2 rounded-12 text-md",
+        md: "px-3 h-10 py-2 space-x-2 rounded-12 text-base",
+        sm: "px-2 h-8 space-x-[6px] rounded-8 text-sm",
+        xs: "px-1.5 h-6 py-1 space-x-1 rounded-6 text-xs",
       },
       variant: {
         primary: [],

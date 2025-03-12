@@ -1,6 +1,14 @@
 import { Section } from "@/components";
-import { Button, ButtonLink, ButtonLinkProps, ButtonProps } from "@swapr/ui";
-import { Fragment, PropsWithChildren } from "react";
+import { SelectProp } from "@/components/SelectProps";
+import {
+  Button,
+  ButtonLink,
+  ButtonLinkProps,
+  ButtonProps,
+  ButtonSize,
+  ButtonWidth,
+} from "@swapr/ui";
+import { Fragment, PropsWithChildren, useState } from "react";
 
 const getBaseBtnCombos = (
   children: string = "Button"
@@ -78,9 +86,39 @@ const ButtonsSection = ({
   component,
 }: ButtonSectionProps) => {
   const Component = component;
+  const [size, setSize] = useState<ButtonSize>("md");
+  const [width, setWidth] = useState<ButtonWidth>("normal");
+
   return (
     <Section title={children?.toString()}>
-      <div className="">
+      <div className="flex mb-4 space-x-3">
+        <SelectProp
+          name="btnSize"
+          title="size"
+          value={size}
+          set={setSize}
+          options={[
+            { value: "xs", label: "xs" },
+            { value: "sm", label: "sm" },
+            { value: "md", label: "md" },
+            { value: "lg", label: "lg" },
+            { value: "xl", label: "xl" },
+          ]}
+        />
+        <SelectProp
+          name="btnWitdh"
+          title="width"
+          value={width}
+          set={setWidth}
+          options={[
+            { value: "normal", label: "normal" },
+            { value: "fit", label: "fit" },
+            { value: "full", label: "full" },
+          ]}
+        />
+      </div>
+
+      <div className="p-8 border shadow-1 border-surface-surface-2 rounded-16">
         <div className="hidden grid-cols-11 gap-2 mb-3 lg:grid">
           <div className="flex-col hidden text-xs divide-y lg:flex text-text-low-em">
             <div className="text-right">variant</div>
@@ -105,7 +143,14 @@ const ButtonsSection = ({
               <div className="col-span-9">
                 <div className="grid gap-4 lg:grid-cols-10">
                   {btnList.combos[rowIndex].map((button, colIndex) => {
-                    return <Component {...button} key={colIndex} />;
+                    return (
+                      <Component
+                        {...button}
+                        size={size}
+                        width={width}
+                        key={colIndex}
+                      />
+                    );
                   })}
                 </div>
               </div>

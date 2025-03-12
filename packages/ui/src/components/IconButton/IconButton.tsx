@@ -11,6 +11,7 @@ export const iconButtonStyles = cva([], {
       sm: "p-2 rounded-8",
       md: "p-3",
       lg: "p-3.5",
+      xl: "p-4",
     },
   },
   defaultVariants: {
@@ -24,6 +25,7 @@ export const iconSize: Record<Size, number> = {
   sm: 14,
   md: 18,
   lg: 20,
+  xl: 24,
 };
 
 export const IconButton = forwardRef(

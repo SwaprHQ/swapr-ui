@@ -206,28 +206,31 @@ export default function UI() {
         </div>
         <ButtonsSections />
         <Section title="Chip Buttons">
-          <SelectProp
-            title="color scheme"
-            name="chipButtonColorScheme"
-            value={chipButtonColorScheme}
-            set={setChipButtonColorScheme}
-            options={[
-              { value: "main", label: "main" },
-              { value: "neutral", label: "neutral" },
-            ]}
-          />
-          <SelectProp
-            title="size"
-            name="chipButtonSize"
-            value={chipButtonSize}
-            set={setChipButtonSize}
-            options={[
-              { value: "xs", label: "xs" },
-              { value: "sm", label: "sm" },
-              { value: "md", label: "md" },
-            ]}
-          />
-          <div className="w-1/2 p-4 border border-surface-surface-2 rounded-16">
+          <div className="flex mb-4 space-x-3">
+            <SelectProp
+              title="color scheme"
+              name="chipButtonColorScheme"
+              value={chipButtonColorScheme}
+              set={setChipButtonColorScheme}
+              options={[
+                { value: "main", label: "main" },
+                { value: "neutral", label: "neutral" },
+              ]}
+            />
+            <SelectProp
+              title="size"
+              name="chipButtonSize"
+              value={chipButtonSize}
+              set={setChipButtonSize}
+              options={[
+                { value: "xs", label: "xs" },
+                { value: "sm", label: "sm" },
+                { value: "md", label: "md" },
+              ]}
+            />
+          </div>
+
+          <div className="p-4 border md:w-1/2 border-surface-surface-2 rounded-16 shadow-1">
             <p className="mb-4 font-medium">What topics interest you?</p>
 
             <div className="flex flex-wrap gap-2">
