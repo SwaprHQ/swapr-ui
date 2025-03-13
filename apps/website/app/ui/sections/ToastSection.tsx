@@ -5,45 +5,91 @@ import {
   successToast,
   warningToast,
   toast,
+  infoToast,
 } from "@swapr/ui";
 
 export const ToastSection = () => {
   return (
     <Section title="Toast">
-      <div className="flex space-x-4">
-        <Button onClick={() => toast({ children: "Default Toast" })}>
-          Open Default Toast
-        </Button>
-        <Button
-          colorScheme="danger"
-          onClick={() =>
-            errorToast({ children: "Error Toast", colorScheme: "error" })
-          }
-        >
-          Open Error Toast
-        </Button>
-        <Button
-          colorScheme="success"
-          onClick={() =>
-            successToast({
-              children: "Success Toast",
-              colorScheme: "success",
-            })
-          }
-        >
-          Open Success Toast
-        </Button>
-        <Button
-          variant="secondary"
-          onClick={() =>
-            warningToast({
-              children: "Warning Toast",
-              colorScheme: "warning",
-            })
-          }
-        >
-          Open Warning Toast
-        </Button>
+      <div className="space-y-4">
+        <div className="flex space-x-4">
+          <Button
+            onClick={() => toast({ children: "Hello Toast!" })}
+            variant="secondary"
+          >
+            Default
+          </Button>
+          <Button
+            colorScheme="danger"
+            onClick={() =>
+              errorToast({
+                children: "Transaction failed",
+                colorScheme: "error",
+              })
+            }
+          >
+            Error
+          </Button>
+          <Button
+            colorScheme="success"
+            onClick={() =>
+              successToast({
+                children: "Bet placed",
+                colorScheme: "success",
+              })
+            }
+          >
+            Success
+          </Button>
+          <Button
+            variant="secondary"
+            colorScheme="danger"
+            onClick={() =>
+              warningToast({
+                children: "Severe weather, drizzle expected in Sanabria",
+                colorScheme: "warning",
+              })
+            }
+          >
+            Warning
+          </Button>
+          <Button
+            variant="tertiary"
+            onClick={() =>
+              infoToast({
+                children: `Hurry up, last items!`,
+              })
+            }
+          >
+            info
+          </Button>
+        </div>
+        <div className="flex space-x-4">
+          <Button
+            onClick={() =>
+              successToast({
+                colorScheme: "success",
+                children: "Stack created",
+                actionText: "open",
+                actionOnClick: () => alert("btn click toast"),
+              })
+            }
+          >
+            with action
+          </Button>
+          <Button
+            onClick={() =>
+              infoToast({
+                iconName: "download",
+                children: `E-book, "Savage" is ready to download`,
+                actionText: "Download",
+                actionOnClick: () => console.log("Downloading..."),
+              })
+            }
+          >
+            Download
+          </Button>
+        </div>
       </div>
     </Section>
   );
