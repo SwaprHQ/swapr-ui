@@ -11,11 +11,11 @@ export const buttonStyles = cva(
   {
     variants: {
       size: {
-        xl: "px-4 h-14 space-x-2 rounded-12 text-lg",
+        xl: "px-5c h-14 space-x-2 rounded-12 text-lg",
         lg: "px-4 h-12 space-x-2 rounded-12 text-md",
-        md: "px-3 h-10 py-2 space-x-2 rounded-12 text-base",
-        sm: "px-2 h-8 space-x-[6px] rounded-8 text-sm",
-        xs: "px-1.5 h-6 py-1 space-x-1 rounded-6 text-xs",
+        md: "px-3.5 h-10 py-2 space-x-2 rounded-12 text-base",
+        sm: "px-2.5 h-8 space-x-[6px] rounded-8 text-sm",
+        xs: "px-2 h-6 py-1 space-x-1 rounded-6 text-xs",
       },
       variant: {
         primary: [],
