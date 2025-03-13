@@ -1,5 +1,4 @@
-import { Section } from "@/components";
-import { SelectProp } from "@/components/SelectProps";
+import { Section, SelectProp, Card } from "@/components";
 import {
   Button,
   ButtonLink,
@@ -118,7 +117,7 @@ const ButtonsSection = ({
         />
       </div>
 
-      <div className="p-8 border shadow-1 border-surface-surface-2 rounded-16">
+      <Card>
         <div className="hidden grid-cols-11 gap-2 mb-3 lg:grid">
           <div className="flex-col hidden text-xs divide-y lg:flex text-text-low-em">
             <div className="text-right">variant</div>
@@ -157,7 +156,7 @@ const ButtonsSection = ({
             </Fragment>
           ))}
         </div>
-      </div>
+      </Card>
     </Section>
   );
 };

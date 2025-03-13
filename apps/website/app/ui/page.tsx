@@ -4,8 +4,6 @@ import { Fragment, useState } from "react";
 
 import {
   Button,
-  ButtonProps,
-  ChipButton,
   DialogHeader,
   DialogTrigger,
   DialogContent,
@@ -14,7 +12,6 @@ import {
   IconBadge,
   IconBadgeColorSchemeProp,
   IconBadgeVariantProp,
-  IconButton,
   IconName,
   iconMap,
   Input,
@@ -22,38 +19,31 @@ import {
   LogoSizeProp,
   LogoPair,
   LogoPairVariant,
-  TabBody,
-  TabGroup,
-  TabHeader,
-  TabPanel,
-  TabStyled,
   Tag,
   TagColorSchemeProp,
   ToggleGroup,
   ToggleGroupOption,
   ToggleOptionSizeProp,
-  toast,
-  errorToast,
-  successToast,
-  warningToast,
   Dialog,
   DialogClose,
   DialogFooter,
-  TooltipProvider,
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
   DialogTitle,
   DialogDescription,
   VisuallyHidden,
-  ChipButtonsColorScheme,
-  ChipButtonsSizes,
 } from "@swapr/ui";
 
-import { PopoverSection, Section, ThemeSwitch } from "@/components";
-import { ButtonsSections } from "@/app/ui/sections/buttons";
-import { ColorsSection } from "@/app/ui/sections/colors";
-import { SelectProp } from "@/components/SelectProps";
+import { Section, ThemeSwitch } from "@/components";
+import {
+  ButtonsSections,
+  ChipButtonsSection,
+  ColorsSection,
+  IconButtonSection,
+  TabsSection,
+  ToastSection,
+  TooltipSection,
+  PopoverSection,
+} from "@/app/ui/sections";
+import { ModalSection } from "@/app/ui/sections/ModalSection";
 
 interface IconBadgeListProps {
   colorScheme?: IconBadgeColorSchemeProp;
@@ -146,51 +136,9 @@ const TagColorSchemes = [
   "info",
 ];
 
-interface IconListProps {
-  name: IconName;
-  disabled?: boolean;
-  active?: boolean;
-  variant?: ButtonProps["variant"];
-  colorScheme?: ButtonProps["colorScheme"];
-  size?: ButtonProps["size"];
-}
-
-const iconButtonList: Array<Array<IconListProps>> = [
-  [
-    { name: "activity", variant: "primary", size: "xs" },
-    { name: "lock", variant: "light", size: "sm" },
-    { name: "download", variant: "secondary", size: "md" },
-    { name: "bitcoin", variant: "tertiary", size: "lg" },
-    { name: "add-fill", variant: "ghost", size: "lg" },
-  ],
-  [
-    { name: "lock", disabled: true },
-    { name: "user-fill", active: true },
-    { name: "farm", colorScheme: "success" },
-  ],
-];
-
-const chipButtons = [
-  { key: "sports", label: "Sports & Fitness" },
-  { key: "education", label: "Education & Learning" },
-  { key: "finance", label: "Finance & Investment" },
-  { key: "realState", label: "Real Estate" },
-  { key: "food", label: "Food & Cooking" },
-  { key: "tech", label: "Technology & Innovation" },
-  { key: "legal", label: "Legal services" },
-  { key: "arts", label: "Arts & Culture" },
-  { key: "lifestyle", label: "Lifestyle" },
-  { key: "travel", label: "Travel" },
-  { key: "gaming", label: "Gaming" },
-];
-
 export default function UI() {
   const [openModal, setOpenModal] = useState(false);
   const [slipage, setSlipage] = useState("auto"); // radioGroup eg
-  const [chipActiveKey, setShipActiveKey] = useState("tech");
-  const [chipButtonSize, setChipButtonSize] = useState<ChipButtonsSizes>("md");
-  const [chipButtonColorScheme, setChipButtonColorScheme] =
-    useState<ChipButtonsColorScheme>("main");
 
   const closeModal = () => {
     setOpenModal(false);
@@ -205,258 +153,13 @@ export default function UI() {
           <p>A set of components to build apps faster.</p>
         </div>
         <ButtonsSections />
-        <Section title="Chip Buttons">
-          <div className="flex mb-4 space-x-3">
-            <SelectProp
-              title="color scheme"
-              name="chipButtonColorScheme"
-              value={chipButtonColorScheme}
-              set={setChipButtonColorScheme}
-              options={[
-                { value: "main", label: "main" },
-                { value: "neutral", label: "neutral" },
-              ]}
-            />
-            <SelectProp
-              title="size"
-              name="chipButtonSize"
-              value={chipButtonSize}
-              set={setChipButtonSize}
-              options={[
-                { value: "xs", label: "xs" },
-                { value: "sm", label: "sm" },
-                { value: "md", label: "md" },
-              ]}
-            />
-          </div>
-
-          <div className="p-4 border md:w-1/2 border-surface-surface-2 rounded-16 shadow-1">
-            <p className="mb-4 font-medium">What topics interest you?</p>
-
-            <div className="flex flex-wrap gap-2">
-              {chipButtons.map(({ key, label }) => (
-                <ChipButton
-                  key={key}
-                  onClick={() => setShipActiveKey(key)}
-                  active={key === chipActiveKey}
-                  size={chipButtonSize}
-                  colorScheme={chipButtonColorScheme}
-                >
-                  {label}
-                </ChipButton>
-              ))}
-            </div>
-          </div>
-        </Section>
-        <Section title="Icon Buttons">
-          <p className="mb-6">
-            Icons support all the buttons props, like color scheme and variant.
-          </p>
-          <div className="space-y-2">
-            {iconButtonList.map((row, i) => (
-              <div key={i} className="flex space-x-2">
-                {row.map((button, j) => (
-                  <IconButton colorScheme="main" {...button} key={j} />
-                ))}
-              </div>
-            ))}
-          </div>
-        </Section>
-        <Section title="Toast">
-          <div className="flex space-x-4">
-            <Button onClick={() => toast({ children: "Default Toast" })}>
-              Open Default Toast
-            </Button>
-            <Button
-              colorScheme="danger"
-              onClick={() =>
-                errorToast({ children: "Error Toast", colorScheme: "error" })
-              }
-            >
-              Open Error Toast
-            </Button>
-            <Button
-              colorScheme="success"
-              onClick={() =>
-                successToast({
-                  children: "Success Toast",
-                  colorScheme: "success",
-                })
-              }
-            >
-              Open Success Toast
-            </Button>
-            <Button
-              variant="secondary"
-              onClick={() =>
-                warningToast({
-                  children: "Warning Toast",
-                  colorScheme: "warning",
-                })
-              }
-            >
-              Open Warning Toast
-            </Button>
-          </div>
-        </Section>
-        <Section title="Modal">
-          <div className="flex space-x-4">
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button>Open</Button>
-              </DialogTrigger>
-              <DialogContent append="bottom">
-                <DialogHeader>
-                  <DialogTitle>Select a token</DialogTitle>
-                </DialogHeader>
-                <DialogBody>
-                  <ul>
-                    {Array(15)
-                      .fill("")
-                      .map((_, i) => (
-                        <li key={i}>
-                          This action cannot be undone. This will permanently
-                          delete your account and remove your data from our
-                          servers.
-                        </li>
-                      ))}
-                  </ul>
-                </DialogBody>
-              </DialogContent>
-            </Dialog>
-            <Dialog open={openModal} onOpenChange={setOpenModal}>
-              <DialogTrigger asChild>
-                <Button>Open</Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader size="xl" className="text-center">
-                  <DialogClose>
-                    <Icon name="arrow-left" />
-                  </DialogClose>
-                  <DialogTitle>Confirm Swap</DialogTitle>
-                </DialogHeader>
-                <DialogBody>
-                  This action cannot be undone. This will permanently delete as
-                  your account and remove your data from our servers.
-                </DialogBody>
-                <DialogFooter>
-                  <Button
-                    width="full"
-                    colorScheme="main"
-                    variant="primary"
-                    onClick={closeModal}
-                  >
-                    Cancel
-                  </Button>
-                  <Button
-                    width="full"
-                    colorScheme="success"
-                    variant="secondary"
-                    onClick={closeModal}
-                  >
-                    Confirm
-                  </Button>
-                </DialogFooter>
-              </DialogContent>
-            </Dialog>
-          </div>
-        </Section>
+        <ChipButtonsSection />
+        <IconButtonSection />
+        <ToastSection />
+        <ModalSection />
         <PopoverSection />
-        <Section title="Tooltips">
-          <div className="grid items-center space-y-2.5 lg:space-y-0 lg:grid-cols-2 lg:gap-4">
-            <div className="hidden text-xs font-semibold text-center uppercase bg-gray-200 lg:block">
-              Basic
-            </div>
-            <div className="hidden text-xs font-semibold text-center uppercase bg-gray-200 lg:block">
-              Complex
-            </div>
-            <div className="flex items-center justify-center">
-              <TooltipProvider delayDuration={500}>
-                <Tooltip>
-                  <TooltipTrigger>Hover here</TooltipTrigger>
-                  <TooltipContent side="right">This is a sample</TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </div>
-            <div className="flex items-center justify-center">
-              <TooltipProvider delayDuration={500}>
-                <Tooltip>
-                  <TooltipTrigger>Hover here</TooltipTrigger>
-                  <TooltipContent
-                    side="right"
-                    align="center"
-                    sideOffset={8}
-                    className="w-60"
-                  >
-                    <p>
-                      Currently, gas prices are high. It is preferable to
-                      perform the transaction after some time.
-                    </p>
-                    <div className="flex justify-between mt-4">
-                      <Button variant="secondary">Learn more</Button>
-                      <Button>Got it</Button>
-                    </div>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </div>
-          </div>
-        </Section>
-        <Section title="Tabs">
-          <div className="space-y-5">
-            <p>
-              Tabs is based on{" "}
-              <a
-                className="text-text-primary-main hover:underline"
-                href="https://headlessui.com/react/tabs"
-              >
-                headlessui tabs
-              </a>
-              , check out their docs for usage.
-            </p>
-            <div className="w-full max-w-md px-2 sm:px-0">
-              <TabGroup
-                onChange={(index: number) =>
-                  console.log("Changed selected tab to:", index)
-                }
-              >
-                <TabHeader>
-                  <TabStyled>All bets</TabStyled>
-                  <TabStyled>
-                    Active
-                    <div className="bg-surface-surface-0 text-2xs border border-outline-low-em rounded-6 p-1 px-1.5 ml-2">
-                      01
-                    </div>
-                  </TabStyled>
-                  <TabStyled>Unredeemed</TabStyled>
-                  <TabStyled>Complete</TabStyled>
-                </TabHeader>
-                <TabBody className="mt-2">
-                  <TabPanel>
-                    <div className="p-5 bg-surface-primary-accent-1 rounded-4">
-                      All bets
-                    </div>
-                  </TabPanel>
-                  <TabPanel>
-                    <div className="p-5 bg-surface-primary-accent-1 rounded-4">
-                      Active
-                    </div>
-                  </TabPanel>
-                  <TabPanel>
-                    <div className="p-5 bg-surface-danger-accent-1 rounded-4">
-                      Unredeemed
-                    </div>
-                  </TabPanel>
-                  <TabPanel>
-                    <div className="p-5 bg-surface-warning-accent-1 rounded-4">
-                      Complete
-                    </div>
-                  </TabPanel>
-                </TabBody>
-              </TabGroup>
-            </div>
-          </div>
-        </Section>
+        <TooltipSection />
+        <TabsSection />
         <Section title="ToggleGroup">
           <p>
             Based on Radio Group component from Headless ui,{" "}
