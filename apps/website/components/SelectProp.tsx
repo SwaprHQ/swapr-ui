@@ -12,7 +12,7 @@ export const SelectProp = ({
   options: { value: string; label: string }[];
 }) => {
   return (
-    <div className="mb-4">
+    <div className="mb-2">
       <label htmlFor={name} className="mr-2 text-xs text-text-low-em">
         Select {title}:
       </label>

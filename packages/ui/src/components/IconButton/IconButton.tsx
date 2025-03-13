@@ -4,14 +4,14 @@ import { cva } from "class-variance-authority";
 import { Button, ButtonProps } from "../Button";
 import { Icon, IconProps } from "../Icon";
 
-export const iconButtonStyles = cva([], {
+export const iconButtonStyles = cva(["p-0"], {
   variants: {
     size: {
-      xs: "p-1 rounded-6",
-      sm: "p-2 rounded-8",
-      md: "p-3",
-      lg: "p-3.5",
-      xl: "p-4",
+      xs: "size-8 rounded-6",
+      sm: "size-10 rounded-8",
+      md: "size-12 rounded-12",
+      lg: "size-14 rounded-16",
+      xl: "size-16 rounded-16",
     },
   },
   defaultVariants: {
@@ -21,11 +21,11 @@ export const iconButtonStyles = cva([], {
 
 type Size = NonNullable<ButtonProps["size"]>;
 export const iconSize: Record<Size, number> = {
-  xs: 14,
-  sm: 14,
-  md: 18,
-  lg: 20,
-  xl: 24,
+  xs: 20,
+  sm: 24,
+  md: 28,
+  lg: 32,
+  xl: 40,
 };
 
 export const IconButton = forwardRef(

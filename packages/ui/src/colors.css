@@ -152,7 +152,7 @@
   --surface-surface_4: var(--color-gray-300);
 
   --surface-smoke_gray: var(--surface-surface_2);
-  --surface-smoke_gray_em: var(--surface-surface_2);
+  --surface-smoke_gray_em: var(--surface-surface_3);
 
   --surface-white_smoke_0: var(--color-white-100);
   --surface-white_smoke_1: var(--surface-white_smoke_0);

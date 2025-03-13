@@ -71,8 +71,8 @@ module.exports = {
           3: "var(--surface-surface_3)",
           4: "var(--surface-surface_4)",
           smoke: {
-            gray: "var(--surface-surface_2)",
-            "gray-em": "var(--surface-surface_2)",
+            gray: "var(--surface-smoke_gray)",
+            "gray-em": "var(--surface-smoke_gray_em)",
           },
           white: {
             smoke: {

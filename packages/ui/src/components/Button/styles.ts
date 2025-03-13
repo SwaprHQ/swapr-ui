@@ -80,7 +80,7 @@ export const buttonStyles = cva(
         colorScheme: "main",
         class: [
           "bg-surface-surface-smoke-gray text-text-med-em shadow-secondary-button",
-          "hover:bg-surface-smoke-gray-em",
+          "hover:bg-surface-surface-smoke-gray-em",
         ],
       },
       {
@@ -127,7 +127,7 @@ export const buttonStyles = cva(
         colorScheme: "danger",
         class: [
           "bg-surface-surface-smoke-gray text-text-danger-high-em shadow-secondary-button",
-          "hover:bg-surface-smoke-high",
+          "hover:bg-surface-surface-smoke-gray-em",
         ],
       },
       {
@@ -168,7 +168,7 @@ export const buttonStyles = cva(
         colorScheme: "success",
         class: [
           "bg-surface-surface-smoke-gray text-text-success-high-em shadow-secondary-button",
-          "hover:bg-surface-smoke-high",
+          "hover:bg-surface-surface-smoke-gray-em",
         ],
       },
       {

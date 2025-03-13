@@ -149,8 +149,22 @@ export default function UI() {
       <ThemeSwitch />
       <div className="pb-12 my-12 space-y-12 divide-y divide-surface-surface-smoke-gray-em">
         <div className="space-y-4">
-          <h1 className="text-3xl font-bold">Swapr UI</h1>
-          <p>A set of components to build apps faster.</p>
+          <h1 className="text-[42px] font-bold mb-8">Swapr UI</h1>
+          <div className="max-w-2xl space-y-2">
+            <p>
+              Create create awesome user interfaces without the hussle of
+              rebuild the same component all over again.
+            </p>
+            <p>
+              Inspired by{" "}
+              <a
+                href="https://atomizedesign.com/"
+                className=" text-text-primary-med-em hover:text-text-primary-high-em"
+              >
+                Atomize Design System
+              </a>
+            </p>
+          </div>
         </div>
         <ButtonsSections />
         <ChipButtonsSection />

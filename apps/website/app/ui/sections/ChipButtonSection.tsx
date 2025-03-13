@@ -1,4 +1,4 @@
-import { Section, SelectProp } from "@/components";
+import { Card, Section, SelectProp } from "@/components";
 import {
   ChipButton,
   ChipButtonsColorScheme,
@@ -52,7 +52,7 @@ export const ChipButtonsSection = () => {
         />
       </div>
 
-      <div className="p-4 border md:w-1/2 border-surface-surface-2 rounded-16 shadow-1">
+      <Card className="md:w-1/2">
         <p className="mb-4 font-medium">What topics interest you?</p>
 
         <div className="flex flex-wrap gap-2">
@@ -68,7 +68,7 @@ export const ChipButtonsSection = () => {
             </ChipButton>
           ))}
         </div>
-      </div>
+      </Card>
     </Section>
   );
 };
