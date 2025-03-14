@@ -34,7 +34,8 @@ import {
 
 import { Section, ThemeSwitch } from "@/components";
 import {
-  ButtonsSections,
+  ButtonSection,
+  ButtonLinkSection,
   ChipButtonsSection,
   ColorsSection,
   IconButtonSection,
@@ -166,11 +167,11 @@ export default function UI() {
             </p>
           </div>
         </div>
-        <ButtonsSections />
-        <ChipButtonsSection />
+        <ModalSection />
+        <ButtonSection />
         <IconButtonSection />
         <ToastSection />
-        <ModalSection />
+        <ChipButtonsSection />
         <PopoverSection />
         <TooltipSection />
         <TabsSection />
@@ -520,6 +521,7 @@ export default function UI() {
           </div>
         </Section>
         <ColorsSection />
+        <ButtonLinkSection />
       </div>
     </main>
   );

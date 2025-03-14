@@ -68,15 +68,16 @@ const buttonsList: {
   combos: [regularBtnCombos, successBtnCombos, dangerBtnCombos],
 };
 
-export const ButtonsSections = () => (
-  <>
-    <ButtonsSection component={Button} btnList={buttonsList}>
-      Buttons
-    </ButtonsSection>
-    <ButtonsSection component={ButtonLink} btnList={buttonsList}>
-      ButtonLinks
-    </ButtonsSection>
-  </>
+export const ButtonSection = () => (
+  <ButtonsSection component={Button} btnList={buttonsList}>
+    Buttons
+  </ButtonsSection>
+);
+
+export const ButtonLinkSection = () => (
+  <ButtonsSection component={ButtonLink} btnList={buttonsList}>
+    ButtonLinks
+  </ButtonsSection>
 );
 
 const ButtonsSection = ({
