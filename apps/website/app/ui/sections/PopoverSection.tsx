@@ -1,4 +1,4 @@
-import { Section } from "@/components";
+import { Card, Section } from "@/components";
 import {
   Button,
   ChipButton,
@@ -60,7 +60,7 @@ const popoverList: PopoverList = {
 
 export const PopoverSection = () => (
   <Section title="Popovers">
-    <div className="grid items-center space-y-2.5 lg:space-y-0 lg:grid-cols-3 lg:gap-4">
+    <Card className="grid items-center space-y-2.5 lg:space-y-0 lg:grid-cols-3 lg:gap-4">
       {popoverList.headers.map((header, index) => (
         <div
           key={index}
@@ -74,7 +74,7 @@ export const PopoverSection = () => (
           <Example />
         </div>
       ))}
-    </div>
+    </Card>
   </Section>
 );
 
