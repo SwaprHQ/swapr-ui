@@ -34,22 +34,20 @@ export const TabsSection = () => {
             </TabHeader>
             <TabBody className="mt-2">
               <TabPanel>
-                <div className="p-5 bg-surface-primary-accent-1 rounded-4">
+                <div className="p-5 bg-surface-surface-2 rounded-4">
                   All bets
                 </div>
               </TabPanel>
               <TabPanel>
-                <div className="p-5 bg-surface-primary-accent-1 rounded-4">
-                  Active
-                </div>
+                <div className="p-5 bg-surface-surface-2 rounded-4">Active</div>
               </TabPanel>
               <TabPanel>
-                <div className="p-5 bg-surface-danger-accent-1 rounded-4">
+                <div className="p-5 bg-surface-surface-2 rounded-4">
                   Unredeemed
                 </div>
               </TabPanel>
               <TabPanel>
-                <div className="p-5 bg-surface-warning-accent-1 rounded-4">
+                <div className="p-5 bg-surface-surface-2 rounded-4">
                   Complete
                 </div>
               </TabPanel>

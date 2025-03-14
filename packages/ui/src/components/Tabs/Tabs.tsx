@@ -31,7 +31,7 @@ export const TabHeader = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
-    <Tab.List className={twMerge("flex space-x-3 p-0.5", className)} {...props}>
+    <Tab.List className={twMerge("flex space-x-2 p-0.5", className)} {...props}>
       {children}
     </Tab.List>
   );
