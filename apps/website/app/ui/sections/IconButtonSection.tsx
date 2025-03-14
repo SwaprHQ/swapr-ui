@@ -18,19 +18,15 @@ interface IconListProps {
   size?: ButtonProps["size"];
 }
 
-const iconButtonList: Array<Array<IconListProps>> = [
-  [
-    { name: "activity", variant: "primary", size: "xs" },
-    { name: "lock", variant: "light", size: "sm" },
-    { name: "download", variant: "secondary", size: "md" },
-    { name: "bitcoin", variant: "tertiary", size: "lg" },
-    { name: "add-fill", variant: "ghost", size: "lg" },
-  ],
-  [
-    { name: "lock", disabled: true },
-    { name: "user-fill", active: true },
-    { name: "farm", colorScheme: "success" },
-  ],
+const iconButtonList: Array<IconListProps> = [
+  { name: "activity", variant: "primary", size: "xs" },
+  { name: "lock", variant: "light", size: "sm" },
+  { name: "download", variant: "secondary", size: "md" },
+  { name: "bitcoin", variant: "tertiary", size: "lg" },
+  { name: "add-fill", variant: "ghost", size: "lg" },
+  { name: "lock", disabled: true },
+  { name: "user-fill", active: true },
+  { name: "farm", colorScheme: "success" },
 ];
 
 const btnVariantOptions = [
@@ -121,14 +117,12 @@ export const IconButtonSection = () => {
           />
         </Card>
         <Card className="md:w-1/2">
-          <div className="space-y-2">
-            {iconButtonList.map((row, i) => (
-              <div key={i} className="flex space-x-2">
-                {row.map((button, j) => (
-                  <IconButton colorScheme="main" {...button} key={j} />
-                ))}
-              </div>
-            ))}
+          <div className="">
+            <div className="grid grid-cols-3 md:grid-cols-8 gap-3">
+              {iconButtonList.map((button, j) => (
+                <IconButton colorScheme="main" {...button} key={j} />
+              ))}
+            </div>
           </div>
         </Card>
       </div>
