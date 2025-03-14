@@ -1,4 +1,4 @@
-import { Section } from "@/components";
+import { Card, Section } from "@/components";
 import {
   Button,
   Dialog,
@@ -9,7 +9,6 @@ import {
   DialogTitle,
   DialogTrigger,
   DialogFooter,
-  Icon,
 } from "@swapr/ui";
 import { useState } from "react";
 
@@ -22,7 +21,7 @@ export const ModalSection = () => {
 
   return (
     <Section title="Modal">
-      <div className="flex space-x-4">
+      <Card className="flex space-x-4">
         <Dialog>
           <DialogTrigger asChild>
             <Button>Open</Button>
@@ -51,9 +50,7 @@ export const ModalSection = () => {
           </DialogTrigger>
           <DialogContent>
             <DialogHeader size="xl" className="text-center">
-              <DialogClose>
-                <Icon name="arrow-left" />
-              </DialogClose>
+              <DialogClose name="arrow-left" />
               <DialogTitle>Confirm Swap</DialogTitle>
             </DialogHeader>
             <DialogBody>
@@ -64,15 +61,15 @@ export const ModalSection = () => {
               <Button
                 width="full"
                 colorScheme="main"
-                variant="primary"
+                variant="secondary"
                 onClick={closeModal}
               >
-                Cancel
+                Confirm
               </Button>
               <Button
                 width="full"
-                colorScheme="success"
-                variant="secondary"
+                colorScheme="main"
+                variant="primary"
                 onClick={closeModal}
               >
                 Confirm
@@ -80,7 +77,7 @@ export const ModalSection = () => {
             </DialogFooter>
           </DialogContent>
         </Dialog>
-      </div>
+      </Card>
     </Section>
   );
 };

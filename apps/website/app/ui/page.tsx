@@ -167,9 +167,9 @@ export default function UI() {
             </p>
           </div>
         </div>
-        <ModalSection />
         <ButtonSection />
         <IconButtonSection />
+        <ModalSection />
         <ToastSection />
         <ChipButtonsSection />
         <PopoverSection />

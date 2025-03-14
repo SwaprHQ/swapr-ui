@@ -1,4 +1,4 @@
-import { Section } from "@/components";
+import { Card, Section } from "@/components";
 import {
   Button,
   errorToast,
@@ -11,7 +11,7 @@ import {
 export const ToastSection = () => {
   return (
     <Section title="Toast">
-      <div className="space-y-4">
+      <Card className="space-y-4">
         <div className="flex space-x-4">
           <Button
             onClick={() => toast({ children: "Hello Toast!" })}
@@ -90,7 +90,7 @@ export const ToastSection = () => {
             Download
           </Button>
         </div>
-      </div>
+      </Card>
     </Section>
   );
 };

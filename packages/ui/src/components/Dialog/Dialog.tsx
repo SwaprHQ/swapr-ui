@@ -1,18 +1,14 @@
-import { forwardRef, PropsWithChildren } from "react";
+import { ElementRef, forwardRef, PropsWithChildren } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { cva, cx } from "class-variance-authority";
 import { twMerge } from "@/utils";
-import { ButtonProps, buttonStyles } from "@/components/Button";
-import { Icon } from "@/components/Icon";
-import { iconButtonStyles, iconSize } from "@/components/IconButton";
+import { ButtonProps } from "@/components/Button";
+import { IconButton } from "@/components/IconButton";
+import { IconName } from "@/components/Icon";
 
 interface AppendProp {
   append?: "center" | "bottom" | null | undefined;
-}
-
-interface PositionProp {
-  position?: "right" | "left" | null | undefined;
 }
 
 interface SizeProp {
@@ -92,29 +88,25 @@ const DialogContent = forwardRef<
 DialogContent.displayName = DialogPrimitive.Content.displayName;
 
 const DialogClose = forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Close>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Close> &
-    PositionProp &
-    SizeProp
->(({ className, children, size, ...props }, ref) => (
-  <DialogPrimitive.Close
-    ref={ref}
-    className={twMerge(
-      "data-[state=open]:bg-accent data-[state=open]:text-muted-foreground",
-      buttonStyles({ variant: "ghost" }),
-      iconButtonStyles({ className, size })
-    )}
-    {...props}
-  >
-    {children}
-    <span className="sr-only">Close</span>
+  ElementRef<typeof DialogPrimitive.Close>,
+  { name?: IconName }
+>(({ name = "cross", ...props }, ref) => (
+  <DialogPrimitive.Close asChild>
+    <IconButton
+      name={name}
+      size="xs"
+      variant="tertiary"
+      ref={ref}
+      {...props}
+      className="rounded-100"
+    />
   </DialogPrimitive.Close>
 ));
+
 DialogClose.displayName = DialogPrimitive.Close.displayName;
 
 const DialogHeader = ({
   className,
-  size = "md",
   children,
   ...props
 }: DialogProps & SizeProp & PropsWithChildren) => (
@@ -122,15 +114,12 @@ const DialogHeader = ({
     className={twMerge(
       "flex items-center p-3 md:p-4",
       children ? "justify-between" : "justify-end",
-      className,
-      size
+      className
     )}
     {...props}
   >
     {children}
-    <DialogClose size={size}>
-      <Icon name="cross" size={iconSize[size]} />
-    </DialogClose>
+    <DialogClose />
   </div>
 );
 DialogHeader.displayName = "DialogHeader";

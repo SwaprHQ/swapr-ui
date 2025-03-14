@@ -31,9 +31,9 @@ export const iconSize: Record<Size, number> = {
 export const IconButton = forwardRef(
   (
     {
-      name,
       className,
       size = "md",
+      name,
       ...props
     }: ButtonProps & Pick<IconProps, "name">,
     ref: Ref<HTMLButtonElement>
