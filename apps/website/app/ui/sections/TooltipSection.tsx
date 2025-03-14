@@ -5,12 +5,12 @@ import {
   TooltipTrigger,
   TooltipContent,
 } from "@swapr/ui";
-import { Section } from "@/components";
+import { Card, Section } from "@/components";
 
 export const TooltipSection = () => {
   return (
     <Section title="Tooltips">
-      <div className="grid items-center space-y-2.5 lg:space-y-0 lg:grid-cols-2 lg:gap-4">
+      <Card className="grid items-center space-y-2.5 lg:space-y-0 lg:grid-cols-2 lg:gap-4">
         <div className="hidden text-xs font-semibold text-center uppercase bg-gray-200 lg:block">
           Basic
         </div>
@@ -20,7 +20,7 @@ export const TooltipSection = () => {
         <div className="flex items-center justify-center">
           <TooltipProvider delayDuration={500}>
             <Tooltip>
-              <TooltipTrigger>Hover here</TooltipTrigger>
+              <TooltipTrigger>here</TooltipTrigger>
               <TooltipContent side="right">This is a sample</TooltipContent>
             </Tooltip>
           </TooltipProvider>
@@ -28,7 +28,7 @@ export const TooltipSection = () => {
         <div className="flex items-center justify-center">
           <TooltipProvider delayDuration={500}>
             <Tooltip>
-              <TooltipTrigger>Hover here</TooltipTrigger>
+              <TooltipTrigger>here</TooltipTrigger>
               <TooltipContent
                 side="right"
                 align="center"
@@ -47,7 +47,7 @@ export const TooltipSection = () => {
             </Tooltip>
           </TooltipProvider>
         </div>
-      </div>
+      </Card>
     </Section>
   );
 };
