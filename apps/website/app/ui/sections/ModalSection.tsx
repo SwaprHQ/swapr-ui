@@ -12,7 +12,6 @@ import {
   Icon,
   VisuallyHidden,
   DialogDescription,
-  IconBadge,
 } from "@swapr/ui";
 import { useState } from "react";
 
@@ -99,12 +98,18 @@ export const ModalSection = () => {
             <DialogBody className="mx-auto mb-8 w-full max-w-fit space-y-2 md:mx-0 md:max-w-[496px]">
               <div className="flex flex-col items-center w-full space-y-12">
                 <>
-                  <IconBadge name="tick" colorScheme="success" />
+                  <div className="bg-surface-success-base-em p-4 rounded-100">
+                    <Icon
+                      name="tick"
+                      size={38}
+                      className=" text-surface-success-high-em"
+                    />
+                  </div>
                   <div className="flex flex-col items-center space-y-2">
                     <p className="text-2xl font-semibold">
                       Transaction successful!
                     </p>
-                    <p className="font-semibold text-center text-md text-text-low-em">
+                    <p className="text-center text-md text-text-low-em">
                       The transaction has been completed.
                       <br />
                       You can close this window now.

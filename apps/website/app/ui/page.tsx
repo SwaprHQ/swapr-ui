@@ -3,15 +3,7 @@
 import { Fragment, useState } from "react";
 
 import {
-  Button,
-  DialogHeader,
-  DialogTrigger,
-  DialogContent,
-  DialogBody,
   Icon,
-  IconBadge,
-  IconBadgeColorSchemeProp,
-  IconBadgeVariantProp,
   IconName,
   iconMap,
   Input,
@@ -24,12 +16,6 @@ import {
   ToggleGroup,
   ToggleGroupOption,
   ToggleOptionSizeProp,
-  Dialog,
-  DialogClose,
-  DialogFooter,
-  DialogTitle,
-  DialogDescription,
-  VisuallyHidden,
 } from "@swapr/ui";
 
 import { Section, ThemeSwitch } from "@/components";
@@ -45,55 +31,6 @@ import {
   PopoverSection,
 } from "@/app/ui/sections";
 import { ModalSection } from "@/app/ui/sections/ModalSection";
-
-interface IconBadgeListProps {
-  colorScheme?: IconBadgeColorSchemeProp;
-  variant?: IconBadgeVariantProp;
-  size?: "lg";
-}
-
-const iconBadgeList: Array<Array<IconBadgeListProps>> = [
-  [
-    { size: "lg" },
-    {},
-    { size: "lg", variant: "pastel" },
-    { variant: "pastel" },
-    { size: "lg", variant: "outline" },
-    { variant: "outline" },
-    { size: "lg", variant: "ghost" },
-    { variant: "ghost" },
-  ],
-  [
-    { size: "lg", colorScheme: "secondary" },
-    { colorScheme: "secondary" },
-    { size: "lg", variant: "pastel", colorScheme: "secondary" },
-    { variant: "pastel", colorScheme: "secondary" },
-    { size: "lg", variant: "outline", colorScheme: "secondary" },
-    { variant: "outline", colorScheme: "secondary" },
-    { size: "lg", variant: "ghost", colorScheme: "secondary" },
-    { variant: "ghost", colorScheme: "secondary" },
-  ],
-  [
-    { size: "lg", colorScheme: "danger" },
-    { colorScheme: "danger" },
-    { size: "lg", variant: "pastel", colorScheme: "danger" },
-    { variant: "pastel", colorScheme: "danger" },
-    { size: "lg", variant: "outline", colorScheme: "danger" },
-    { variant: "outline", colorScheme: "danger" },
-    { size: "lg", variant: "ghost", colorScheme: "danger" },
-    { variant: "ghost", colorScheme: "danger" },
-  ],
-  [
-    { size: "lg", colorScheme: "success" },
-    { colorScheme: "success" },
-    { size: "lg", variant: "pastel", colorScheme: "success" },
-    { variant: "pastel", colorScheme: "success" },
-    { size: "lg", variant: "outline", colorScheme: "success" },
-    { variant: "outline", colorScheme: "success" },
-    { size: "lg", variant: "ghost", colorScheme: "success" },
-    { variant: "ghost", colorScheme: "success" },
-  ],
-];
 
 interface LogoListProps {
   variant?: LogoPairVariant;
@@ -138,12 +75,7 @@ const TagColorSchemes = [
 ];
 
 export default function UI() {
-  const [openModal, setOpenModal] = useState(false);
   const [slipage, setSlipage] = useState("auto"); // radioGroup eg
-
-  const closeModal = () => {
-    setOpenModal(false);
-  };
 
   return (
     <main className="max-w-screen-xl px-5 mx-auto my-10 overflow-auto">
@@ -305,18 +237,6 @@ export default function UI() {
                 <div className="p-1 rounded-lg bg-surface-75">
                   <p>{iconName}</p>
                 </div>
-              </div>
-            ))}
-          </div>
-        </Section>
-        <Section>
-          <h2 className="text-2xl font-semibold">Icon Badges</h2>
-          <div className="space-y-4">
-            {iconBadgeList.map((row, i) => (
-              <div key={i} className="flex items-center space-x-4">
-                {row.map((iconBadge, j) => (
-                  <IconBadge name="bar-graph-fill" {...iconBadge} key={j} />
-                ))}
               </div>
             ))}
           </div>

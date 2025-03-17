@@ -3,7 +3,6 @@ export * from "./ButtonLink";
 export * from "./ChipButton";
 export * from "./Dialog";
 export * from "./Icon";
-export * from "./IconBadge";
 export * from "./IconButton";
 export * from "./Input";
 export * from "./Logo";
