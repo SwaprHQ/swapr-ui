@@ -11,3 +11,4 @@ export * from "./LogoSection";
 export * from "./ModalSection";
 export * from "./ToggleGroupSection";
 export * from "./IconSection";
+export * from "./TagSection";

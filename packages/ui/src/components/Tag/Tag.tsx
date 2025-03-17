@@ -3,32 +3,29 @@ import { cva } from "class-variance-authority";
 import { twMerge } from "@/utils";
 
 export const tagStyles = cva(
-  ["flex items-center justify-center", "rounded-6 font-semibold border"],
+  ["flex items-center justify-center", "font-medium shadow-secondary-button"],
   {
     variants: {
       size: {
-        sm: ["h-8 px-2 text-sm leading-4"],
-        xs: ["h-6 px-[6px] text-2xs leading-3"],
+        md: ["h-8 px-2 text-base leading-5 rounded-[10px]"],
+        sm: ["h-6 px-1.5 text-sm leading-4 rounded-8"],
+        xs: ["h-5 px-1.5 text-xs leading-3 rounded-6"],
       },
       colorScheme: {
-        primary: ["bg-surface-primary-main text-surface-white border-black-12"],
-        secondary: [
-          "bg-surface-primary-accent-2 text-text-primary-em border-transparent",
+        primary: ["bg-surface-primary-med-em text-text-inverse-black-neutral"],
+        "primary-light": [
+          "bg-surface-primary-base-em-alpha text-text-primary-high-em",
         ],
-        tertiary: [
-          "bg-surface-surface-0 text-text-high-em border-outline-low-em",
+        "primary-outline": [
+          "bg-surface-surface-white-smoke-0 text-text-primary-high-em border border-outline-primary-alpha",
         ],
-        quaternary: [
-          "bg-surface-surface-2 text-text-med-em border-transparent",
-        ],
-        success: [
-          "bg-surface-success-accent-1 text-text-success-em border-transparent",
-        ],
-        danger: [
-          "bg-surface-danger-accent-1 text-text-danger-em border-transparent",
-        ],
-        info: ["bg-surface-info-accent-1 text-text-info-em border-transparent"],
-        disabled: [""],
+        secondary: ["bg-surface-surface-2 text-text-med-em"],
+        tertiary: ["bg-surface-surface-white-smoke-3 text-text-med-em"],
+        success: ["bg-surface-success-base-em-alpha text-text-success-high-em"],
+        danger: ["bg-surface-danger-low-em-alpha text-text-danger-high-em"],
+        warning: ["bg-surface-warning-base-em-alpha text-text-warning-high-em"],
+        info: ["bg-surface-info-base-em-alpha text-text-info-high-em"],
+        disabled: ["bg-surface-disabled-low-em text-text-base-em "],
       },
     },
     defaultVariants: {
@@ -38,14 +35,14 @@ export const tagStyles = cva(
   }
 );
 
-export type TagSizeProp = "xs" | "sm";
+export type TagSizeProp = "xs" | "sm" | "md";
 export type TagColorSchemeProp =
   | "primary"
   | "secondary"
   | "tertiary"
-  | "quaternary"
   | "success"
   | "danger"
+  | "warning"
   | "info";
 
 export interface TagProps {

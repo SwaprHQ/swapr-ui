@@ -1,8 +1,6 @@
 "use client";
 
-import { Fragment } from "react";
-
-import { Input, Tag, TagColorSchemeProp } from "@swapr/ui";
+import { Input } from "@swapr/ui";
 
 import { Section, ThemeSwitch } from "@/components";
 import {
@@ -19,17 +17,8 @@ import {
   ModalSection,
   IconSection,
   ToggleGroupSection,
+  TagSection,
 } from "@/app/ui/sections";
-
-const TagColorSchemes = [
-  "primary",
-  "secondary",
-  "tertiary",
-  "quaternary",
-  "success",
-  "danger",
-  "info",
-];
 
 export default function UI() {
   return (
@@ -63,19 +52,7 @@ export default function UI() {
         <TooltipSection />
         <TabsSection />
         <ToggleGroupSection />
-
-        <Section title="Tag">
-          <div className="flex space-x-6">
-            {TagColorSchemes.map(color => (
-              <Fragment key={color}>
-                <Tag colorScheme={color as TagColorSchemeProp} size="sm">
-                  Tag
-                </Tag>
-                <Tag colorScheme={color as TagColorSchemeProp}>Tag</Tag>
-              </Fragment>
-            ))}
-          </div>
-        </Section>
+        <TagSection />
         <Section title="Input">
           <div className="flex flex-col space-y-4 w-[200px]">
             <Input
