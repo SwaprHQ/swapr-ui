@@ -18,8 +18,8 @@ import {
   LogoSection,
   ModalSection,
   IconSection,
+  ToggleGroupSection,
 } from "@/app/ui/sections";
-import { ToggleGroupSection } from "@/app/ui/sections/ToogleGroupSection";
 
 const TagColorSchemes = [
   "primary",

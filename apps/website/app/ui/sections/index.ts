@@ -9,5 +9,5 @@ export * from "./TabsSection";
 export * from "./PopoverSection";
 export * from "./LogoSection";
 export * from "./ModalSection";
-export * from "./ToogleGroupSection";
+export * from "./ToggleGroupSection";
 export * from "./IconSection";
