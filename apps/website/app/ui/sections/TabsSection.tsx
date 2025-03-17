@@ -1,20 +1,20 @@
-import { Section } from "@/components";
+import { Card, Section } from "@/components";
 import { TabBody, TabGroup, TabHeader, TabPanel, TabStyled } from "@swapr/ui";
 
 export const TabsSection = () => {
   return (
     <Section title="Tabs">
-      <div className="space-y-5">
-        <p>
-          Tabs is based on{" "}
-          <a
-            className="text-text-primary-main hover:underline"
-            href="https://headlessui.com/react/tabs"
-          >
-            headlessui tabs
-          </a>
-          , check out their docs for usage.
-        </p>
+      <p className="mb-4">
+        Tabs is based on{" "}
+        <a
+          className=" text-surface-primary-med-em hover:underline"
+          href="https://headlessui.com/react/tabs"
+        >
+          headlessui tabs
+        </a>
+        , check out their docs for usage.
+      </p>
+      <Card className="space-y-5">
         <div className="w-full max-w-md px-2 sm:px-0">
           <TabGroup
             onChange={(index: number) =>
@@ -34,27 +34,29 @@ export const TabsSection = () => {
             </TabHeader>
             <TabBody className="mt-2">
               <TabPanel>
-                <div className="p-5 bg-surface-surface-2 rounded-4">
+                <div className="p-5 bg-surface-surface-2 rounded-12">
                   All bets
                 </div>
               </TabPanel>
               <TabPanel>
-                <div className="p-5 bg-surface-surface-2 rounded-4">Active</div>
+                <div className="p-5 bg-surface-surface-2 rounded-12">
+                  Active
+                </div>
               </TabPanel>
               <TabPanel>
-                <div className="p-5 bg-surface-surface-2 rounded-4">
+                <div className="p-5 bg-surface-surface-2 rounded-12">
                   Unredeemed
                 </div>
               </TabPanel>
               <TabPanel>
-                <div className="p-5 bg-surface-surface-2 rounded-4">
+                <div className="p-5 bg-surface-surface-2 rounded-12">
                   Complete
                 </div>
               </TabPanel>
             </TabBody>
           </TabGroup>
         </div>
-      </div>
+      </Card>
     </Section>
   );
 };
