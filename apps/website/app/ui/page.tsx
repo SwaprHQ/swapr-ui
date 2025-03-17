@@ -1,18 +1,8 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 
-import {
-  Icon,
-  IconName,
-  iconMap,
-  Input,
-  Tag,
-  TagColorSchemeProp,
-  ToggleGroup,
-  ToggleGroupOption,
-  ToggleOptionSizeProp,
-} from "@swapr/ui";
+import { Input, Tag, TagColorSchemeProp } from "@swapr/ui";
 
 import { Section, ThemeSwitch } from "@/components";
 import {
@@ -27,6 +17,7 @@ import {
   PopoverSection,
   LogoSection,
   ModalSection,
+  IconSection,
 } from "@/app/ui/sections";
 import { ToggleGroupSection } from "@/app/ui/sections/ToogleGroupSection";
 
@@ -160,21 +151,7 @@ export default function UI() {
             />
           </div>
         </Section>
-        <Section title="Icons">
-          <div className="flex flex-wrap space-x-4 space-y-2 md:space-y-0">
-            {Object.keys(iconMap).map(iconName => (
-              <div
-                className="flex flex-col items-center space-y-2"
-                key={iconName}
-              >
-                <Icon name={iconName as IconName} size={24} />
-                <div className="p-1 rounded-lg bg-surface-75">
-                  <p>{iconName}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Section>
+        <IconSection />
         <LogoSection />
         <Section title="Font sizes">
           <div className="space-y-2">

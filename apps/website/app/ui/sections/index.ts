@@ -10,3 +10,4 @@ export * from "./PopoverSection";
 export * from "./LogoSection";
 export * from "./ModalSection";
 export * from "./ToogleGroupSection";
+export * from "./IconSection";
