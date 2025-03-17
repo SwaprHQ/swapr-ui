@@ -7,10 +7,6 @@ import {
   IconName,
   iconMap,
   Input,
-  Logo,
-  LogoSizeProp,
-  LogoPair,
-  LogoPairVariant,
   Tag,
   TagColorSchemeProp,
   ToggleGroup,
@@ -29,40 +25,10 @@ import {
   ToastSection,
   TooltipSection,
   PopoverSection,
+  LogoSection,
+  ModalSection,
 } from "@/app/ui/sections";
-import { ModalSection } from "@/app/ui/sections/ModalSection";
-
-interface LogoListProps {
-  variant?: LogoPairVariant;
-  size?: LogoSizeProp;
-}
-
-const logoList: Array<LogoListProps> = [
-  { size: "xl" },
-  { size: "lg" },
-  { size: "md" },
-  { size: "sm" },
-  { size: "xs" },
-];
-
-const logoPairList: Array<Array<LogoListProps>> = [
-  [
-    { size: "xl" },
-    { size: "lg" },
-    { size: "md" },
-    { size: "sm" },
-    { size: "xs" },
-  ],
-  [
-    { size: "xl", variant: "highlight" },
-    { size: "lg", variant: "highlight" },
-    { size: "md", variant: "highlight" },
-    { size: "sm", variant: "highlight" },
-    { size: "xs", variant: "highlight" },
-  ],
-];
-
-const toggleGroupOptionSizes: ToggleOptionSizeProp[] = ["xs", "sm", "md", "lg"];
+import { ToggleGroupSection } from "@/app/ui/sections/ToogleGroupSection";
 
 const TagColorSchemes = [
   "primary",
@@ -75,8 +41,6 @@ const TagColorSchemes = [
 ];
 
 export default function UI() {
-  const [slipage, setSlipage] = useState("auto"); // radioGroup eg
-
   return (
     <main className="max-w-screen-xl px-5 mx-auto my-10 overflow-auto">
       <ThemeSwitch />
@@ -107,37 +71,7 @@ export default function UI() {
         <PopoverSection />
         <TooltipSection />
         <TabsSection />
-        <Section title="ToggleGroup">
-          <p>
-            Based on Radio Group component from Headless ui,{" "}
-            <a
-              className="text-surface-primary-main hover:underline"
-              href="https://headlessui.com/react/radio-group"
-            >
-              check their docs
-            </a>
-            .
-          </p>
-          <div className="flex items-center space-x-5 divide-x divide-surface-surface-2">
-            {toggleGroupOptionSizes.map(size => (
-              <div key={size} className="pl-4">
-                <p>Size: {size}</p>
-                <ToggleGroup value={slipage} onChange={setSlipage}>
-                  <ToggleGroupOption value="auto" size={size}>
-                    auto
-                  </ToggleGroupOption>
-                  <ToggleGroupOption value="0.1" size={size}>
-                    0.1%
-                  </ToggleGroupOption>
-                  <ToggleGroupOption value="0.5" size={size}>
-                    0.5%
-                  </ToggleGroupOption>
-                </ToggleGroup>
-              </div>
-            ))}
-          </div>
-          <div>Selected: {slipage}</div>
-        </Section>
+        <ToggleGroupSection />
 
         <Section title="Tag">
           <div className="flex space-x-6">
@@ -241,33 +175,7 @@ export default function UI() {
             ))}
           </div>
         </Section>
-        <Section title="Logos">
-          <div className="space-y-4">
-            <div className="flex space-x-2">
-              {logoList.map((iconBadge, i) => (
-                <Logo
-                  src="https://assets.smold.app/api/token/100/0xe91D153E0b41518A2Ce8Dd3D7944Fa863463a97d/logo-128.png"
-                  alt="xdai token"
-                  {...iconBadge}
-                  key={i}
-                />
-              ))}
-            </div>
-            {logoPairList.map((row, i) => (
-              <div key={i} className="flex space-x-2">
-                {row.map((iconBadge, j) => (
-                  <LogoPair
-                    logoASrc="https://assets.smold.app/api/token/100/0xe91D153E0b41518A2Ce8Dd3D7944Fa863463a97d/logo-128.png"
-                    logoBSrc="https://assets.smold.app/api/token/1/0x6810e776880C02933D47DB1b9fc05908e5386b96/logo-128.png"
-                    alt="xdai token"
-                    {...iconBadge}
-                    key={j}
-                  />
-                ))}
-              </div>
-            ))}
-          </div>
-        </Section>
+        <LogoSection />
         <Section title="Font sizes">
           <div className="space-y-2">
             <p>

@@ -7,3 +7,6 @@ export * from "./ModalSection";
 export * from "./TooltipSection";
 export * from "./TabsSection";
 export * from "./PopoverSection";
+export * from "./LogoSection";
+export * from "./ModalSection";
+export * from "./ToogleGroupSection";
