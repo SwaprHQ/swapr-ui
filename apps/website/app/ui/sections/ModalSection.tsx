@@ -9,6 +9,10 @@ import {
   DialogTitle,
   DialogTrigger,
   DialogFooter,
+  Icon,
+  VisuallyHidden,
+  DialogDescription,
+  IconBadge,
 } from "@swapr/ui";
 import { useState } from "react";
 
@@ -24,7 +28,7 @@ export const ModalSection = () => {
       <Card className="flex space-x-4">
         <Dialog>
           <DialogTrigger asChild>
-            <Button>Open</Button>
+            <Button>Basic</Button>
           </DialogTrigger>
           <DialogContent append="bottom">
             <DialogHeader>
@@ -46,7 +50,7 @@ export const ModalSection = () => {
         </Dialog>
         <Dialog open={openModal} onOpenChange={setOpenModal}>
           <DialogTrigger asChild>
-            <Button>Open</Button>
+            <Button>Confirm</Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader size="xl" className="text-center">
@@ -64,7 +68,7 @@ export const ModalSection = () => {
                 variant="secondary"
                 onClick={closeModal}
               >
-                Confirm
+                Cancel
               </Button>
               <Button
                 width="full"
@@ -74,6 +78,59 @@ export const ModalSection = () => {
               >
                 Confirm
               </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button>Open success modal</Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <VisuallyHidden asChild>
+                <DialogTitle className="px-4">Transaction Modal</DialogTitle>
+              </VisuallyHidden>
+            </DialogHeader>
+            <VisuallyHidden asChild>
+              <DialogDescription className="px-4">
+                Here we display a Transaction information
+              </DialogDescription>
+            </VisuallyHidden>
+            <DialogBody className="mx-auto mb-8 w-full max-w-fit space-y-2 md:mx-0 md:max-w-[496px]">
+              <div className="flex flex-col items-center w-full space-y-12">
+                <>
+                  <IconBadge name="tick" colorScheme="success" />
+                  <div className="flex flex-col items-center space-y-2">
+                    <p className="text-2xl font-semibold">
+                      Transaction successful!
+                    </p>
+                    <p className="font-semibold text-center text-md text-text-low-em">
+                      The transaction has been completed.
+                      <br />
+                      You can close this window now.
+                    </p>
+                  </div>
+                </>
+              </div>
+            </DialogBody>
+            <DialogFooter>
+              <a
+                href="#"
+                target="_blank"
+                className="w-full"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  width="full"
+                  colorScheme="main"
+                  variant="primary"
+                  size="lg"
+                >
+                  <>
+                    View in explorer <Icon name="arrow-top-right" />
+                  </>
+                </Button>
+              </a>
             </DialogFooter>
           </DialogContent>
         </Dialog>
