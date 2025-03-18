@@ -1,4 +1,4 @@
-import { Section } from "@/components";
+import { Card, Section } from "@/components";
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "@/tailwind.config";
 
@@ -44,10 +44,10 @@ const tailwindColors: { [key: string]: Array<string> } = Object.keys(
 
 export const ColorsSection = () => (
   <Section title="Colors">
-    <div className="space-y-20 divide-y divide-surface-surface-smoke-gray">
+    <div className="space-y-6 divide-y divide-surface-surface-smoke-gray">
       {Object.keys(tailwindColors).map(key => (
-        <div key={key} className="">
-          <p className="py-12 text-lg font-semibold capitalize">{key}</p>
+        <Card key={key} className="">
+          <p className="pb-12 text-lg font-semibold capitalize">{key}</p>
           <div className="grid grid-cols-1 gap-2 lg:grid-cols-4">
             {tailwindColors[key].map(color => (
               <div key={color} className="flex space-x-4">
@@ -58,7 +58,7 @@ export const ColorsSection = () => (
               </div>
             ))}
           </div>
-        </div>
+        </Card>
       ))}
     </div>
   </Section>
