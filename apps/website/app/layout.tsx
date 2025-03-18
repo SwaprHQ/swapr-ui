@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Swapr UI",
-  description: "Web3 components to build dapps fast",
+  description: "Components to build apps fast and clean",
 };
 
 export default function RootLayout({ children }: PropsWithChildren) {
