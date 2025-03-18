@@ -1,8 +1,6 @@
 "use client";
 
-import { Input } from "@swapr/ui";
-
-import { Section, ThemeSwitch } from "@/components";
+import { ThemeSwitch } from "@/components";
 import {
   ButtonSection,
   ButtonLinkSection,
@@ -18,6 +16,9 @@ import {
   IconSection,
   ToggleGroupSection,
   TagSection,
+  InputSection,
+  ShadowSection,
+  FontsizeSection,
 } from "@/app/ui/sections";
 
 export default function UI() {
@@ -53,129 +54,11 @@ export default function UI() {
         <TabsSection />
         <ToggleGroupSection />
         <TagSection />
-        <Section title="Input">
-          <div className="flex flex-col space-y-4 w-[200px]">
-            <Input
-              label="Email"
-              type="email"
-              id="email"
-              message="This is a message"
-              placeholder="Input email here"
-            />
-            <Input
-              label="Solid"
-              type="email"
-              id="email"
-              placeholder="Input email here"
-              variant="solid"
-            />
-            <Input
-              label="Pastel"
-              type="email"
-              id="email"
-              placeholder="Input email here"
-              variant="pastel"
-            />
-            <Input
-              label="Ghost"
-              type="email"
-              id="email"
-              placeholder="Input email here"
-              variant="ghost"
-            />
-            <Input
-              label="Large (lg)"
-              type="email"
-              id="email"
-              placeholder="Input email here"
-              leftIcon="search"
-              rightIcon="chevron-down"
-              size="lg"
-            />
-            <Input
-              label="Medium (md) - default"
-              type="email"
-              id="email"
-              placeholder="Input email here"
-              leftIcon="search"
-              rightIcon="chevron-down"
-              size="md"
-            />
-            <Input
-              label="Small (sm)"
-              type="email"
-              id="email"
-              placeholder="Input email here"
-              leftIcon="search"
-              rightIcon="chevron-down"
-              size="sm"
-            />
-            <Input
-              label="Disabled"
-              type="email"
-              id="email-2"
-              disabled
-              message="This is a message"
-              placeholder="Input email here"
-            />
-            <Input
-              label="With error"
-              type="email"
-              id="email-3"
-              message="There is an error"
-              placeholder="Input email here"
-              isInvalid={true}
-            />
-          </div>
-        </Section>
+        <InputSection />
         <IconSection />
         <LogoSection />
-        <Section title="Font sizes">
-          <div className="space-y-2">
-            <p>
-              9. <span className="text-3xl">Font size 3xl</span>
-            </p>
-            <p>
-              8. <span className="text-2xl">Font size 2xl</span>
-            </p>
-            <p>
-              7. <span className="text-xl">Font size xl</span>
-            </p>
-            <p>
-              6. <span className="text-lg">Font size lg</span>
-            </p>
-            <p>
-              5. <span className="text-md">Font size md</span>
-            </p>
-            <p>
-              4. <span className="text-base">Font size base</span>
-            </p>
-            <p>
-              3. <span className="text-sm">Font size sm</span>
-            </p>
-            <p>
-              2. <span className="text-xs">Font size xs</span>
-            </p>
-            <p>
-              1. <span className="text-2xs">Font size 2xs</span>
-            </p>
-          </div>
-        </Section>
-        <Section title="Box Shadows">
-          <div className="space-y-2">
-            <div className="bg-surface-disabled-low-em rounded-16 shadow-1 w-[900px] h-[600px]">
-              <div className="bg-surface-disabled-med-em rounded-16 shadow-2 w-[800px] h-[500px]">
-                <div className="bg-surface-disabled-high-em rounded-16 shadow-3 w-[700px] h-[400px]">
-                  <div className="bg-surface-disabled-high-em rounded-16 shadow-4 w-[600px] h-[300px]">
-                    <div className="bg-surface-disabled-high-em rounded-16 shadow-5 w-[500px] h-[200px]">
-                      <div className="bg-surface-disabled-high-em rounded-16 shadow-6 w-[400px] h-[100px]"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Section>
+        <FontsizeSection />
+        <ShadowSection />
         <ColorsSection />
         <ButtonLinkSection />
       </div>

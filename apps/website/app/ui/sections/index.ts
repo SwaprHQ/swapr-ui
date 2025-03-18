@@ -12,3 +12,6 @@ export * from "./ModalSection";
 export * from "./ToggleGroupSection";
 export * from "./IconSection";
 export * from "./TagSection";
+export * from "./InputSection";
+export * from "./FontSizeSection";
+export * from "./ShadowSection";
