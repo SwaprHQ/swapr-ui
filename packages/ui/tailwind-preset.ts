@@ -59,6 +59,7 @@ module.exports = {
         "1px solid var(--primary_special_outline, rgba(0, 0, 0, 0.12))",
     },
     colors: {
+      transparent: "transparent",
       surface: {
         white: "var(--color-white-100)",
         black: "var(--color-black-100)",
