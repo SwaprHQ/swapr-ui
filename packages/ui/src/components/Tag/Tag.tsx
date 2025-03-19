@@ -3,7 +3,10 @@ import { cva } from "class-variance-authority";
 import { twMerge } from "@/utils";
 
 export const tagStyles = cva(
-  ["flex items-center justify-center", "font-medium shadow-secondary-button"],
+  [
+    "flex items-center justify-center w-fit",
+    "font-medium shadow-secondary-button",
+  ],
   {
     variants: {
       size: {
