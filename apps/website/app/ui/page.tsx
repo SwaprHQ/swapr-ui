@@ -3,7 +3,6 @@
 import { ThemeSwitch } from "@/components";
 import {
   ButtonSection,
-  ButtonLinkSection,
   ChipButtonsSection,
   ColorsSection,
   IconButtonSection,
@@ -105,7 +104,6 @@ export default function UI() {
         <FontsizeSection />
         <ShadowSection />
         <ColorsSection />
-        <ButtonLinkSection />
       </div>
     </main>
   );

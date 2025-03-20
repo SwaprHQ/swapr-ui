@@ -1,7 +1,6 @@
 import { Section, SelectProp, Card } from "@/components";
 import {
   Button,
-  ButtonLink,
   ButtonLinkProps,
   ButtonProps,
   ButtonSize,
@@ -69,18 +68,26 @@ const buttonsList: {
 };
 
 export const ButtonSection = () => (
-  <ButtonsSection component={Button} btnList={buttonsList}>
+  <ComponentSection component={Button} btnList={buttonsList}>
     Buttons
-  </ButtonsSection>
+  </ComponentSection>
 );
 
-export const ButtonLinkSection = () => (
-  <ButtonsSection component={ButtonLink} btnList={buttonsList}>
-    ButtonLinks
-  </ButtonsSection>
-);
+const widthOptions = [
+  { value: "normal", label: "normal" },
+  { value: "fit", label: "fit" },
+  { value: "full", label: "full" },
+];
 
-const ButtonsSection = ({
+const sizeOptions = [
+  { value: "xs", label: "xs" },
+  { value: "sm", label: "sm" },
+  { value: "md", label: "md" },
+  { value: "lg", label: "lg" },
+  { value: "xl", label: "xl" },
+];
+
+const ComponentSection = ({
   children,
   btnList,
   component,
@@ -97,24 +104,14 @@ const ButtonsSection = ({
           title="size"
           value={size}
           set={setSize}
-          options={[
-            { value: "xs", label: "xs" },
-            { value: "sm", label: "sm" },
-            { value: "md", label: "md" },
-            { value: "lg", label: "lg" },
-            { value: "xl", label: "xl" },
-          ]}
+          options={sizeOptions}
         />
         <SelectProp
           name="btnWitdh"
           title="width"
           value={width}
           set={setWidth}
-          options={[
-            { value: "normal", label: "normal" },
-            { value: "fit", label: "fit" },
-            { value: "full", label: "full" },
-          ]}
+          options={widthOptions}
         />
       </div>
 
