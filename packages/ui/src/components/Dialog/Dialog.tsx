@@ -1,7 +1,7 @@
 import { ElementRef, forwardRef, PropsWithChildren } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { cva, cx } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 import { twMerge } from "@/utils";
 import { ButtonProps } from "@/components/Button";
 import { IconButton } from "@/components/IconButton";
@@ -28,7 +28,7 @@ const DialogOverlay = forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Overlay
     ref={ref}
-    className={cx(
+    className={twMerge(
       "fixed inset-0 z-50 bg-black-12 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className
     )}
@@ -89,16 +89,16 @@ DialogContent.displayName = DialogPrimitive.Content.displayName;
 
 const DialogClose = forwardRef<
   ElementRef<typeof DialogPrimitive.Close>,
-  { name?: IconName }
->(({ name = "cross", ...props }, ref) => (
+  { name?: IconName; className?: string }
+>(({ name = "cross", className, ...props }, ref) => (
   <DialogPrimitive.Close asChild>
     <IconButton
       name={name}
       size="xs"
       variant="tertiary"
       ref={ref}
+      className={twMerge("absolute top-0 right-0 p-3", className)}
       {...props}
-      className="rounded-100"
     />
   </DialogPrimitive.Close>
 ));
@@ -131,7 +131,7 @@ DialogBody.displayName = "DialogBody";
 
 const DialogFooter = ({ className, ...props }: DialogProps) => (
   <div
-    className={cx(
+    className={twMerge(
       "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end p-3 md:p-4",
       className
     )}
