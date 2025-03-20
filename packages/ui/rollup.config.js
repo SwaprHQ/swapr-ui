@@ -10,80 +10,63 @@ import typescript from "rollup-plugin-typescript2";
 import dts from "rollup-plugin-dts";
 import svg from "rollup-plugin-svg";
 
-// plugin to strip 'use client' directives
-const stripUseClientDirective = {
-  name: "strip-use-client",
-  transform(code) {
-    // Replace 'use client' directive with an empty string or comment
-    return code.replace(/"use client";?/g, '// "use client" directive removed');
-  },
+// Main build step (generates JS and declaration files)
+const mainBuild = {
+  input: ["./tailwind-preset.ts", "src/index.ts"],
+  plugins: [
+    peerDepsExternal(),
+    nodeResolve({
+      preferBuiltins: true,
+      extensions: [".js", ".jsx", ".ts", ".tsx", ".mjs"],
+    }),
+    typescript({
+      tsconfig: "tsconfig.json",
+      exclude: [/\.stories\.tsx?$/, /node_modules/],
+      tsconfigOverride: {
+        compilerOptions: {
+          declaration: true,
+          declarationDir: "./dist/es/src", // Ensure declarations are generated here
+        },
+        include: ["src/**/*"],
+        exclude: ["node_modules", "**/*.stories.tsx"],
+      },
+    }),
+    commonjs({
+      transformMixedEsModules: true,
+      include: [/node_modules/],
+    }),
+    svg(),
+    esbuild({
+      target: "es2020",
+      tsconfig: resolve("./tsconfig.json"),
+      exclude: [/\.stories\.tsx?$/, /node_modules/],
+    }),
+  ],
+  output: [
+    {
+      format: "es",
+      dir: resolve("./dist/es"),
+      entryFileNames: "[name].mjs",
+      preserveModules: true,
+      preserveModulesRoot: "src",
+      sourcemap: true,
+      exports: "auto",
+    },
+    {
+      format: "cjs",
+      dir: resolve("./dist/cjs"),
+      entryFileNames: "[name].cjs",
+      preserveModules: true,
+      preserveModulesRoot: "src",
+      sourcemap: true,
+      exports: "auto",
+    },
+  ],
+  external: ["react", "react-dom", "sonner", "@headlessui/react"],
 };
 
-export default [
-  {
-    input: ["./tailwind-preset.ts", "src/index.ts"],
-    plugins: [
-      peerDepsExternal(),
-
-      // The key is to properly configure external dependencies before TypeScript processing
-      nodeResolve({
-        preferBuiltins: true,
-        extensions: [".js", ".jsx", ".ts", ".tsx", ".mjs"],
-      }),
-
-      // Process TypeScript files - with proper exclusions
-      typescript({
-        tsconfig: "tsconfig.json",
-        exclude: [/\.stories\.tsx?$/, /node_modules/],
-        tsconfigOverride: {
-          compilerOptions: {
-            declaration: true,
-            declarationDir: "./dist/es/src",
-          },
-          include: ["src/**/*"],
-          exclude: ["node_modules", "**/*.stories.tsx"],
-        },
-      }),
-
-      // Stripping use client directive
-      stripUseClientDirective,
-
-      commonjs({
-        transformMixedEsModules: true,
-        include: [/node_modules/],
-      }),
-
-      svg(),
-
-      esbuild({
-        target: "es2020",
-        tsconfig: resolve("./tsconfig.json"),
-        exclude: [/\.stories\.tsx?$/, /node_modules/],
-      }),
-    ],
-    output: [
-      {
-        format: "es",
-        dir: resolve("./dist/es"),
-        entryFileNames: "[name].mjs",
-        preserveModules: true,
-        preserveModulesRoot: "src",
-        sourcemap: true,
-        exports: "auto",
-      },
-      {
-        format: "cjs",
-        dir: resolve("./dist/cjs"),
-        entryFileNames: "[name].cjs",
-        preserveModules: true,
-        preserveModulesRoot: "src",
-        sourcemap: true,
-        exports: "auto",
-      },
-    ],
-    // Add external to explicitly tell Rollup which packages to not bundle
-    external: ["react", "react-dom", "sonner", "@headlessui/react"],
-  },
+// CSS build steps
+const cssBuilds = [
   {
     input: resolve("./src/global.css"),
     plugins: [
@@ -106,19 +89,24 @@ export default [
     ],
     output: [{ dir: resolve("./dist") }],
   },
-  {
-    input: ["dist/es/src/index.d.ts"],
-    plugins: [dts()],
-    output: [
-      {
-        dir: resolve("./dist/types"),
-        preserveModules: true,
-        preserveModulesRoot: "src",
-        format: "es",
-        sourcemap: true,
-        entryFileNames: "[name].ts",
-      },
-    ],
-    external: [/\.css$/],
-  },
 ];
+
+// DTS build step (processes declaration files)
+const dtsBuild = {
+  input: "dist/es/src/index.d.ts", // Ensure this matches the generated path
+  plugins: [dts()],
+  output: [
+    {
+      dir: resolve("./dist/types"),
+      preserveModules: true,
+      preserveModulesRoot: "src",
+      format: "es",
+      sourcemap: true,
+      entryFileNames: "[name].d.ts",
+    },
+  ],
+  external: [/\.css$/],
+};
+
+// Export the build steps in the correct order
+export default [mainBuild, ...cssBuilds, dtsBuild];
