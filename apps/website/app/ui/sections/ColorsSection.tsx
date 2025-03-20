@@ -6,7 +6,7 @@ const colorsKeysBanList = [
   "transparent",
   "inherit",
   "elevation-shadow", // todo: fix appearing 20 versions when is just a color
-  "transparent_inverse", // todo: fix appearing 20 versions when is just a color
+  "transparent-inverse", // todo: fix appearing 20 versions when is just a color
 ];
 const fullConfig = resolveConfig(tailwindConfig);
 

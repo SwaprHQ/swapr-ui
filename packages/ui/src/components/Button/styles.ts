@@ -23,7 +23,7 @@ export const buttonStyles = cva(
         secondary: [],
         tertiary: [],
         neutral: [],
-        ghost: ["hover:disabled:bg-transparent_inverse"],
+        ghost: ["hover:disabled:bg-transparent-inverse"],
       },
       colorScheme: {
         main: [
@@ -100,7 +100,7 @@ export const buttonStyles = cva(
         variant: "neutral",
         colorScheme: "main",
         class: [
-          "text-text-inverse-black-neutral bg-surface-inverse_white_neutral shadow-primary-button",
+          "text-text-inverse-black-neutral bg-surface-inverse-white-neutral shadow-primary-button",
           "hover:bg-neutral-inverse-white-alpha-88)",
           "focus-within:shadow-focus-gray",
         ],
