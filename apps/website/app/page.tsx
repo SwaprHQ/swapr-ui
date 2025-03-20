@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { Button } from "@swapr/ui";
+import { Features } from "@/components";
 
 export default function Home() {
   return (
-    <div className="bg-[url('/lines.svg')] h-screen bg-no-repeat bg-cover flex justify-center">
+    <div className="bg-[url('/lines.svg')] h-screen bg-no-repeat bg-cover flex justify-center font-ost">
       <div className="pt-48 space-y-6 text-center">
         <h1 className="text-[58px] leading-[64px] font-bold">
           Build apps fast
@@ -18,6 +19,9 @@ export default function Home() {
             Explore components
           </Button>
         </Link>
+        <div className="py-8">
+          <Features />
+        </div>
       </div>
     </div>
   );
