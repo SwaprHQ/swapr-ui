@@ -141,7 +141,6 @@ module.exports = {
           "base-em-alpha": "var(--surface-danger_base_em_alpha)",
         },
       },
-      // todo: check text variables if follow same pattern above
       text: {
         none: "var(--transparent_white)",
         "base-em": "var(--text-base_em)",

@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="bg-[url('/lines.svg')] h-screen bg-no-repeat bg-cover flex justify-center font-ost">
       <div className="pt-48 space-y-6 text-center">
-        <h1 className="text-[58px] leading-[64px] font-bold">
+        <h1 className="text-[58px] leading-[64px] font-extrabold">
           Build apps fast
         </h1>
         <p className="text-lg text-text-med-em">
