@@ -2,16 +2,12 @@ import { Card, Section } from "@/components";
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "@/tailwind.config";
 
-const colorsKeysBanList = [
-  "transparent",
-  "inherit",
-  "elevation-shadow", // todo: fix appearing 20 versions when is just a color
-  "transparent-inverse", // todo: fix appearing 20 versions when is just a color
-];
+const colorsKeysBanList = ["transparent", "inherit"];
+
 const fullConfig = resolveConfig(tailwindConfig);
 
 function extractStringValuesFromObject(object: any): string[] {
-  const keys = [];
+  const keys: string[] = [];
 
   for (const key in object) {
     if (Object.prototype.hasOwnProperty.call(object, key)) {
@@ -31,16 +27,29 @@ function extractStringValuesFromObject(object: any): string[] {
 
 const tailwindColors: { [key: string]: Array<string> } = Object.keys(
   fullConfig.theme.colors
-).reduce(
-  (acc, key) =>
-    colorsKeysBanList.some(colorName => colorName === key)
-      ? acc
-      : {
-          ...acc,
-          [key]: extractStringValuesFromObject(fullConfig.theme.colors[key]),
-        },
-  {}
-);
+).reduce((acc, key) => {
+  if (colorsKeysBanList.some(colorName => colorName === key)) {
+    return acc;
+  }
+
+  const colorValue = fullConfig.theme.colors[key];
+
+  if (typeof colorValue === "string") {
+    // Use a fixed string like 'DEFAULT' to represent the base color
+    return {
+      ...acc,
+      [key]: ["DEFAULT"],
+    };
+  } else if (typeof colorValue === "object" && colorValue !== null) {
+    // Process nested color objects
+    return {
+      ...acc,
+      [key]: extractStringValuesFromObject(colorValue),
+    };
+  }
+
+  return acc;
+}, {});
 
 export const ColorsSection = () => (
   <Section title="Colors">
@@ -49,14 +58,17 @@ export const ColorsSection = () => (
         <Card key={key} className="">
           <p className="pb-12 text-lg font-semibold capitalize">{key}</p>
           <div className="grid grid-cols-1 gap-2 lg:grid-cols-4">
-            {tailwindColors[key].map(color => (
-              <div key={color} className="flex space-x-4">
-                <div
-                  className={`bg-${key}-${color} w-20 h-10 rounded-6 border border-surface-surface-2`}
-                />
-                <p className="text-sm text-text-med-em">{`${key}-${color}`}</p>
-              </div>
-            ))}
+            {tailwindColors[key].map(color => {
+              const colorName = color === "DEFAULT" ? key : `${key}-${color}`;
+              return (
+                <div key={color} className="flex space-x-4">
+                  <div
+                    className={`bg-${colorName} w-20 h-10 rounded-6 border border-surface-surface-2`}
+                  />
+                  <p className="text-sm text-text-med-em">{colorName}</p>
+                </div>
+              );
+            })}
           </div>
         </Card>
       ))}
