@@ -20,6 +20,12 @@ const chipButtons = [
   { key: "gaming", label: "Gaming" },
 ];
 
+const sizeOptions = [
+  { value: "xs", label: "xs" },
+  { value: "sm", label: "sm" },
+  { value: "md", label: "md" },
+];
+
 export const ChipButtonsSection = () => {
   const [chipActiveKey, setShipActiveKey] = useState("tech");
   const [chipButtonSize, setChipButtonSize] = useState<ChipButtonsSizes>("md");
@@ -44,11 +50,7 @@ export const ChipButtonsSection = () => {
           name="chipButtonSize"
           value={chipButtonSize}
           set={setChipButtonSize}
-          options={[
-            { value: "xs", label: "xs" },
-            { value: "sm", label: "sm" },
-            { value: "md", label: "md" },
-          ]}
+          options={sizeOptions}
         />
       </div>
 
