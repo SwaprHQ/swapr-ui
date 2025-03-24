@@ -146,7 +146,7 @@ module.exports = {
         "base-em": "var(--text-base-em)",
         "low-em": "var(--text-low-em)",
         "med-em": "var(--text-med-em)",
-        "high-em": "var(--text-high)",
+        "high-em": "var(--text-high-em)",
         white: "var(--color-white-100)",
         black: "var(--color-black-100)",
         "inverse-white-neutral": "var(--text-inverse-white-neutral)",
