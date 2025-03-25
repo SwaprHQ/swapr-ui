@@ -5,7 +5,7 @@ export const buttonStyles = cva(
     "flex items-center justify-center h-fit",
     "select-none font-semibold text-nowrap",
     "disabled:cursor-not-allowed disabled:ring-0 disabled:text-text-base-em",
-    "focus-visible:outline-none focus-visible:ring-[3px]",
+    "focus:outline-none focus:ring-[3px]",
     "active:ring-[3px]",
   ],
   {
