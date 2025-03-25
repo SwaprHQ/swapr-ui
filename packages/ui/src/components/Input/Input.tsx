@@ -117,7 +117,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             <Icon
               size={iconSize[size]}
               name={leftIcon}
-              className="text-text-low-em"
+              className="text-text-med-em"
             />
           )}
           <InputField
@@ -130,7 +130,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             <Icon
               size={iconSize[size]}
               name={rightIcon}
-              className="text-text-low-em"
+              className="text-text-med-em"
             />
           )}
         </div>
