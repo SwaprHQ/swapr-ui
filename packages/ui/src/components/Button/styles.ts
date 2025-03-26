@@ -87,7 +87,7 @@ export const buttonStyles = cva(
         variant: "tertiary",
         colorScheme: "main",
         class: [
-          "bg-surface-white-smoke-1 border border-outline-base-em text-text-med-em shadow-secondary-button",
+          "bg-surface-surface-white-smoke-1 border border-outline-base-em text-text-med-em shadow-secondary-button",
           "hover:bg-surface-surface-3",
         ],
       },
