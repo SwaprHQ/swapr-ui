@@ -97,7 +97,7 @@ const DialogClose = forwardRef<
       size="xs"
       variant="tertiary"
       ref={ref}
-      className={twMerge("absolute top-0 right-0 p-3", className)}
+      className={twMerge("rounded-100", className)}
       {...props}
     />
   </DialogPrimitive.Close>

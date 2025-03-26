@@ -43,7 +43,7 @@ export const IconButton = forwardRef(
       {...props}
       ref={ref}
     >
-      <Icon size={iconSize[size]} name={name} />
+      <Icon size={iconSize[size]} name={name} className="flex-shrink-0" />
     </Button>
   )
 );
