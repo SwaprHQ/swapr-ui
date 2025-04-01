@@ -4,8 +4,8 @@ import { Fragment, useState } from "react";
 
 const TagColorSchemes = [
   "primary",
-  "primary-light",
-  "primary-outline",
+  "light",
+  "outline",
   "secondary",
   "tertiary",
   "success",

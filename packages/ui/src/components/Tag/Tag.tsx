@@ -16,10 +16,8 @@ export const tagStyles = cva(
       },
       colorScheme: {
         primary: ["bg-surface-primary-med-em text-text-inverse-black-neutral"],
-        "primary-light": [
-          "bg-surface-primary-base-em-alpha text-text-primary-high-em",
-        ],
-        "primary-outline": [
+        light: ["bg-surface-primary-base-em-alpha text-text-primary-high-em"],
+        outline: [
           "bg-surface-surface-white-smoke-0 text-text-primary-high-em border border-outline-primary-alpha",
         ],
         secondary: ["bg-surface-surface-2 text-text-med-em"],
@@ -46,7 +44,9 @@ export type TagColorSchemeProp =
   | "success"
   | "danger"
   | "warning"
-  | "info";
+  | "info"
+  | "outline"
+  | "light";
 
 export interface TagProps {
   size?: TagSizeProp;
