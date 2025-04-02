@@ -7,11 +7,11 @@ import { Icon, IconProps } from "../Icon";
 export const iconButtonStyles = cva(["p-0"], {
   variants: {
     size: {
-      xs: "size-8 rounded-6",
-      sm: "size-10 rounded-8",
-      md: "size-12 rounded-12",
-      lg: "size-14 rounded-16",
-      xl: "size-16 rounded-16",
+      xs: "size-7 rounded-8",
+      sm: "size-8 rounded-8",
+      md: "size-10 rounded-10",
+      lg: "size-12 rounded-14",
+      xl: "size-14 rounded-14",
     },
   },
   defaultVariants: {
@@ -21,11 +21,11 @@ export const iconButtonStyles = cva(["p-0"], {
 
 type Size = NonNullable<ButtonProps["size"]>;
 export const iconSize: Record<Size, number> = {
-  xs: 20,
-  sm: 24,
-  md: 28,
-  lg: 32,
-  xl: 40,
+  xs: 18,
+  sm: 22,
+  md: 26,
+  lg: 30,
+  xl: 36,
 };
 
 export const IconButton = forwardRef(

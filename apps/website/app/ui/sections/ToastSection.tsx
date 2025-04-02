@@ -6,7 +6,27 @@ import {
   warningToast,
   toast,
   infoToast,
+  Icon,
 } from "@swapr/ui";
+
+export const waitingTxToast = (txHash: string) =>
+  toast({
+    children: (
+      <div className="flex items-center space-x-4">
+        <Icon
+          name="refresh"
+          size={24}
+          className="h-5 w-5 shrink-0 animate-spin"
+        />
+        <div>
+          <p>Wating for transaction confirmation </p>
+          <a href="#" className="text-text-primary-high-em">
+            {txHash.slice(0, 6)}...${txHash.slice(-4)}
+          </a>
+        </div>
+      </div>
+    ),
+  });
 
 export const ToastSection = () => {
   return (
@@ -88,6 +108,16 @@ export const ToastSection = () => {
             }
           >
             Download
+          </Button>
+
+          <Button
+            onClick={() =>
+              waitingTxToast(
+                "0x1234567890abcddef1234567890abcdef1234567890abcdef"
+              )
+            }
+          >
+            wait for tx
           </Button>
         </div>
       </Card>
