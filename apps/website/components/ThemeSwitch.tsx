@@ -12,8 +12,12 @@ export const ThemeSwitch = () => {
   }
 
   return (
-    <select value={theme} onChange={(e) => setTheme(e.target.value)}>
-      <option value="system">Auto</option>
+    <select
+      value={theme}
+      onChange={e => setTheme(e.target.value)}
+      className="border rounded-16 border-outline-low-em py-1 px-2"
+    >
+      <option value="system">System</option>
       <option value="dark">Dark</option>
       <option value="light">Light</option>
     </select>

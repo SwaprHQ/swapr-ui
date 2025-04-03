@@ -22,14 +22,14 @@ import {
 
 export default function UI() {
   return (
-    <main className="max-w-screen-xl px-5 mx-auto my-10 overflow-auto relative">
+    <main className="lg:max-w-screen-lg 2xl:max-w-screen-xl px-5 sm:px-10 lg:px-5 mx-auto my-10 overflow-auto relative">
       <ThemeSwitch />
       <Sidenav />
       <div
         className="pb-12 my-12 space-y-12 divide-y divide-surface-surface-smoke-gray-em"
         id="about"
       >
-        <div className="p-10 space-y-4 bg-surface-primary-base-em rounded-12 shadow-focus-primary">
+        <div className="p-10 space-y-4 bg-surface-primary-base-em rounded-12 border border-outline-primary-base-em">
           <h1 className="text-[42px] font-bold mb-8">Swapr UI</h1>
           <div className="flex">
             <div className="bg-surface-primary-high-em size-3"></div>
@@ -76,14 +76,14 @@ export default function UI() {
             <div></div>
             <div className="flex items-center space-x-2">
               <a
-                className="hover:underline hover:text-text-primary-high-em"
+                className="hover:underline hover:text-text-primary-high-em bg-surface-surface-white-smoke-2 rounded-12 px-2 py-1 font-medium  text-sm"
                 href="https://github.com/SwaprHQ/swapr-ui"
                 target="_blank"
               >
                 Github
               </a>
               <a
-                className="hover:underline hover:text-text-primary-high-em"
+                className="hover:underline hover:text-text-primary-high-em bg-surface-surface-white-smoke-2 rounded-12 px-2 py-1 font-medium  text-sm"
                 href="https://www.npmjs.com/package/@swapr/ui"
                 target="_blank"
               >
