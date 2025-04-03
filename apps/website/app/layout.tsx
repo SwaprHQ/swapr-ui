@@ -8,7 +8,7 @@ import { Providers } from "../providers";
 
 export const metadata: Metadata = {
   title: "Swapr UI",
-  description: "Components to build apps fast and clean",
+  description: "Components to build clean apps fast",
 };
 
 export default function RootLayout({ children }: PropsWithChildren) {
