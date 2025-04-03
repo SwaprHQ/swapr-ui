@@ -97,7 +97,7 @@ const ComponentSection = ({
   const [width, setWidth] = useState<ButtonWidth>("normal");
 
   return (
-    <Section title={children?.toString()}>
+    <Section title={children?.toString()} id="buttons">
       <div className="flex mb-4 space-x-3">
         <SelectProp
           name="btnSize"

@@ -33,7 +33,7 @@ export const ChipButtonsSection = () => {
     useState<ChipButtonsColorScheme>("main");
 
   return (
-    <Section title="Chip Buttons">
+    <Section title="Chip Buttons" id="chip-buttons">
       <div className="flex mb-4 space-x-3">
         <SelectProp
           title="color scheme"

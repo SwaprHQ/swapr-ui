@@ -87,6 +87,7 @@ export type IconName =
   | "send"
   | "settings-fill"
   | "settings"
+  | "sidenav"
   | "support-fill"
   | "support"
   | "refresh"
@@ -191,6 +192,7 @@ export const iconMap: Record<IconName, any> = {
   search: IconList.Search,
   "send-fill": IconList.SendFill,
   send: IconList.Send,
+  sidenav: IconList.Sidenav,
   "settings-fill": IconList.SettingsFill,
   settings: IconList.Settings,
   "support-fill": IconList.SupportFill,

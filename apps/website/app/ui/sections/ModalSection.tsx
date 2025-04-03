@@ -23,7 +23,7 @@ export const ModalSection = () => {
   };
 
   return (
-    <Section title="Modal">
+    <Section title="Modal" id="modals">
       <Card className="flex space-x-4">
         <Dialog>
           <DialogTrigger asChild>

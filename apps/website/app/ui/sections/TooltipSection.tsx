@@ -9,7 +9,7 @@ import { Card, Section } from "@/components";
 
 export const TooltipSection = () => {
   return (
-    <Section title="Tooltips">
+    <Section title="Tooltips" id="tooltips">
       <Card className="grid items-center space-y-2.5 lg:space-y-0 lg:grid-cols-2 lg:gap-4">
         <div className="hidden text-xs font-semibold text-center uppercase bg-gray-200 lg:block">
           Basic

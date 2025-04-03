@@ -1,6 +1,6 @@
 "use client";
 
-import { ThemeSwitch } from "@/components";
+import { ThemeSwitch, Sidenav } from "@/components";
 import {
   ButtonSection,
   ChipButtonsSection,
@@ -22,9 +22,13 @@ import {
 
 export default function UI() {
   return (
-    <main className="max-w-screen-xl px-5 mx-auto my-10 overflow-auto">
+    <main className="max-w-screen-xl px-5 mx-auto my-10 overflow-auto relative">
       <ThemeSwitch />
-      <div className="pb-12 my-12 space-y-12 divide-y divide-surface-surface-smoke-gray-em">
+      <Sidenav />
+      <div
+        className="pb-12 my-12 space-y-12 divide-y divide-surface-surface-smoke-gray-em"
+        id="about"
+      >
         <div className="p-10 space-y-4 bg-surface-primary-base-em rounded-12 shadow-focus-primary">
           <h1 className="text-[42px] font-bold mb-8">Swapr UI</h1>
           <div className="flex">
@@ -88,6 +92,7 @@ export default function UI() {
             </div>
           </div>
         </div>
+
         <ButtonSection />
         <IconButtonSection />
         <ModalSection />

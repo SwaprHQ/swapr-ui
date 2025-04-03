@@ -2,7 +2,7 @@ import { Card, Section } from "@/components";
 import { Icon, iconMap, IconName } from "@swapr/ui";
 
 export const IconSection = () => (
-  <Section title="Icons">
+  <Section title="Icons" id="icons">
     <Card className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-4">
       {Object.keys(iconMap).map(iconName => (
         <div className="flex flex-col items-center space-y-2" key={iconName}>

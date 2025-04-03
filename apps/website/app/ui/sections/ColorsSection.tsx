@@ -52,7 +52,7 @@ const tailwindColors: { [key: string]: Array<string> } = Object.keys(
 }, {});
 
 export const ColorsSection = () => (
-  <Section title="Colors">
+  <Section title="Colors" id="colors">
     <div className="space-y-6 divide-y divide-surface-surface-smoke-gray">
       {Object.keys(tailwindColors).map(key => (
         <Card key={key} className="">

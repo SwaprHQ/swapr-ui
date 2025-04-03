@@ -24,7 +24,7 @@ export const TagSection = () => {
   const [size, setSize] = useState<TagSizeProp>("xs");
 
   return (
-    <Section title="Tag">
+    <Section title="Tag" id="tags">
       <SelectProp
         title="Variant"
         name="iconBtnVariant"

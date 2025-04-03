@@ -32,7 +32,7 @@ const logoPairList: Array<Array<LogoListProps>> = [
 ];
 
 export const LogoSection = () => (
-  <Section title="Logos">
+  <Section title="Logos" id="logos">
     <Card className="space-y-4">
       <div className="flex space-x-2">
         {logoList.map((iconBadge, i) => (

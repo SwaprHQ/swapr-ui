@@ -20,7 +20,7 @@ export const InputSection = () => {
   const [variant, setVariant] = useState<InputVariantProp>("secondary");
 
   return (
-    <Section title="Input">
+    <Section title="Input" id="inputs">
       <div className="flex space-x-4">
         <SelectProp
           title="Size"

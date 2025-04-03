@@ -72,7 +72,7 @@ export const IconButtonSection = () => {
   const [iconName, setIconName] = useState<IconName>("farm");
 
   return (
-    <Section title="Icon Buttons">
+    <Section title="Icon Buttons" id="icon-buttons">
       <p className="mb-6">
         Icons support all the buttons props, like color scheme and variant.
       </p>

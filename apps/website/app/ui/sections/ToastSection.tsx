@@ -30,7 +30,7 @@ export const waitingTxToast = (txHash: string) =>
 
 export const ToastSection = () => {
   return (
-    <Section title="Toast">
+    <Section title="Toast" id="toasts">
       <Card className="space-y-4">
         <div className="flex space-x-4">
           <Button

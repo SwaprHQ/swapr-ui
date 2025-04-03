@@ -3,7 +3,7 @@ import { TabBody, TabGroup, TabHeader, TabPanel, TabStyled } from "@swapr/ui";
 
 export const TabsSection = () => {
   return (
-    <Section title="Tabs">
+    <Section title="Tabs" id="tabs">
       <p className="mb-4">
         Tabs is based on{" "}
         <a

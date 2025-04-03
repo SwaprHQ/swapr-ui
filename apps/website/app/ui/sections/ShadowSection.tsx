@@ -2,7 +2,7 @@ import { Card, Section } from "@/components";
 
 export const ShadowSection = () => {
   return (
-    <Section title="Box Shadows">
+    <Section title="Box Shadows" id="shadows">
       <Card className="">
         <div className="space-y-2">
           <div className="bg-surface-disabled-low-em rounded-16 shadow-1 w-[900px] h-[600px]">

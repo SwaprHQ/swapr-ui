@@ -14,7 +14,7 @@ const sizes = [
 
 export const FontsizeSection = () => {
   return (
-    <Section title="Font sizes">
+    <Section title="Font sizes" id="fonts">
       <Card className="space-y-2">
         {sizes.map((size, index) => (
           <p key={size.size}>

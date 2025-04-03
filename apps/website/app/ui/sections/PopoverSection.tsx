@@ -59,7 +59,7 @@ const popoverList: PopoverList = {
 };
 
 export const PopoverSection = () => (
-  <Section title="Popovers">
+  <Section title="Popovers" id="popovers">
     <Card className="grid items-center space-y-2.5 lg:space-y-0 lg:grid-cols-3 lg:gap-4">
       {popoverList.headers.map((header, index) => (
         <div

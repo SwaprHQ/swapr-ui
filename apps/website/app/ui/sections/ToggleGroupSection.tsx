@@ -12,7 +12,7 @@ export const ToggleGroupSection = () => {
   const [slipage, setSlipage] = useState("auto");
 
   return (
-    <Section title="ToggleGroup">
+    <Section title="ToggleGroup" id="toggle-groups">
       <div className="space-y-3">
         <p>
           Based on Radio Group component from{" "}

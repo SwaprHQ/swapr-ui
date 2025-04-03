@@ -85,6 +85,7 @@ export { default as SendFill } from "./SendFill";
 export { default as Send } from "./Send";
 export { default as SettingsFill } from "./SettingsFill";
 export { default as Settings } from "./Settings";
+export { default as Sidenav } from "./Sidenav";
 export { default as SupportFill } from "./SupportFill";
 export { default as Support } from "./Support";
 export { default as SwapHorizontal } from "./SwapHorizontal";
