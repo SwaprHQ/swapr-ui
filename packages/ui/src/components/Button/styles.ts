@@ -3,9 +3,9 @@ import { cva } from "class-variance-authority";
 export const buttonStyles = cva(
   [
     "flex items-center justify-center h-fit",
-    "select-none font-semibold text-nowrap",
+    "select-none font-semibold text-nowrap outline-none",
     "disabled:cursor-not-allowed disabled:ring-0 disabled:text-text-base-em",
-    "focus:outline-none focus:ring-[3px]",
+    "focus:ring-[3px]",
     "active:ring-[3px]",
   ],
   {
@@ -26,18 +26,9 @@ export const buttonStyles = cva(
         ghost: ["hover:disabled:bg-transparent-inverse"],
       },
       colorScheme: {
-        main: [
-          "focus-visible:ring-outline-med-em focus-visible:shadow-focus",
-          "active:ring-outline-med-em",
-        ],
-        danger: [
-          "focus-visible:ring-outline-danger-alpha",
-          "active:ring-outline-danger-alpha",
-        ],
-        success: [
-          "focus-visible:ring-outline-success-alpha",
-          "active:ring-outline-success-alpha",
-        ],
+        main: ["ring-outline-med-em"],
+        danger: ["ring-outline-danger-alpha"],
+        success: ["ring-outline-success-alpha"],
       },
       active: {
         true: ["ring-[3px]"],
@@ -61,8 +52,7 @@ export const buttonStyles = cva(
         class: [
           "bg-surface-primary-med-em text-text-inverse-black-neutral shadow-primary-button",
           "hover:bg-surface-primary-high-em",
-          "focus-visible:ring-outline-primary-alpha",
-          "active:ring-outline-primary-alpha",
+          "ring-outline-primary-alpha",
         ],
       },
       {
@@ -71,8 +61,7 @@ export const buttonStyles = cva(
         class: [
           "bg-surface-primary-base-em-alpha text-text-primary-high-em shadow-secondary-button",
           "hover:bg-surface-primary-low-em-alpha",
-          "focus-visible:ring-outline-primary-alpha",
-          "active:ring-outline-primary-alpha",
+          "ring-outline-primary-alpha",
         ],
       },
       {
