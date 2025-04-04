@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Icon } from "@swapr/ui";
 import { cx } from "class-variance-authority";
+import { ThemeSwitch } from "@/components/ThemeSwitch";
 
 const sections = [
   { id: "about", label: "About" },
@@ -27,6 +28,7 @@ const sections = [
 export function Sidenav() {
   const [activeSection, setActiveSection] = useState<string>();
   const [isOpen, setIsOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const savedIsOpen = localStorage.getItem("sidenavOpen");
@@ -54,28 +56,58 @@ export function Sidenav() {
     localStorage.setItem("sidenavOpen", isOpen.toString());
   }, [isOpen]);
 
+  // Handle sidenav content click
+  const handleSidenavClick = () => {
+    if (!isOpen) {
+      setIsOpen(true);
+    }
+  };
+
   return (
     <nav
-      className={`fixed top-24 transition-all duration-300 ${isOpen ? "left-4" : "-left-48 md:-left-44"} flex`}
+      className={`fixed top-24 z-10 transition-all duration-300 ${
+        isOpen
+          ? "left-4"
+          : `-left-48 md:-left-44 ${isHovered ? "translate-x-8" : ""}`
+      } flex`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="w-48 p-4 bg-surface-primary-base-em rounded-12 shadow-focus-primary">
-        <h2 className="text-text-high-em font-medium mb-4 text-sm">Sections</h2>
-        <ul className="space-y-2">
-          {sections.map(section => (
-            <li key={section.id}>
-              <a
-                href={`#${section.id}`}
-                className={`block px-3 py-2 rounded-6 transition-colors hover:bg-surface-primary-low-em ${
-                  activeSection === section.id
-                    ? "bg-surface-primary-low-em text-text-primary-high-em"
-                    : "text-text-med-em"
-                }`}
-              >
-                {section.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+      <div
+        className="w-48 p-4 bg-surface-primary-base-em rounded-12 shadow-focus-primary cursor-pointer"
+        onClick={handleSidenavClick}
+      >
+        <div className="space-y-5">
+          <h2 className="text-text-primary-high-em font-bold text-xs">
+            Swapr UI
+          </h2>
+          <div className="space-y-3">
+            <h3 className="text-text-high-em font-medium text-sm">Theme</h3>
+            <ThemeSwitch />
+          </div>
+          <div className="space-y-3">
+            <h3 className="text-text-high-em font-medium text-sm">Sections</h3>
+            <ul className="space-y-2">
+              {sections.map(section => (
+                <li key={section.id}>
+                  <a
+                    href={`#${section.id}`}
+                    className={cx(
+                      "block px-3 py-2 rounded-6 transition-colors hover:bg-surface-primary-low-em text-sm",
+                      activeSection === section.id
+                        ? "bg-surface-primary-low-em text-text-primary-high-em"
+                        : "text-text-med-em"
+                    )}
+                    // Stop propagation to prevent the sidenav's onClick from firing when clicking links
+                    onClick={e => e.stopPropagation()}
+                  >
+                    {section.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
       <button
         onClick={() => setIsOpen(!isOpen)}

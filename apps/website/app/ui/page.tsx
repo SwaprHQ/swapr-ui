@@ -1,6 +1,6 @@
 "use client";
 
-import { ThemeSwitch, Sidenav } from "@/components";
+import { Sidenav } from "@/components";
 import {
   ButtonSection,
   ChipButtonsSection,
@@ -23,7 +23,6 @@ import {
 export default function UI() {
   return (
     <main className="lg:max-w-screen-lg 2xl:max-w-screen-xl px-5 sm:px-10 lg:px-5 mx-auto my-10 overflow-auto relative">
-      <ThemeSwitch />
       <Sidenav />
       <div
         className="pb-12 my-12 space-y-12 divide-y divide-surface-surface-smoke-gray-em"
