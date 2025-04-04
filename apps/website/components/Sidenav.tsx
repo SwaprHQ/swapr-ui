@@ -13,17 +13,17 @@ const sections = [
 const uiSections = [
   { id: "buttons", label: "Buttons" },
   { id: "icon-buttons", label: "Icon Buttons" },
+  { id: "chip-buttons", label: "Chip Buttons" },
+  { id: "toggle-groups", label: "Toggle Groups" },
+  { id: "tabs", label: "Tabs" },
   { id: "modals", label: "Modals" },
   { id: "toasts", label: "Toasts" },
-  { id: "chip-buttons", label: "Chip Buttons" },
   { id: "popovers", label: "Popovers" },
   { id: "tooltips", label: "Tooltips" },
-  { id: "tabs", label: "Tabs" },
-  { id: "toggle-groups", label: "Toggle Groups" },
   { id: "tags", label: "Tags" },
   { id: "inputs", label: "Inputs" },
-  { id: "icons", label: "Icons" },
   { id: "logos", label: "Logos" },
+  { id: "icons", label: "Icons" },
   { id: "fonts", label: "Fonts" },
   { id: "shadows", label: "Shadows" },
   { id: "colors", label: "Colors" },
@@ -35,34 +35,81 @@ export function Sidenav() {
   const [activeSection, setActiveSection] = useState<string>();
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [visibleSections, setVisibleSections] = useState<
+    Record<string, boolean>
+  >({});
 
   useEffect(() => {
     const savedIsOpen = localStorage.getItem("sidenavOpen");
     if (savedIsOpen !== null) {
       setIsOpen(savedIsOpen === "true");
     }
-    const handleScroll = () => {
-      for (const section of allSections) {
-        const element = document.getElementById(section.id);
-        if (element) {
-          const { top } = element.getBoundingClientRect();
-          if (top <= 100) {
-            setActiveSection(section.id);
-          }
-        }
-      }
+
+    const observerOptions = {
+      rootMargin: "-10% 0px -80% 0px", // Adjust these values to control when a section is considered "visible"
+      threshold: 0,
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach(entry => {
+        setVisibleSections(prev => ({
+          ...prev,
+          [entry.target.id]: entry.isIntersecting,
+        }));
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
+
+    // Observe all section elements
+    allSections.forEach(section => {
+      const element = document.getElementById(section.id);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => {
+      // Cleanup observer on component unmount
+      observer.disconnect();
+    };
   }, []);
+
+  // Update active section whenever visible sections change
+  useEffect(() => {
+    // Find the first visible section according to the order in allSections
+    const currentSection = allSections.find(
+      section => visibleSections[section.id]
+    );
+
+    if (currentSection) {
+      setActiveSection(currentSection.id);
+    } else if (Object.keys(visibleSections).length > 0) {
+      // If no sections are visible in viewport but we have tracked sections,
+      // determine which section has been scrolled
+      const scrollPosition = window.scrollY;
+
+      let lastPassedSection = allSections[0].id;
+
+      for (const section of allSections) {
+        const element = document.getElementById(section.id);
+        if (element && element.offsetTop <= scrollPosition) {
+          lastPassedSection = section.id;
+        }
+      }
+
+      setActiveSection(lastPassedSection);
+    }
+  }, [visibleSections]);
 
   // Save visibility state when it changes
   useEffect(() => {
     localStorage.setItem("sidenavOpen", isOpen.toString());
   }, [isOpen]);
 
-  // Handle sidenav content click
   const handleSidenavClick = () => {
     if (!isOpen) {
       setIsOpen(true);
