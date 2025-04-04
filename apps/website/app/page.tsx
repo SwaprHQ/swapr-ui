@@ -15,9 +15,7 @@ export default function Home() {
           A set of components made to help you ship apps faster than ever.
         </p>
         <Link href="/ui" className="block">
-          <Button onClick={() => console.log("hey")} className="mx-auto">
-            Explore components
-          </Button>
+          <Button className="mx-auto">Explore components</Button>
         </Link>
         <div className="py-8">
           <Features />

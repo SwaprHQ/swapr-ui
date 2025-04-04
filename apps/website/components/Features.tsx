@@ -58,12 +58,7 @@ const BentoCard = ({
       )}
     >
       <Link href="/ui" className="block">
-        <Button
-          onClick={() => console.log("hey")}
-          className="pointer-events-auto"
-          variant="tertiary"
-          size="sm"
-        >
+        <Button className="pointer-events-auto" variant="tertiary" size="sm">
           Explore components
         </Button>
       </Link>
