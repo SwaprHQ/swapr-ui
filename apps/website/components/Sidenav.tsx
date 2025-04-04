@@ -7,6 +7,10 @@ import { ThemeSwitch } from "@/components/ThemeSwitch";
 
 const sections = [
   { id: "about", label: "About" },
+  { id: "install", label: "Installation" },
+];
+
+const uiSections = [
   { id: "buttons", label: "Buttons" },
   { id: "icon-buttons", label: "Icon Buttons" },
   { id: "modals", label: "Modals" },
@@ -25,6 +29,8 @@ const sections = [
   { id: "colors", label: "Colors" },
 ];
 
+const allSections = [...sections, ...uiSections];
+
 export function Sidenav() {
   const [activeSection, setActiveSection] = useState<string>();
   const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +42,7 @@ export function Sidenav() {
       setIsOpen(savedIsOpen === "true");
     }
     const handleScroll = () => {
-      for (const section of sections) {
+      for (const section of allSections) {
         const element = document.getElementById(section.id);
         if (element) {
           const { top } = element.getBoundingClientRect();
@@ -82,29 +88,55 @@ export function Sidenav() {
             Swapr UI
           </h2>
           <div className="space-y-3">
-            <h3 className="text-text-high-em font-medium text-sm">Theme</h3>
+            <p className="text-text-high-em font-medium text-sm">Theme</p>
             <ThemeSwitch />
           </div>
           <div className="space-y-3">
-            <h3 className="text-text-high-em font-medium text-sm">Sections</h3>
+            <p className="text-text-high-em font-medium text-sm">
+              Getting started
+            </p>
             <ul className="space-y-2">
-              {sections.map(section => (
-                <li key={section.id}>
-                  <a
-                    href={`#${section.id}`}
-                    className={cx(
-                      "block px-3 py-2 rounded-6 transition-colors hover:bg-surface-primary-low-em text-sm",
-                      activeSection === section.id
-                        ? "bg-surface-primary-low-em text-text-primary-high-em"
-                        : "text-text-med-em"
-                    )}
-                    // Stop propagation to prevent the sidenav's onClick from firing when clicking links
-                    onClick={e => e.stopPropagation()}
-                  >
-                    {section.label}
-                  </a>
-                </li>
-              ))}
+              <div>
+                {sections.map(section => (
+                  <li key={section.id}>
+                    <a
+                      href={`#${section.id}`}
+                      className={cx(
+                        "block px-3 py-2 rounded-6 transition-colors hover:bg-surface-primary-low-em text-sm",
+                        activeSection === section.id
+                          ? "bg-surface-primary-low-em text-text-primary-high-em"
+                          : "text-text-med-em"
+                      )}
+                      // Stop propagation to prevent the sidenav's onClick from firing when clicking links
+                      onClick={e => e.stopPropagation()}
+                    >
+                      {section.label}
+                    </a>
+                  </li>
+                ))}
+              </div>
+              <div>
+                <p className="text-text-high-em font-medium text-sm mb-2">
+                  Components
+                </p>
+                {uiSections.map(section => (
+                  <li key={section.id}>
+                    <a
+                      href={`#${section.id}`}
+                      className={cx(
+                        "block px-3 py-2 rounded-6 transition-colors hover:bg-surface-primary-low-em text-sm",
+                        activeSection === section.id
+                          ? "bg-surface-primary-low-em text-text-primary-high-em"
+                          : "text-text-med-em"
+                      )}
+                      // Stop propagation to prevent the sidenav's onClick from firing when clicking links
+                      onClick={e => e.stopPropagation()}
+                    >
+                      {section.label}
+                    </a>
+                  </li>
+                ))}
+              </div>
             </ul>
           </div>
         </div>
