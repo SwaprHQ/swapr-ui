@@ -45,7 +45,7 @@ export const chipButtonStyles = cva(
         active: true,
         colorScheme: "neutral",
         class: [
-          "bg-surface-surface-3 shadow-special-drop text-text-high-em",
+          "bg-surface-surface-2 shadow-special-drop text-text-high-em",
           "hover:bg-surface-surface-3 hover:shadow-special-drop",
           "dark:shadow-focus-gray",
         ],
