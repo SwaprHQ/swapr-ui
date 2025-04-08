@@ -7,7 +7,7 @@ import "./global.css";
 import { Providers } from "../providers";
 
 export const metadata: Metadata = {
-  title: "Swapr UI",
+  title: "Swapr UI - clean UI components for your <app></app>",
   description: "Components to build clean apps fast",
 };
 
