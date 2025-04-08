@@ -1,5 +1,5 @@
-import React from "react";
 import {
+  Radio,
   RadioGroup,
   RadioGroupProps,
   RadioOptionProps,
@@ -66,7 +66,7 @@ export const ToggleGroupOption = ({
   ...props
 }: ToggleOptionProp) => {
   return (
-    <RadioGroup.Option {...props}>
+    <Radio {...props}>
       {({ checked }) => (
         <div
           className={twMerge(
@@ -77,6 +77,6 @@ export const ToggleGroupOption = ({
           {children}
         </div>
       )}
-    </RadioGroup.Option>
+    </Radio>
   );
 };

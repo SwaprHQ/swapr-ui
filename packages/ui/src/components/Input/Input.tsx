@@ -5,50 +5,53 @@ import { Icon, IconName } from "../Icon";
 
 const inputStyles = cva(
   [
-    "flex w-full items-center",
-    "shadow border-outline-med-em",
-    "focus-within:ring-[3px] focus-within:ring-outline-primary-low-em",
-    "group-has-[:disabled]:cursor-not-allowed group-has-[:disabled]:text-text-disabled",
-    "group-has-[:invalid]:text-text-danger-main group-has-[:invalid]:bg-surface-danger-accent-1 group-has-[:invalid]:border-outline-danger-med-em group-has-[:invalid]:ring-outline-danger-low-em",
+    "flex w-full items-center text-text-high-em",
+    "border-outline-med-em",
+    "group-has-[:disabled]:cursor-not-allowed group-has-[:disabled]:text-text-disabled group-has-[:disabled]:bg-surface-surface-1 group-has-[:disabled]:shadow-none group-has-[:disabled]:border-transparent",
+    "group-has-[:invalid]:shadow-focus-danger",
   ],
   {
     variants: {
       size: {
-        sm: "text-sm space-x-1 p-2 rounded-8",
-        md: "text-md space-x-2 px-3 py-2 rounded-12",
-        lg: "text-md space-x-3 px-4 py-3 rounded-12",
+        sm: "text-sm space-x-1 px-2 rounded-8 h-8",
+        md: "text-[13px] space-x-2 px-3 rounded-[10px] h-9",
+        lg: "text-[15px] space-x-3 px-4 rounded-12 h-12",
+        xl: "text-[18px] space-x-3 px-4 rounded-16 h-14",
       },
       variant: {
-        simple:
-          "bg-surface-surface-2 text-text-med-em placeholder:text-text-disabled",
-        solid:
-          "bg-surface-primary-accent-2 text-text-primary-em placeholder:text-text-primary-med",
-        pastel:
-          "bg-surface-primary-accent-1 text-text-primary-em placeholder:text-text-primary-med",
-        ghost: "bg-surface-surface-0 shadow-2 text-text-high-em",
+        secondary:
+          "bg-surface-surface-smoke-gray text-text-med-em placeholder:text-text-disabled focus-within:shadow-focus-gray",
+        tertiary:
+          "bg-surface-primary-base-em-alpha text-text-primary-em placeholder:text-text-primary-med focus-within:shadow-focus-primary",
+        primary:
+          "bg-surface-primary-accent-1 text-text-primary-em placeholder:text-text-primary-med focus-within:shadow-focus-primary border border-surface-primary-med-em",
+        ghost: "bg-surface-surface-0 text-text-high-em focus-within:shadow-2",
       },
     },
     defaultVariants: {
       size: "md",
-      variant: "simple",
+      variant: "secondary",
     },
   }
 );
 
-const inputFieldStyles = cva([], {
-  variants: {
-    variant: {
-      simple: "placeholder:text-text-disabled",
-      solid: "placeholder:text-text-primary-med",
-      pastel: "placeholder:text-text-primary-med",
-      ghost: "placeholder:text-text-disabled",
+const inputFieldStyles = cva(
+  ["bg-[inherit] group-has-[:disabled]:placeholder:text-text-base-em"],
+  {
+    variants: {
+      variant: {
+        secondary: "placeholder:text-text-low-em",
+        primary: "placeholder:text-text-primary-med-em",
+        tertiary: "placeholder:text-text-primary-med-em",
+        ghost: "placeholder:text-text-low-em",
+      },
     },
-  },
-  defaultVariants: { variant: "simple" },
-});
+    defaultVariants: { variant: "secondary" },
+  }
+);
 
-type InputSizeProp = "sm" | "md" | "lg";
-type InputVariantProp = "simple" | "solid" | "pastel" | "ghost";
+export type InputSizeProp = "sm" | "md" | "lg" | "xl";
+export type InputVariantProp = "secondary" | "primary" | "tertiary" | "ghost";
 
 interface InputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
@@ -65,6 +68,7 @@ const iconSize: Record<InputSizeProp, number> = {
   sm: 14,
   md: 18,
   lg: 20,
+  xl: 24,
 };
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -88,12 +92,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     }, [isInvalid, message]);
 
     return (
-      <div className={cx("space-y-1 group", className)}>
+      <div className={cx("group", className)}>
         {label && (
           <LabelPrimitive.Root
             className={cx([
-              "text-sm font-medium text-text-med-em",
-              "group-has-[:invalid]:text-text-danger-main",
+              "text-sm text-text-low-em",
+              "group-has-[:disabled]:text-text-base-em",
             ])}
             htmlFor={id}
           >
@@ -109,25 +113,39 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             if (inputRef.current) inputRef.current.select();
           }}
         >
-          {leftIcon && <Icon size={iconSize[size]} name={leftIcon} />}
+          {leftIcon && (
+            <Icon
+              size={iconSize[size]}
+              name={leftIcon}
+              className="text-text-med-em"
+            />
+          )}
           <InputField
             className={inputFieldStyles({ variant })}
             ref={inputRef}
             id={id}
             {...props}
           />
-          {rightIcon && <Icon size={iconSize[size]} name={rightIcon} />}
+          {rightIcon && (
+            <Icon
+              size={iconSize[size]}
+              name={rightIcon}
+              className="text-text-med-em"
+            />
+          )}
         </div>
         {message && (
           <div
             className={cx([
-              "flex space-x-0.5",
-              "group-has-[:disabled]:text-text-disabled",
-              "group-has-[:invalid]:text-text-danger-main",
+              "flex space-x-1 mt-2",
+              "group-has-[:disabled]:text-text-base-em",
+              "group-has-[:invalid]:text-text-danger-high-em",
             ])}
           >
             <Icon size={14} name="info-fill" />
-            <p className="text-sm">{message}</p>
+            <p className="text-sm text-text-med-em group-has-[:disabled]:text-text-base-em">
+              {message}
+            </p>
           </div>
         )}
       </div>
@@ -144,7 +162,7 @@ const InputField = forwardRef<
   return (
     <input
       className={cx(
-        "focus-visible:outline-none bg-transparent w-full disabled:cursor-not-allowed disabled:text-text-disabled",
+        "focus:outline-none bg-transparent w-full disabled:cursor-not-allowed disabled:text-text-low-em",
         className
       )}
       ref={ref}

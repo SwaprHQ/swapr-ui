@@ -1,3 +1,4 @@
+import { Card, Section } from "@/components";
 import {
   Button,
   ChipButton,
@@ -12,6 +13,70 @@ import {
   TabStyled,
 } from "@swapr/ui";
 import { Root as Separator } from "@radix-ui/react-separator";
+
+interface PopoverList {
+  headers: Array<string>;
+  examples: Array<() => JSX.Element>;
+}
+
+export const PopoverBasic = () => (
+  <Popover>
+    <PopoverTrigger asChild>
+      <Button>Open Popup</Button>
+    </PopoverTrigger>
+    <PopoverContent>
+      <p>This is a basic content example</p>
+    </PopoverContent>
+  </Popover>
+);
+
+export const PopoverWithHeader = () => (
+  <Popover>
+    <PopoverTrigger asChild>
+      <Button>With header</Button>
+    </PopoverTrigger>
+    <PopoverContent className="max-w-md px-0">
+      <PopoverContentHeader title="Settings" />
+      <SettingsPopoverContent />
+    </PopoverContent>
+  </Popover>
+);
+
+export const PopoverSlippageSettings = () => (
+  <Popover>
+    <PopoverTrigger asChild>
+      <IconButton name="settings" />
+    </PopoverTrigger>
+    <PopoverContent className="max-w-md px-0">
+      <SettingsPopoverContent />
+    </PopoverContent>
+  </Popover>
+);
+
+const popoverList: PopoverList = {
+  headers: ["Basic", "With Header", "Settings example"],
+  examples: [PopoverBasic, PopoverWithHeader, PopoverSlippageSettings],
+};
+
+export const PopoverSection = () => (
+  <Section title="Popovers" id="popovers">
+    <Card className="grid items-center space-y-2.5 lg:space-y-0 lg:grid-cols-3 lg:gap-4">
+      {popoverList.headers.map((header, index) => (
+        <div
+          key={index}
+          className="hidden text-xs font-semibold text-center uppercase bg-gray-200 lg:block"
+        >
+          {header}
+        </div>
+      ))}
+      {popoverList.examples.map((Example, index) => (
+        <div key={index} className="flex items-center justify-center">
+          <Example />
+        </div>
+      ))}
+    </Card>
+  </Section>
+);
 
 const SettingsPopoverContent = () => (
   <div className="space-y-2">
@@ -50,38 +115,4 @@ const SettingsPopoverContent = () => (
     </div>
     <ChipButton className="mx-4">10 mins</ChipButton>
   </div>
-);
-
-export const PopoverBasic = () => (
-  <Popover>
-    <PopoverTrigger asChild>
-      <Button>Open Popup</Button>
-    </PopoverTrigger>
-    <PopoverContent>
-      <p>This is a basic content example</p>
-    </PopoverContent>
-  </Popover>
-);
-
-export const PopoverWithHeader = () => (
-  <Popover>
-    <PopoverTrigger asChild>
-      <Button>With header</Button>
-    </PopoverTrigger>
-    <PopoverContent className="max-w-md px-0">
-      <PopoverContentHeader title="Settings" />
-      <SettingsPopoverContent />
-    </PopoverContent>
-  </Popover>
-);
-
-export const PopoverSlippageSettings = () => (
-  <Popover>
-    <PopoverTrigger asChild>
-      <IconButton name="settings" />
-    </PopoverTrigger>
-    <PopoverContent className="max-w-md px-0">
-      <SettingsPopoverContent />
-    </PopoverContent>
-  </Popover>
 );

@@ -57,9 +57,14 @@ const PopoverContentHeader = ({
       className
     )}
   >
-    <p className="text-lg text-text-high-em font-bold">{title}</p>
+    <p className="text-md text-text-high-em font-semibold">{title}</p>
     <Close asChild>
-      <IconButton name="cross" size="md" variant="ghost" />
+      <IconButton
+        name="cross"
+        size="xs"
+        variant="tertiary"
+        className="rounded-100"
+      />
     </Close>
   </div>
 );

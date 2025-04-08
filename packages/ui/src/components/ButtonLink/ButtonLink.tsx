@@ -17,66 +17,38 @@ export type ButtonLinkProps<T extends React.ElementType> =
 const buttonLinkStyles = cva(["cursor-pointer"], {
   variants: {
     colorScheme: {
-      primary: [],
-      error: [],
+      main: [],
+      danger: [],
       success: [],
     },
     variant: {
-      solid: [],
-      pastel: [],
-      outline: [],
+      primary: [],
+      light: [],
+      secondary: [],
+      tertiary: [],
       ghost: [],
+      neutral: [],
     },
     active: {
       true: [],
     },
     disabled: {
-      true: ["text-text-disabled pointer-events-none ring-0"],
+      true: [
+        "bg-surface-disabled-base-em hover:bg-surface-disabled-base-em cursor-not-allowed text-text-base-em",
+        "shadow-none focus-visible:shadow-none active:shadow-none focus-visible:ring-0 active:ring-0",
+      ],
     },
   },
   compoundVariants: [
     {
-      colorScheme: "primary",
-      variant: "outline",
-      class: "text-inherit",
-    },
-    {
-      colorScheme: "primary",
-      variant: "ghost",
-      class: "text-inherit",
-    },
-    {
-      colorScheme: "success",
-      variant: "solid",
-      class: "text-inherit",
-    },
-    {
-      colorScheme: "success",
-      active: true,
-      class: "text-inherit",
-    },
-    {
       disabled: true,
       variant: "ghost",
-      class: ["bg-inherit text-text-disabled"],
-    },
-    {
-      disabled: true,
-      variant: ["solid", "outline", "pastel"],
-      class: ["bg-surface-disabled-low-em text-text-disabled"],
-    },
-    {
-      colorScheme: ["primary", "error", "success"],
-      variant: "ghost",
-      class: "bg-inherit",
+      class: [
+        "bg-inherit hover:bg-inherit",
+        "shadow-none focus-visible:shadow-none active:shadow-none focus-visible:ring-0 active:ring-0",
+      ],
     },
   ],
-  defaultVariants: {
-    active: false,
-    disabled: false,
-    colorScheme: "primary",
-    variant: "solid",
-  },
 });
 
 const DEFAULT_ELEMENT = "a";

@@ -15,17 +15,38 @@ export default [
     input: ["./tailwind-preset.ts", "src/index.ts"],
     plugins: [
       peerDepsExternal(),
-      nodeResolve({ preferBuiltins: true }),
-      commonjs(),
+
+      // The key is to properly configure external dependencies before TypeScript processing
+      nodeResolve({
+        preferBuiltins: true,
+        extensions: [".js", ".jsx", ".ts", ".tsx", ".mjs"],
+      }),
+
+      // Process TypeScript files - with proper exclusions
       typescript({
         tsconfig: "tsconfig.json",
-        exclude: /\.stories\.tsx?$/,
+        exclude: [/\.stories\.tsx?$/, /node_modules/],
+        tsconfigOverride: {
+          compilerOptions: {
+            declaration: true,
+            declarationDir: "./dist/es/src",
+          },
+          include: ["src/**/*"],
+          exclude: ["node_modules", "**/*.stories.tsx"],
+        },
       }),
+
+      commonjs({
+        transformMixedEsModules: true,
+        include: [/node_modules/],
+      }),
+
       svg(),
+
       esbuild({
         target: "es2020",
         tsconfig: resolve("./tsconfig.json"),
-        exclude: /\.stories\.tsx?$/,
+        exclude: [/\.stories\.tsx?$/, /node_modules/],
       }),
     ],
     output: [
@@ -48,6 +69,8 @@ export default [
         exports: "auto",
       },
     ],
+    // Add external to explicitly tell Rollup which packages to not bundle
+    external: ["react", "react-dom", "sonner", "@headlessui/react"],
   },
   {
     input: resolve("./src/global.css"),

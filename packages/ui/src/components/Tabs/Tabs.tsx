@@ -10,11 +10,11 @@ export const TabGroup = ({
   if (!children) return null;
 
   const headerChildren = Children.toArray(children).filter(
-    (child) => (child as any)?.type === TabHeader
+    child => (child as any)?.type === TabHeader
   );
 
   const bodyChildren = Children.toArray(children).filter(
-    (child) => (child as any)?.type === TabBody
+    child => (child as any)?.type === TabBody
   );
 
   return (
@@ -31,7 +31,7 @@ export const TabHeader = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
-    <Tab.List className={twMerge("flex space-x-3 p-0.5", className)} {...props}>
+    <Tab.List className={twMerge("flex space-x-2 p-0.5", className)} {...props}>
       {children}
     </Tab.List>
   );
@@ -59,7 +59,7 @@ export const TabStyled = ({
         /* Use the `selected` state to conditionally style the selected tab. */
         <ChipButton
           active={selected}
-          colorScheme="secondary"
+          colorScheme="neutral"
           className={className}
         >
           {children}

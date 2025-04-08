@@ -11,8 +11,11 @@ module.exports = {
     {
       pattern: /bg-[a-z0-9-]*/,
     },
+    {
+      pattern: /^text-(2xs|xs|sm|base|md|lg|xl|2xl|3xl)$/,
+      variants: ["hover", "focus", "dark"],
+    },
   ],
-  // Customizations specific to this project would go here
   theme: {
     extend: {},
   },

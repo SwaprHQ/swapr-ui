@@ -4,13 +4,14 @@ import { cva } from "class-variance-authority";
 import { Button, ButtonProps } from "../Button";
 import { Icon, IconProps } from "../Icon";
 
-export const iconButtonStyles = cva([], {
+export const iconButtonStyles = cva(["p-0"], {
   variants: {
     size: {
-      xs: "p-1 rounded-6",
-      sm: "p-2 rounded-8",
-      md: "p-3",
-      lg: "p-3.5",
+      xs: "size-7 rounded-8",
+      sm: "size-8 rounded-8",
+      md: "size-10 rounded-10",
+      lg: "size-12 rounded-14",
+      xl: "size-14 rounded-14",
     },
   },
   defaultVariants: {
@@ -20,18 +21,19 @@ export const iconButtonStyles = cva([], {
 
 type Size = NonNullable<ButtonProps["size"]>;
 export const iconSize: Record<Size, number> = {
-  xs: 14,
-  sm: 14,
-  md: 18,
-  lg: 20,
+  xs: 18,
+  sm: 22,
+  md: 26,
+  lg: 30,
+  xl: 36,
 };
 
 export const IconButton = forwardRef(
   (
     {
-      name,
       className,
       size = "md",
+      name,
       ...props
     }: ButtonProps & Pick<IconProps, "name">,
     ref: Ref<HTMLButtonElement>
@@ -41,7 +43,7 @@ export const IconButton = forwardRef(
       {...props}
       ref={ref}
     >
-      <Icon size={iconSize[size]} name={name} />
+      <Icon size={iconSize[size]} name={name} className="flex-shrink-0" />
     </Button>
   )
 );
