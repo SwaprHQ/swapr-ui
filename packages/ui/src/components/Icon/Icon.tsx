@@ -88,6 +88,7 @@ export type IconName =
   | "settings-fill"
   | "settings"
   | "sidenav"
+  | "spinner"
   | "support-fill"
   | "support"
   | "refresh"
@@ -195,6 +196,7 @@ export const iconMap: Record<IconName, any> = {
   sidenav: IconList.Sidenav,
   "settings-fill": IconList.SettingsFill,
   settings: IconList.Settings,
+  spinner: IconList.Spinner,
   "support-fill": IconList.SupportFill,
   support: IconList.Support,
   "swap-vertical": IconList.SwapVertical,
