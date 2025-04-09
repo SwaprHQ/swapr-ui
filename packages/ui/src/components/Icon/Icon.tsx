@@ -94,6 +94,7 @@ export type IconName =
   | "refresh"
   | "swap-horizontal"
   | "swap-vertical"
+  | "stars"
   | "switch-off"
   | "tick-fill"
   | "tick"
@@ -201,6 +202,7 @@ export const iconMap: Record<IconName, any> = {
   support: IconList.Support,
   "swap-vertical": IconList.SwapVertical,
   "swap-horizontal": IconList.SwapHorizontal,
+  stars: IconList.Stars,
   tick: IconList.Tick,
   "tick-fill": IconList.TickFill,
   "token-fill": IconList.TokenFill,

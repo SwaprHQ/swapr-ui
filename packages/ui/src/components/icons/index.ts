@@ -92,6 +92,7 @@ export { default as Support } from "./Support";
 export { default as SwapHorizontal } from "./SwapHorizontal";
 export { default as SwapVertical } from "./SwapVertical";
 export { default as SwitchOff } from "./SwitchOff";
+export { default as Stars } from "./Stars";
 export { default as TickFill } from "./TickFill";
 export { default as Tick } from "./Tick";
 export { default as TokenFill } from "./TokenFill";
