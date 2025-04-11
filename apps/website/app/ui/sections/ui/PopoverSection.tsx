@@ -13,6 +13,7 @@ import {
   TabStyled,
 } from "@swapr/ui";
 import { Root as Separator } from "@radix-ui/react-separator";
+import type { JSX } from "react";
 
 interface PopoverList {
   headers: Array<string>;

@@ -1,6 +1,6 @@
 import { Card, Section, SelectProp } from "@/components";
 import { Tag, TagColorSchemeProp, TagSizeProp } from "@swapr/ui";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 
 const TagColorSchemes = [
   "primary",
@@ -34,11 +34,11 @@ export const TagSection = () => {
       />
       <Card className="flex space-x-6">
         {TagColorSchemes.map(color => (
-          <Fragment key={color}>
+          <div key={color}>
             <Tag colorScheme={color as TagColorSchemeProp} size={size}>
               {color}
             </Tag>
-          </Fragment>
+          </div>
         ))}
       </Card>
     </Section>
