@@ -27,6 +27,6 @@
   "devDependencies": {
     "@swapr-ui/eslint-config": "workspace:*",
     "@swapr-ui/typescript-config": "workspace:*",
-    "turbo": "^1.9.4"
+    "turbo": "^2.5.0"
   }
 }
