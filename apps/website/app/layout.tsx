@@ -1,4 +1,3 @@
-import { PropsWithChildren } from "react";
 import type { Metadata } from "next";
 
 import "@swapr/ui/styles.css";
@@ -11,7 +10,11 @@ export const metadata: Metadata = {
   description: "Components to build clean apps fast",
 };
 
-export default function RootLayout({ children }: PropsWithChildren) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body className="bg-surface-surface-0">

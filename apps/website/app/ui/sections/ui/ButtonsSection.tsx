@@ -6,7 +6,7 @@ import {
   ButtonSize,
   ButtonWidth,
 } from "@swapr/ui";
-import { Fragment, PropsWithChildren, useState } from "react";
+import { Fragment, useState } from "react";
 
 const getBaseBtnCombos = (
   children: string = "Button"
@@ -159,7 +159,8 @@ const ComponentSection = ({
   );
 };
 
-interface ButtonSectionProps extends PropsWithChildren {
+interface ButtonSectionProps {
+  children: React.ReactNode;
   component:
     | React.ComponentType<ButtonProps>
     | React.ComponentType<ButtonLinkProps<any>>;
