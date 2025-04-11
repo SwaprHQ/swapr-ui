@@ -23,7 +23,7 @@ export const HeroSection = () => (
           target="_blank"
         >
           👁️ Presagio{" "}
-          <div className="absolute top-0 -right-2 size-1.5 rounded-100 bg-surface-success-high-em"></div>
+          <span className="absolute top-0 -right-2 size-1.5 rounded-100 bg-surface-success-high-em"></span>
         </a>
       </p>
       <p>
