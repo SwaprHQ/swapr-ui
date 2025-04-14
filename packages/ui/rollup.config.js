@@ -3,7 +3,7 @@ import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import esbuild from "rollup-plugin-esbuild";
 import postcss from "rollup-plugin-postcss";
-import tailwindcss from "tailwindcss";
+import tailwindcss from "@tailwindcss/postcss";
 import autoprefixer from "autoprefixer";
 import { resolve } from "path";
 import typescript from "rollup-plugin-typescript2";
@@ -76,7 +76,10 @@ export default [
     input: resolve("./src/global.css"),
     plugins: [
       postcss({
-        plugins: [autoprefixer],
+        plugins: [
+          tailwindcss({ config: "./tailwind.config.ts" }),
+          autoprefixer,
+        ],
         extract: "styles.css",
       }),
     ],

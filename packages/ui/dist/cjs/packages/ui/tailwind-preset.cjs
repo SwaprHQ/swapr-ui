@@ -1,0 +1,289 @@
+'use strict';
+
+module.exports = {
+  darkMode: ["class", '[data-theme="dark"]'],
+  theme: {
+    extend: {
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))"
+      },
+      boxShadow: {
+        none: "none",
+        1: "0px 1px 1px -0.5px var(--elevation-shadow, rgba(0, 0, 0, 0.04))",
+        2: "0px 1px 1px -0.5px var(--elevation-shadow, rgba(0, 0, 0, 0.04)), 0px 3px 3px -1.5px var(--elevation-shadow, rgba(0, 0, 0, 0.04))",
+        3: "0px 1px 1px -0.5px var(--elevation-shadow, rgba(0, 0, 0, 0.04)), 0px 3px 3px -1.5px var(--elevation-shadow, rgba(0, 0, 0, 0.04)), 0px 24px 24px -12px var(--elevation-shadow, rgba(0, 0, 0, 0.04))",
+        4: "0px 1px 1px -0.5px var(--elevation-shadow, rgba(0, 0, 0, 0.04)), 0px 3px 3px -1.5px var(--elevation-shadow, rgba(0, 0, 0, 0.04)), 0px 6px 6px -3px var(--elevation-shadow, rgba(0, 0, 0, 0.04)), 0px 32px 32px -16px var(--elevation-shadow, rgba(0, 0, 0, 0.04))",
+        5: "0px 1px 1px -0.5px var(--elevation-shadow, rgba(0, 0, 0, 0.04)), 0px 3px 3px -1.5px var(--elevation-shadow, rgba(0, 0, 0, 0.04)), 0px 6px 6px -3px var(--elevation-shadow, rgba(0, 0, 0, 0.04)), 0px 32px 32px -16px var(--elevation-shadow, rgba(0, 0, 0, 0.04)), 0px 56px 56px -28px var(--elevation-shadow, rgba(0, 0, 0, 0.04))",
+        6: "0px 1px 1px -0.5px var(--elevation-shadow, rgba(0, 0, 0, 0.04)), 0px 3px 3px -1.5px var(--elevation-shadow, rgba(0, 0, 0, 0.04)), 0px 6px 6px -3px var(--elevation-shadow, rgba(0, 0, 0, 0.04)), 0px 12px 12px -6px var(--elevation-shadow, rgba(0, 0, 0, 0.04)), 0px 32px 32px -16px var(--elevation-shadow, rgba(0, 0, 0, 0.04)), 0px 64px 64px -32px var(--elevation-shadow, rgba(0, 0, 0, 0.04))",
+        "primary-button": "0px 1px 1px -0.5px var(--elevation-shadow, rgba(0, 0, 0, 0.04)), 0px 3px 3px -1.5px var(--elevation-shadow, rgba(0, 0, 0, 0.04)), 0px 3px 4px -3px var(--color-white-56, rgba(255, 255, 255, 0.56)) inset, 0px 0px 8px -2px var(--color-white-48, rgba(255, 255, 255, 0.48)) inset",
+        "secondary-button": "0px 1px 1px -0.5px var(--elevation-shadow, rgba(0, 0, 0, 0.04)), 0px 1px 3px -2px var(--color-white-4, rgba(255, 255, 255, 0.04)) inset, 0px -1px 3px -2px var(--neutral-inverse-white-alpha-7, rgba(0, 0, 0, 0.07)) inset",
+        focus: "0px 0px 0px 3px var(--outline-primary-alpha, rgba(123, 92, 250, 0.24))",
+        "focus-danger": " 0px 0px 0px 3px var(--outline-danger-alpha, rgba(240, 61, 61, 0.24))",
+        "focus-success": "0px 0px 0px 3px var(--outline-success-alpha, rgba(53, 194, 32, 0.24))",
+        "focus-gray": "0px 0px 0px 3px var(--outline-med-em, rgba(255, 255, 255, 0.12))",
+        "focus-primary": "0px 0px 0px 3px var(--outline-primary-alpha)"
+      }
+    },
+    fontSize: {
+      "2xs": ["10px", "16px"],
+      xs: ["11px", "16px"],
+      sm: ["12px", "16px"],
+      base: ["14px", "24px"],
+      md: ["16px", "24px"],
+      lg: ["18px", "28px"],
+      xl: ["20px", "32px"],
+      "2xl": ["26px", "40px"],
+      "3xl": ["32px", "40px"]
+    },
+    borderRadius: {
+      0: "0px",
+      4: "4px",
+      6: "6px",
+      8: "8px",
+      12: "12px",
+      16: "16px",
+      20: "20px",
+      32: "32px",
+      48: "48px",
+      64: "64px",
+      100: "100px"
+    },
+    border: {
+      "primary-special": "1px solid var(--primary-special-outline, rgba(0, 0, 0, 0.12))"
+    },
+    colors: {
+      transparent: "transparent",
+      surface: {
+        white: "var(--color-white-100)",
+        black: "var(--color-black-100)",
+        "inverse-white-neutral": "var(--surface-inverse-white-neutral)",
+        "inverse-black-neutral": "var(--surface-inverse_white_black)",
+        surface: {
+          0: "var(--surface-white-smoke-0)",
+          1: "var(--surface-surface-1)",
+          2: "var(--surface-surface-2)",
+          3: "var(--surface-surface-3)",
+          4: "var(--surface-surface-4)",
+          smoke: {
+            gray: "var(--surface-smoke-gray)",
+            "gray-em": "var(--surface-smoke-gray-em)"
+          },
+          white: {
+            smoke: {
+              0: "var(--surface-white-smoke-0)",
+              1: "var(--surface-white-smoke-1)",
+              2: "var(--surface-white-smoke-2)",
+              3: "var(--surface-white-smoke-3)",
+              4: "var(--surface-white-smoke-4)"
+            }
+          }
+        },
+        disabled: {
+          "high-em": "var(--surface-disabled-high-em)",
+          "med-em": "var(--surface-disabled-med-em)",
+          "low-em": "var(--surface-disabled-low-em)",
+          "base-em": "var(--surface-disabled-base-em)"
+        },
+        primary: {
+          "high-em": "var(--surface-primary-high-em)",
+          "med-em": "var(--surface-primary-med-em)",
+          "low-em": "var(--surface-primary-low-em)",
+          "base-em": "var(--surface-primary-base-em)",
+          "low-em-alpha": "var(--surface-primary-low-em-alpha)",
+          "base-em-alpha": "var(--surface-primary-base-em-alpha)"
+        },
+        secondary: {
+          "high-em": "var(--surface-secondary-high-em)",
+          "med-em": "var(--surface-secondary-med-em)",
+          "low-em": "var(--surface-secondary-low-em)",
+          "base-em": "var(--surface-secondary-base-em)",
+          "low-em-alpha": "var(--surface-secondary-low-em-alpha)",
+          "base-em-alpha": "var(--surface-secondary-base-em-alpha)"
+        },
+        success: {
+          "high-em": "var(--surface-success-high-em)",
+          "med-em": "var(--surface-success-med-em)",
+          "low-em": "var(--surface-success-low-em)",
+          "base-em": "var(--surface-success-base-em)",
+          "low-em-alpha": "var(--surface-success-low-em-alpha)",
+          "base-em-alpha": "var(--surface-success-base-em-alpha)",
+          "low-em-alpha-2": "var(--surface-success-low-em-alpha-2)"
+        },
+        info: {
+          "high-em": "var(--surface-info-high-em)",
+          "med-em": "var(--surface-info-med-em)",
+          "low-em": "var(--surface-info-low-em)",
+          "base-em": "var(--surface-info-base-em)",
+          "low-em-alpha": "var(--surface-info-low-em-alpha)",
+          "base-em-alpha": "var(--surface-info-base-em-alpha)"
+        },
+        warning: {
+          "high-em": "var(--surface-warning-high-em)",
+          "med-em": "var(--surface-warning-med-em)",
+          "low-em": "var(--surface-warning-low-em)",
+          "base-em": "var(--surface-warning-base-em)",
+          "low-em-alpha": "var(--surface-warning-low-em-alpha)",
+          "base-em-alpha": "var(--surface-warning-base-em-alpha)"
+        },
+        danger: {
+          "high-em": "var(--surface-danger-high-em)",
+          "med-em": "var(--surface-danger-med-em)",
+          "low-em": "var(--surface-danger-low-em)",
+          "base-em": "var(--surface-danger-base-em)",
+          "low-em-alpha": "var(--surface-danger-low-em-alpha)",
+          "base-em-alpha": "var(--surface-danger-base-em-alpha)"
+        }
+      },
+      text: {
+        none: "var(--transparent-white)",
+        "base-em": "var(--text-base-em)",
+        "low-em": "var(--text-low-em)",
+        "med-em": "var(--text-med-em)",
+        "high-em": "var(--text-high-em)",
+        white: "var(--color-white-100)",
+        black: "var(--color-black-100)",
+        "inverse-white-neutral": "var(--text-inverse-white-neutral)",
+        "inverse-black-neutral": "var(--text-inverse-black-neutral)",
+        primary: {
+          "high-em": "var(--text-primary-high-em)",
+          "med-em": "var(--text-primary-med-em)",
+          "low-em": "var(--text-primary-low-em)",
+          "base-em": "var(--text-primary-base-em)"
+        },
+        secondary: {
+          "high-em": "var(--text-secondary-high-em)",
+          "med-em": "var(--text-secondary-med-em)",
+          "low-em": "var(--text-secondary-low-em)",
+          "base-em": "var(--text-secondary-base-em)"
+        },
+        success: {
+          "high-em": "var(--text-success-high-em)",
+          "med-em": "var(--text-success-med-em)",
+          "low-em": "var(--text-success-low-em)",
+          "base-em": "var(--text-success-base-em)"
+        },
+        info: {
+          "high-em": "var(--text-info-high-em)",
+          "med-em": "var(--text-info-med-em)",
+          "low-em": "var(--text-info-low-em)",
+          "base-em": "var(--text-info-base-em)"
+        },
+        warning: {
+          "high-em": "var(--text-warning-high-em)",
+          "med-em": "var(--text-warning-med-em)",
+          "low-em": "var(--text-warning-low-em)",
+          "base-em": "var(--text-warning-base-em)"
+        },
+        danger: {
+          "high-em": "var(--text-danger-high-em)",
+          "med-em": "var(--text-danger-med-em)",
+          "low-em": "var(--text-danger-low-em)",
+          "base-em": "var(--text-danger-base-em)"
+        }
+      },
+      outline: {
+        white: "var(--outline-white)",
+        black: "var(--outline-black)",
+        "high-em": "var(--outline-high-em)",
+        "med-em": "var(--outline-med-em)",
+        "low-em": "var(--outline-low-em)",
+        "base-em": "var(--outline-base-em)",
+        "inverse-white-neutral": "var(--outline-inverse-white-neutral)",
+        "inverse-black-neutral": "var(--outline-inverse-black-neutral)",
+        primary: {
+          "high-em": "var(--outline-primary-high-em)",
+          "med-em": "var(--outline-primary-med-em)",
+          "low-em": "var(--outline-primary-low-em)",
+          "base-em": "var(--outline-primary-base-em)",
+          alpha: "var(--outline-primary-alpha)",
+          special: {
+            top: "var(--outline-primary-special-top)",
+            bottom: "var(--outline-primary-special-bottom)"
+          }
+        },
+        secondary: {
+          "high-em": "var(--outline-secondary-high-em)",
+          "med-em": "var(--outline-secondary-med-em)",
+          "low-em": "var(--outline-secondary-low-em)",
+          "base-em": "var(--outline-secondary-base-em)",
+          alpha: "var(--outline-secondary-alpha)",
+          special: {
+            top: "var(--outline-secondary-special-top)",
+            bottom: "var(--outline-secondary-special-bottom)"
+          }
+        },
+        success: {
+          "high-em": "var(--outline-success-high-em)",
+          "med-em": "var(--outline-success-med-em)",
+          "low-em": "var(--outline-success-low-em)",
+          "base-em": "var(--outline-success-base-em)",
+          alpha: "var(--outline-success-alpha)"
+        },
+        info: {
+          "high-em": "var(--outline-info-high-em)",
+          "med-em": "var(--outline-info-med-em)",
+          "low-em": "var(--outline-info-low-em)",
+          "base-em": "var(--outline-info-base-em)",
+          alpha: "var(--outline-info-alpha)"
+        },
+        warning: {
+          "high-em": "var(--outline-warning-high-em)",
+          "med-em": "var(--outline-warning-med-em)",
+          "low-em": "var(--outline-warning-low-em)",
+          "base-em": "var(--outline-warning-base-em)",
+          alpha: "var(--outline-warning-alpha)"
+        },
+        danger: {
+          "high-em": "var(--outline-danger-high-em)",
+          "med-em": "var(--outline-danger-med-em)",
+          "low-em": "var(--outline-danger-low-em)",
+          "base-em": "var(--outline-danger-base-em)",
+          alpha: "var(--outline-danger-alpha)"
+        }
+      },
+      neutral: {
+        inverse: {
+          black: {
+            alpha: {
+              4: "var(--neutral-inverse-black-alpha-4)",
+              7: "var(--neutral-inverse-black-alpha-7)",
+              12: "var(--neutral-inverse-black-alpha-12)",
+              16: "var(--neutral-inverse-black-alpha-16)",
+              24: "var(--neutral-inverse-black-alpha-24)",
+              32: "var(--neutral-inverse-black-alpha-32)",
+              48: "var(--neutral-inverse-black-alpha-48)",
+              56: "var(--neutral-inverse-black-alpha-56)",
+              64: "var(--neutral-inverse-black-alpha-64)",
+              76: "var(--neutral-inverse-black-alpha-76)",
+              88: "var(--neutral-inverse-black-alpha-88)"
+            }
+          },
+          white: {
+            alpha: {
+              4: "var(--neutral-inverse-white-alpha-4)",
+              7: "var(--neutral-inverse-white-alpha-7)",
+              12: "var(--neutral-inverse-white-alpha-12)",
+              16: "var(--neutral-inverse-white-alpha-16)",
+              24: "var(--neutral-inverse-white-alpha-24)",
+              32: "var(--neutral-inverse-white-alpha-32)",
+              48: "var(--neutral-inverse-white-alpha-48)",
+              56: "var(--neutral-inverse-white-alpha-56)",
+              64: "var(--neutral-inverse-white-alpha-64)",
+              76: "var(--neutral-inverse-white-alpha-76)",
+              88: "var(--neutral-inverse-white-alpha-88)"
+            }
+          }
+        }
+      },
+      overlay: {
+        "high-em": "var(--color-black-48)",
+        "med-em": "var(--color-black-24)"
+      },
+      "elevation-shadow": "var(--color-black-4)",
+      "transparent-inverse": "var(--transparent-white)"
+    }
+  },
+  plugins: []
+};
+//# sourceMappingURL=tailwind-preset.cjs.map
