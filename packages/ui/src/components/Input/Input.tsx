@@ -7,8 +7,8 @@ const inputStyles = cva(
   [
     "flex w-full items-center text-text-high-em",
     "border-outline-med-em",
-    "group-has-[:disabled]:cursor-not-allowed group-has-[:disabled]:text-text-disabled group-has-[:disabled]:bg-surface-surface-1 group-has-[:disabled]:shadow-none group-has-[:disabled]:border-transparent",
-    "group-has-[:invalid]:shadow-focus-danger",
+    "group-has-disabled:cursor-not-allowed group-has-disabled:text-text-disabled group-has-disabled:bg-surface-surface-1 group-has-disabled:shadow-none group-has-disabled:border-transparent",
+    "group-has-invalid:shadow-focus-danger",
   ],
   {
     variants: {
@@ -36,7 +36,7 @@ const inputStyles = cva(
 );
 
 const inputFieldStyles = cva(
-  ["bg-[inherit] group-has-[:disabled]:placeholder:text-text-base-em"],
+  ["bg-inherit group-has-disabled:placeholder:text-text-base-em"],
   {
     variants: {
       variant: {
@@ -97,7 +97,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           <LabelPrimitive.Root
             className={cx([
               "text-sm text-text-low-em",
-              "group-has-[:disabled]:text-text-base-em",
+              "group-has-disabled:text-text-base-em",
             ])}
             htmlFor={id}
           >
@@ -138,12 +138,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           <div
             className={cx([
               "flex space-x-1 mt-2",
-              "group-has-[:disabled]:text-text-base-em",
-              "group-has-[:invalid]:text-text-danger-high-em",
+              "group-has-disabled:text-text-base-em",
+              "group-has-invalid:text-text-danger-high-em",
             ])}
           >
             <Icon size={14} name="info-fill" />
-            <p className="text-sm text-text-med-em group-has-[:disabled]:text-text-base-em">
+            <p className="text-sm text-text-med-em group-has-disabled:text-text-base-em">
               {message}
             </p>
           </div>
@@ -162,7 +162,7 @@ const InputField = forwardRef<
   return (
     <input
       className={cx(
-        "focus:outline-none bg-transparent w-full disabled:cursor-not-allowed disabled:text-text-low-em",
+        "focus:outline-hidden bg-transparent w-full disabled:cursor-not-allowed disabled:text-text-low-em",
         className
       )}
       ref={ref}

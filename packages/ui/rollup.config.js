@@ -76,10 +76,7 @@ export default [
     input: resolve("./src/global.css"),
     plugins: [
       postcss({
-        plugins: [
-          tailwindcss({ config: "./tailwind.config.ts" }),
-          autoprefixer,
-        ],
+        plugins: [autoprefixer],
         extract: "styles.css",
       }),
     ],

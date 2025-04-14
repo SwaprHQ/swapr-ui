@@ -24,7 +24,7 @@ import {
 
 export default function UI() {
   return (
-    <main className="lg:max-w-screen-lg 2xl:max-w-screen-xl px-5 sm:px-10 lg:px-5 mx-auto my-10 overflow-auto relative">
+    <main className="lg:max-w-(--breakpoint-lg) 2xl:max-w-(--breakpoint-xl) px-5 sm:px-10 lg:px-5 mx-auto my-10 overflow-auto relative">
       <Sidenav />
       <div className="space-y-8 mb-20">
         <HeroSection />
