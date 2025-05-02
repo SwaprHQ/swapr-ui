@@ -118,7 +118,7 @@ export function Sidenav() {
 
   return (
     <nav
-      className={`fixed top-24 z-10 transition-all duration-300 ${
+      className={`fixed top-12 z-10 transition-all duration-300 ${
         isOpen
           ? "left-4"
           : `-left-48 md:-left-44 ${isHovered ? "translate-x-8" : ""}`
