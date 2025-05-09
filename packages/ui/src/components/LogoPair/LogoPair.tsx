@@ -19,27 +19,27 @@ export const logoPairStyles = cva(["flex items-center w-fit h-fit relative"], {
     {
       size: "xl",
       variant: "highlight",
-      class: ["!mr-3"],
+      class: ["mr-3!"],
     },
     {
       size: "lg",
       variant: "highlight",
-      class: ["!mr-2"],
+      class: ["mr-2!"],
     },
     {
       size: "md",
       variant: "highlight",
-      class: ["!mr-2"],
+      class: ["mr-2!"],
     },
     {
       size: "sm",
       variant: "highlight",
-      class: ["!mr-2"],
+      class: ["mr-2!"],
     },
     {
       size: "xs",
       variant: "highlight",
-      class: ["!mr-2"],
+      class: ["mr-2!"],
     },
   ],
   defaultVariants: {

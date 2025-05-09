@@ -10,7 +10,7 @@ import { twMerge } from "@/utils";
 export const toggleOptionStyles = cva(
   [
     "flex items-center py-2 font-medium leading-5 rounded-12",
-    "outline-none cursor-pointer",
+    "outline-hidden cursor-pointer",
   ],
   {
     variants: {

@@ -8,7 +8,7 @@ export const chipButtonStyles = cva(
     "select-none font-medium rounded-100 text-nowrap",
     "disabled:text-text-base-em disabled:cursor-not-allowed disabled:ring-0 disabled:shadow-none disabled:bg-surface-disabled-low-em disabled:border-0",
     "hover:bg-surface-surface-2",
-    "focus:outline-none",
+    "focus:outline-hidden",
   ],
   {
     variants: {
